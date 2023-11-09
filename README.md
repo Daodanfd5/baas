@@ -33,3 +33,12 @@
 - [ ] **账号多开** 同时运行多个自动化脚本控制多个账号
 - [ ] **三服支持** 增加对国际服和日服支持(没有账号不一定做:(
 
+### 打包
+- MacOS
+```bash
+$ pyinstaller -F mac_os.spec
+```
+- Windows
+```bash
+$ pyinstaller -F windows.spec
+```
