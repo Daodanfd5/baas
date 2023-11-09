@@ -64,10 +64,6 @@ def screenshot_get_position(self, text, area=(), wait=99999, before_wait=0, need
     return screenshot_get_position(self, text, area, wait)
 
 
-def is_home(self, wait=99999):
-    return screenshot_check_text(self, "咖啡厅", (60, 676, 122, 695), wait)
-
-
 def is_login(self):
     return screenshot_check_text(self, "菜单", (35, 625, 75, 650))
 

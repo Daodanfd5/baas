@@ -1,4 +1,5 @@
 from flask import Flask
+
 from web.baas import baas
 from web.configs import configs
 

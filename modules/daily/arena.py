@@ -1,7 +1,13 @@
 import time
 
-from common import ocr, color, stage, image, iconst
+from common import ocr, color, stage, image
 from modules.baas import home
+
+x = {
+    'id': (476, 424, 496, 442),
+    'cd': (153, 516, 212, 535),
+    '0-5': (194, 479, 227, 497)
+}
 
 finish_seconds = 55
 
@@ -41,13 +47,12 @@ def get_prize(self):
 
 def start_fight(self, wait=False):
     # 检查余票
-    surplus = ocr.screenshot_get_text(self, (189, 475, 229, 498))
-    if surplus == '0/5':
+    if image.compare_image(self, 'arena_0-5'):
         print("没票了")
         get_prize(self)
         return True
     # 检测已有冷却
-    if wait or not image.compare_image(self, (153, 516, 212, 535), 'jjc_wait_time', 0, False):
+    if wait or not image.compare_image(self, 'arena_cd'):
         self.finish_seconds = finish_seconds
         return False
     # 选择对手
@@ -62,7 +67,7 @@ def start_fight(self, wait=False):
     self.double_click(1175, 665, True, 1, 1)
     while True:
         # 检查有没有出现ID
-        if image.compare_image(self, (476, 424, 496, 442), 'jjc_id', 0, False):
+        if image.compare_image(self, 'jjc_id'):
             break
         # 关闭弹窗
         self.d.click(1235, 82)
@@ -71,7 +76,7 @@ def start_fight(self, wait=False):
 
 
 def choose_enemy(self):
-    less_level = self.tc['config']['less_level']
+    less_level = int(self.tc['config']['less_level'])
     # 识别自己等级
     my_lv = float(ocr.screenshot_get_text(self, (165, 215, 208, 250), self.ocrNum))
     refresh = 0
@@ -79,6 +84,7 @@ def choose_enemy(self):
         # 超出最大次数,敌人预期等级-1
         if refresh > self.tc['config']['max_refresh']:
             less_level -= 1
+            refresh = 0
             continue
         # 识别对手等级
         enemy_lv = float(ocr.screenshot_get_text(self, (551, 298, 581, 317), self.ocrNum))

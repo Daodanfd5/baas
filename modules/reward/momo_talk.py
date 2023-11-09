@@ -39,7 +39,7 @@ def start(self):
 
 def start_chat(self):
     self.mm_i = 0
-    while self.mm_i < 6:
+    while self.mm_i < 3:
         # 检测回复
         ex, position = ocr.screenshot_get_position(self, '回复', (774, 196, 1123, 603), 0, 0)
         if ex:
@@ -89,7 +89,7 @@ def good_story(self, position):
 
 def check_message(self):
     # 检查文字是否发生变动
-    out = ocr.screenshot_cut_get_text(self, (774, 196, 1123, 603), 99999, False)
+    out = ocr.screenshot_cut_get_text(self, (774, 196, 1123, 603), 0, False)
     if len(out) == 0:
         self.mm_i += 1
         return

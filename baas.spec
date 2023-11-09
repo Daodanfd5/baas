@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('assets','assets')],
+    datas=[('assets','assets'),('web/static','web/static'),('web/templates','web/templates')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -33,4 +33,5 @@ exe = EXE(
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
+    icon='assets/ba.ico'
 )

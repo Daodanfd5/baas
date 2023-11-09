@@ -1,5 +1,13 @@
-from common import ocr
+from common import image
 from modules.baas import restart
+
+x = {
+    'lt': (10, 24, 20, 34),  # 左上角蓝色区域
+}
+
+
+def is_home(self):
+    return image.compare_image(self, 'home_lt')
 
 
 def go_home(self):
@@ -22,19 +30,12 @@ def recursion_click_house(self, check_text=False, fail_count=0):
     # 多次返回失败
     if fail_count >= 5:
         return False
-    if ocr.screenshot_check_text(self, "认证信息已超时", (529, 295, 719, 329), 0):
-        return False
-
-    if ocr.is_home(self, 0):
+    if is_home(self):
+        # 在首页先点击右上角
+        self.d.click(1233, 11)
         # 和妹子互动
         self.d.double_click(851, 262)
         return True
-
-    if check_text:
-        menu = ocr.screenshot_get_text(self, (97, 2, 368, 40), 0)
-        if menu == "":
-            self.d.click(355, 22)
-            return recursion_click_house(self, False, fail_count + 1)
     # 返回首页
     self.d.double_click(1233, 11)
     # 重新检查

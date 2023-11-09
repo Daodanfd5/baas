@@ -1,8 +1,11 @@
 from multiprocessing import Process
+
+from common import position
 from common.baas import Baas
 
 
 def baas_dashboard(con):
+    position.init_assets_data()
     Baas(con).dashboard()
 
 

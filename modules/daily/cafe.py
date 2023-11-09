@@ -1,8 +1,12 @@
 import time
 from collections import defaultdict
 import numpy as np
-from common import stage, ocr, color
+from common import stage, ocr, color, image
 from modules.baas import home
+
+x = {
+    '0.0': (1114, 642, 1155, 665)
+}
 
 preset_position = {
     1: (808, 263), 2: (808, 393), 3: (808, 533), 4: (812, 393), 5: (812, 523)
@@ -141,8 +145,7 @@ def invite_girl(self):
 
 def get_cafe_money(self):
     # 查看收益
-    if not ocr.screenshot_check_text(self, "可获得", (1182, 570, 1242, 589), 0) \
-            and not ocr.screenshot_check_text(self, "已满!", (1182, 570, 1242, 589), 0):
+    if image.compare_image(self, 'cafe_0.0'):
         return
     # 点击咖啡厅收益
     self.click(1155, 645)

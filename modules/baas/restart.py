@@ -1,6 +1,7 @@
 import time
 
 from common import ocr
+from modules.baas import home
 
 
 def start(self):
@@ -16,10 +17,7 @@ def start(self):
     self.double_click(500, 500)
     # 重新判断是否进入首页
     while True:
-        if ocr.is_home(self, 0):
-            # 关闭公告
-            time.sleep(1)
-            self.click(400, 40)
+        if home.is_home(self):
             break
         # 检查跳过
         if ocr.screenshot_check_text(self, '通知', (599, 144, 675, 178), 3):

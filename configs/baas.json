@@ -1,14 +1,14 @@
 {
     "baas": {
         "package": "com.RoamingStar.BlueArchive",
-        "serial": "emulator-5555",
+        "serial": "emulator-5554",
         "ss_rate": 0.1
     },
     "arena": {
         "enable": true,
         "text": "战术对抗赛",
         "index": 0,
-        "next": "2023-11-08 23:46:26",
+        "next": "2023-11-10 00:15:40",
         "end": "2099-12-31 23:59:59",
         "interval": 3600,
         "config": {
@@ -20,7 +20,7 @@
         "enable": true,
         "text": "咖啡厅",
         "index": 1,
-        "next": "2023-11-08 23:23:04",
+        "next": "2023-11-10 00:17:57",
         "end": "2099-12-31 23:59:59",
         "interval": 3600,
         "config": {
@@ -32,7 +32,7 @@
         "enable": true,
         "text": "商店购买",
         "index": 2,
-        "next": "2023-11-09 05:00:00",
+        "next": "2023-11-10 05:00:00",
         "end": "2099-12-31 23:59:59",
         "config": [
             {
@@ -67,7 +67,7 @@
         "enable": true,
         "text": "日程",
         "index": 3,
-        "next": "2023-11-09 05:00:00",
+        "next": "2023-11-10 05:00:00",
         "end": "2099-12-31 23:59:59",
         "config": [
             {
