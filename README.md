@@ -36,9 +36,9 @@
 ### 打包
 - MacOS
 ```bash
-$ pyinstaller -F mac_os.spec
+$ pyinstaller mac_os.spec
 ```
 - Windows
 ```bash
-$ pyinstaller -F windows.spec
+$ pyinstaller windows.spec
 ```
