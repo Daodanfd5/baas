@@ -6,7 +6,7 @@ from modules.baas import home
 x = {
     'id': (476, 424, 496, 442),
     'cd': (153, 516, 212, 535),
-    '0-5': (194, 479, 227, 497)
+    '0-5': (194, 479, 227, 497),
 }
 
 finish_seconds = 55
@@ -18,7 +18,7 @@ def start(self):
     # 点击业务区
     self.double_click(1195, 576)
     # 等待业务区页面加载
-    ocr.is_business(self)
+    image.compare_image(self, 'home_bus')
 
     # 点击战术对抗赛
     self.click(1093, 524)
@@ -47,12 +47,12 @@ def get_prize(self):
 
 def start_fight(self, wait=False):
     # 检查余票
-    if image.compare_image(self, 'arena_0-5'):
+    if image.compare_image(self, 'arena_0-5', 0):
         print("没票了")
         get_prize(self)
         return True
     # 检测已有冷却
-    if wait or not image.compare_image(self, 'arena_cd'):
+    if wait or not image.compare_image(self, 'arena_cd', 0):
         self.finish_seconds = finish_seconds
         return False
     # 选择对手
@@ -67,7 +67,7 @@ def start_fight(self, wait=False):
     self.double_click(1175, 665, True, 1, 1)
     while True:
         # 检查有没有出现ID
-        if image.compare_image(self, 'arena_id'):
+        if image.compare_image(self, 'arena_id', 0):
             break
         # 关闭弹窗
         self.d.click(1235, 82)

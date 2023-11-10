@@ -1,8 +1,10 @@
 import time
 
 from modules.baas import home
-from common import ocr, stage
+from common import ocr, stage, image
+
 x = {
+    'menu': (107, 9, 162, 36)
 }
 shop_position = {
     'general': (150, 150), 'arena': (150, 380)
@@ -22,7 +24,7 @@ def start(self):
     # 点击商店
     self.double_click(821, 651)
     # 等待商店页面加载
-    ocr.is_shop(self)
+    image.compare_image(self, 'shop_menu')
     # 购买商品
     buy_goods(self)
     # 回到首页

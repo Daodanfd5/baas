@@ -1,7 +1,8 @@
 from modules.baas import home
-from common import ocr, stage, color
+from common import stage, color, image
 
 x = {
+    'menu': (107, 9, 162, 36)
 }
 
 
@@ -11,7 +12,7 @@ def start(self):
     # 点击工作任务
     self.double_click(62, 236)
     # 等待工作任务页面加载
-    ocr.is_task(self)
+    image.compare_image(self, 'work_task_menu')
 
     while True:
         if color.check_rgb_similar(self):

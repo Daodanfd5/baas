@@ -1,7 +1,8 @@
 import time
 
 from modules.baas import home
-from common import ocr, stage
+from common import ocr, stage, image
+
 x = {
 }
 entrust_position = {
@@ -20,7 +21,7 @@ def start(self):
     # 点击业务区
     self.double_click(1195, 576)
     # 等待业务区页面加载
-    ocr.is_business(self)
+    image.compare_image(self, 'home_bus')
 
     # 点击特别委托
     self.click(727, 570)

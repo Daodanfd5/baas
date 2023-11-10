@@ -5,6 +5,7 @@ from common import stage, ocr, color, image
 from modules.baas import home
 
 x = {
+    'menu': (107, 9, 162, 36),
     '0.0': (1114, 642, 1155, 665)
 }
 
@@ -123,7 +124,7 @@ def init_window(self):
     # 点击咖啡厅
     self.double_click(89, 653)
     # 等待进入咖啡厅
-    ocr.is_cafe(self)
+    image.compare_image(self, 'cafe_menu')
     # 关闭到访成员
     self.click(919, 186)
     # 双指捏合
@@ -155,7 +156,7 @@ def invite_girl(self):
 
 def get_cafe_money(self):
     # 查看收益
-    if image.compare_image(self, 'cafe_0.0'):
+    if image.compare_image(self, 'cafe_0.0', 0):
         return
     # 点击咖啡厅收益
     self.click(1155, 645)

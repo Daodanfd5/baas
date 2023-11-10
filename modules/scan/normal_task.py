@@ -1,6 +1,6 @@
 import time
 
-from common import ocr, color, stage
+from common import ocr, color, stage, image
 from modules.baas import home
 from modules.scan import hard_task
 
@@ -17,7 +17,7 @@ def start(self):
     # 点击业务区
     self.double_click(1195, 576)
     # 等待业务区页面加载
-    ocr.is_business(self)
+    image.compare_image(self, 'home_bus')
 
     # 点击任务
     self.click(816, 285)

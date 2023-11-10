@@ -62,31 +62,3 @@ def screenshot_get_position(self, text, area=(), wait=99999, before_wait=0, need
     if wait < 99999:
         wait -= 1
     return screenshot_get_position(self, text, area, wait)
-
-
-def is_group(self):
-    return screenshot_check_text(self, "小组大厅", (97, 7, 220, 41))
-
-
-def is_mailbox(self):
-    return screenshot_check_text(self, "邮箱", (97, 7, 220, 41))
-
-
-def is_task(self):
-    return screenshot_check_text(self, "工作任务", (97, 7, 225, 41))
-
-
-def is_shop(self):
-    return screenshot_check_text(self, "商店", (97, 7, 163, 41))
-
-
-def is_schedule(self):
-    return screenshot_check_text(self, "日程", (97, 7, 165, 41))
-
-
-def is_business(self):
-    return screenshot_check_text(self, "业务区", (97, 7, 199, 41))
-
-
-def is_cafe(self):
-    return screenshot_check_text(self, "咖啡厅", (213, 7, 300, 41))

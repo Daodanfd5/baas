@@ -1,7 +1,8 @@
 from modules.baas import home
-from common import stage, ocr, color
+from common import stage, ocr, color, image
 
 x = {
+    'menu': (107, 9, 162, 36)
 }
 
 
@@ -11,7 +12,7 @@ def start(self):
     # 点击信箱
     self.double_click(1144, 37)
     # 等待信箱页面加载
-    ocr.is_mailbox(self)
+    image.compare_image(self, 'mailbox_menu')
 
     if color.check_rgb_similar(self):
         print("开始领取奖励")

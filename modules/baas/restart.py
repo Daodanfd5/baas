@@ -17,7 +17,7 @@ def start(self):
     # 强制等待
     time.sleep(8)
     # 重新进入登录页面
-    image.compare_image(self, 'restart_menu', 999)
+    image.compare_image(self, 'restart_menu')
     # 点击登录
     self.double_click(500, 500)
     # 重新判断是否进入首页

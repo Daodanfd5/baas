@@ -1,4 +1,4 @@
-from common import ocr
+from common import ocr, image
 from modules.baas import home
 from modules.daily import special_entrust
 
@@ -16,7 +16,7 @@ def start(self):
     # 点击业务区
     self.double_click(1195, 576)
     # 等待业务区页面加载
-    ocr.is_business(self)
+    image.compare_image(self, 'home_bus')
 
     # 点击悬赏通缉
     self.click(733, 472)

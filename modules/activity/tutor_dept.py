@@ -12,13 +12,13 @@ def start(self):
     home.go_home(self)
 
     # 等待活动入口加载
-    image.compare_image(self, 'tutor_dept_entry', 999)
+    image.compare_image(self, 'tutor_dept_entry')
 
     # 点击活动页
     self.d.click(1191, 198)
 
     # 等待活动页加载
-    image.compare_image(self, 'tutor_dept_title', 999)
+    image.compare_image(self, 'tutor_dept_title')
 
     # 一键领取
     while color.check_rgb_similar(self, (1066, 600, 1067, 601), (74, 236, 252)):

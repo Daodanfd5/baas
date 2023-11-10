@@ -34,7 +34,7 @@ ibd = {
 }
 
 
-def init_assets_data():
+def init_assets_data(path='assets'):
     """
     初始化资源文件数据
     """
@@ -44,7 +44,7 @@ def init_assets_data():
     # 如果我们是在 PyInstaller 打包后的版本中运行，那么改变 base_path 到正确的目录
     if getattr(sys, 'frozen', False):
         base_path = sys._MEIPASS
-    assets_dir = os.path.join(base_path, 'assets')
+    assets_dir = os.path.join(base_path, path)
     for dp, dns, fns in os.walk(assets_dir):
         print("\t", fns)
         for fn in fns:

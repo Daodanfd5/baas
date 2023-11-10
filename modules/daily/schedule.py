@@ -1,8 +1,9 @@
 import time
 from modules.baas import home
-from common import ocr, color
+from common import ocr, color, image
 
 x = {
+    'menu': (107, 9, 162, 36)
 }
 schedule_position = {
     'sl_bus': (908, 182), 'sl_life': (908, 285), 'ghn': (908, 397), 'abds': (908, 502), 'qxn': (908, 606)
@@ -20,7 +21,7 @@ def start(self):
     # 点击日程
     self.double_click(212, 656)
     # 等待日程页面加载
-    ocr.is_schedule(self)
+    image.compare_image(self, 'schedule_menu')
 
     # 检查余票
     surplus = ocr.screenshot_get_text(self, (281, 89, 318, 112))
@@ -48,7 +49,7 @@ def choose_course(self):
                              0.5)
         self.click(55, 36, True, 1, 1)
         # 等待日程页面加载
-        ocr.is_schedule(self)
+        image.compare_image(self, 'schedule_menu')
     # 回到首页
     home.go_home(self)
 

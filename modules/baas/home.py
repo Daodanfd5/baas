@@ -5,6 +5,7 @@ from modules.baas import restart
 
 x = {
     'cafe': (88, 651, 96, 657),  # 咖啡厅
+    'bus': (107, 9, 162, 36),  # 业务区
 }
 
 
@@ -12,7 +13,7 @@ def is_home(self):
     """
     是否为首页
     """
-    return image.compare_image(self, 'home_cafe')
+    return image.compare_image(self, 'home_cafe', 0)
 
 
 def go_home(self):
