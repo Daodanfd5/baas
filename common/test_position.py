@@ -5,6 +5,7 @@ import uiautomator2 as u2
 from cnocr import CnOcr
 from common import image, config, position, stage
 from modules.daily import group
+from modules.scan import normal_task
 
 
 class TestPosition(unittest.TestCase):
@@ -44,7 +45,9 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        group.start(self)
+        self.tc = {}
+        self.tc['task'] = 'normal_task'
+        normal_task.start(self)
 
     def test_ss(self):
         assets = [
@@ -73,6 +76,7 @@ class TestPosition(unittest.TestCase):
             # 'shop_menu',
 
             # 'schedule_menu',
+            'normal_task_menu',
         ]
         for asset in assets:
             base, file = asset.rsplit('_', 1)

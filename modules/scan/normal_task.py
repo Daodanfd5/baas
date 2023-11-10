@@ -5,6 +5,7 @@ from modules.baas import home
 from modules.scan import hard_task
 
 x = {
+    'menu': (107, 9, 162, 36),
 }
 normal_position = {
     1: (1120, 240), 2: (1120, 340), 3: (1120, 440), 4: (1120, 540), 5: (1120, 568),
@@ -21,8 +22,9 @@ def start(self):
 
     # 点击任务
     self.click(816, 285)
-    # 等待加载
-    ocr.screenshot_check_text(self, '选择地点', (102, 6, 225, 41))
+
+    # 选择地点加载
+    image.compare_image(self, 'normal_task_menu', 999, 10, False, home.click_house_under, (self,))
 
     if self.tc['task'] == 'hard_task':
         # 点击困难

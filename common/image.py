@@ -35,15 +35,20 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, f
         return img
 
 
-def compare_image(self, name, retry=999, threshold=10):
+def compare_image(self, name, retry=999, threshold=10, need_loading=False, mis_fu=None, mis_argv=None):
     """
     对图片坐标内的图片和资源图片是否匹配
     @param self:
     @param name: 资源名称
-    @param retry: 重试次数 
+    @param retry: 重试次数
     @param threshold: 匹配程度0为完全匹配
+    @param need_loading: 等待加载
+    @param mis_fu: 不匹配时执行函数
+    @param mis_argv: 不匹配时执行函数参数
     @return: 是否匹配
     """
+    if need_loading:
+        stage.wait_loading(self)
     box = get_box(name)
     screenshot_cut(self, box, 0, False)
     ss_img = ac.imread(SS_FILE)
@@ -55,6 +60,9 @@ def compare_image(self, name, retry=999, threshold=10):
     compare = mse <= threshold
     print("\t\t对比:{0} MSE:{1} 结果:{2}".format(name, mse, compare))
     if not compare and retry > 0:
+        if mis_fu is not None:
+            time.sleep(self.bc['baas']['ss_rate'])
+            mis_fu(*mis_argv)
         return compare_image(self, name, retry - 1, threshold)
     return compare
 

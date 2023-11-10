@@ -73,7 +73,7 @@ def close_prize_info(self, ap_check=False, mail_check=False):
     return close_prize_info(self, ap_check, mail_check)
 
 
-def wait_loading(self, i=0):
+def wait_loading(self):
     """
     检查是否加载中，
     """
@@ -92,7 +92,4 @@ def wait_loading(self, i=0):
         print("\t\t\t正在加载..............")
         time.sleep(self.bc['baas']['ss_rate'])
         return wait_loading(self)
-    # 因为ba的loading会转动,可能会识别不到,所以需要连续两次判定为未加载
-    if i < 1:
-        return wait_loading(self, i + 1)
     return True
