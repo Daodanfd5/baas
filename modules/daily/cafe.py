@@ -29,7 +29,8 @@ def start(self):
 
 
 def start_interactive(self):
-    load_preset(self, self.tc['config']['blank_preset'])
+    preset = self.tc['config']['blank_preset']
+    load_preset(self, preset)
     # 收起菜单
     self.d.sleep(0.2)
     self.d.double_click(555, 622)
@@ -45,18 +46,27 @@ def start_interactive(self):
         i -= 1
     # 暂开菜单
     self.d.click(57, 624)
-    load_preset(self, self.tc['config']['my_preset'])
+    # 恢复玩家原有预设
+    recover_preset(self, preset)
+
+
+def recover_preset(self, preset):
+    # 恢复玩家原有预设
+    open_preset_window(self, preset)
+    self.d.click(*preset_position[preset])
+    confirm_load_preset(self)
 
 
 def load_preset(self, preset):
     open_preset_window(self, preset)
-    # 如果没有预设，创建一个空白预设
-    area = preset_position[preset]
-    if color.check_rgb_similar(self, (area[0], area[1], area[0] + 1, area[1] + 1), (101, 70, 45)):
-        self.d.click(*preset_position[preset])
-        confirm_load_preset(self)
-    else:
-        create_blank_preset(self, preset)
+    # 保存当前配置到配置中预设
+    save_preset(self, preset)
+    # 点击全部收纳
+    self.click(455, 642, False, 1, 0.5)
+    # 等待确认加载
+    ocr.screenshot_check_text(self, '确认', (732, 482, 803, 518))
+    # 确认收纳
+    self.d.click(769, 498)
 
 
 def open_preset_window(self, preset):
