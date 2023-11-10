@@ -3,7 +3,7 @@ import time
 import unittest
 import uiautomator2 as u2
 from cnocr import CnOcr
-from common import image, config, position, stage
+from common import image, config, position, stage, ocr
 from modules.daily import group
 from modules.scan import normal_task
 
@@ -45,9 +45,10 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        self.tc = {}
-        self.tc['task'] = 'normal_task'
-        normal_task.start(self)
+        ocr.screenshot_check_text(self, '',(610, 146, 640, 175), 0)
+        # self.tc = {}
+        # self.tc['task'] = 'normal_task'
+        # normal_task.start(self)
 
     def test_ss(self):
         assets = [
@@ -76,7 +77,31 @@ class TestPosition(unittest.TestCase):
             # 'shop_menu',
 
             # 'schedule_menu',
-            'normal_task_menu',
+            # 'normal_task_menu',
+
+            # 'buy_ap_notice',
+            # 'buy_ap_notice2',
+            # 'buy_ap_limited',
+            # 'buy_ap_buy20',
+            # 'buy_ap_buy19',
+            # 'buy_ap_buy18',
+            # 'buy_ap_buy17',
+            # 'buy_ap_buy16',
+            # 'buy_ap_buy15',
+            'buy_ap_buy14',
+            # 'buy_ap_buy13',
+            # 'buy_ap_buy12',
+            # 'buy_ap_buy11',
+            # 'buy_ap_buy10,
+            # 'buy_ap_buy9',
+            # 'buy_ap_buy8',
+            # 'buy_ap_buy7',
+            # 'buy_ap_buy6',
+            # 'buy_ap_buy5',
+            # 'buy_ap_buy4',
+            # 'buy_ap_buy3',
+            # 'buy_ap_buy2',
+            # 'buy_ap_buy1',
         ]
         for asset in assets:
             base, file = asset.rsplit('_', 1)

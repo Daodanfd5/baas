@@ -9,7 +9,7 @@ from cnocr import CnOcr
 from common import stage, process, config
 from modules.activity import tutor_dept
 from modules.baas import restart
-from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make
+from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
 from modules.reward import momo_talk, work_task, mailbox
 from modules.scan import normal_task, hard_task
 
@@ -30,6 +30,7 @@ func_dict = {
     'restart': restart.start,
 
     'tutor_dept': tutor_dept.start,
+    'buy_ap': buy_ap.start,
 }
 
 
@@ -183,5 +184,6 @@ class Baas:
         # 将datetime对象转成字符串
         self.bc[fn]['next'] = future.strftime("%Y-%m-%d %H:%M:%S")
         # 完成任务
-        del self.tc["task"]
+        if 'task' in self.tc:
+            del self.tc["task"]
         self.save_config()

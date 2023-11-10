@@ -7,7 +7,7 @@ from modules.activity import tutor_dept
 from modules.baas import home, restart
 
 # 图片资源数据 image assets data
-from modules.daily import arena, cafe, wanted, special_entrust, shop, schedule, make, group
+from modules.daily import arena, cafe, wanted, special_entrust, shop, schedule, make, group, buy_ap
 from modules.reward import mailbox, momo_talk, work_task
 from modules.scan import hard_task, normal_task
 
@@ -31,6 +31,7 @@ ibd = {
     'hard_task': hard_task.x,
     'normal_task': normal_task.x,
     'tutor_dept': tutor_dept.x,
+    'buy_ap': buy_ap.x,
 }
 
 
