@@ -10,8 +10,11 @@ from modules.baas import home
 def confirm_scan(self, tk):
     # 等关卡加载
     ocr.screenshot_check_text(self, '任务信息', (574, 122, 709, 155))
-    # 扫荡指定次数
-    self.click(1034, 299, False, tk['count'] - 1, 0.6)
+    if tk['count'] >= 99:
+        self.double_click(1034, 299, False, 20)
+    else:
+        # 扫荡指定次数
+        self.click(1034, 299, False, tk['count'] - 1, 0.6)
     # 点击开始扫荡
     self.d.click(938, 403)
     # 判断困难次数
