@@ -1,4 +1,5 @@
 import json
+import os
 import unittest
 import uiautomator2 as u2
 from cnocr import CnOcr
@@ -8,7 +9,9 @@ from common import image
 class TestPosition(unittest.TestCase):
 
     def load_config(self):
-        with open('../configs/baas.json', 'r', encoding='utf-8') as f:
+        script_dir = os.path.dirname(__file__)
+        filepath = os.path.join(script_dir, '../configs/{0}.json'.format('baas'))
+        with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
         self.bc = data
         pass

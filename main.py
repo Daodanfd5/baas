@@ -16,7 +16,5 @@ if __name__ == '__main__':
     app = Flask(__name__, static_folder='web/static', static_url_path='/static')
     app.register_blueprint(baas)
     app.register_blueprint(configs)
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
     threading.Timer(2, open_browser).start()
     app.run(debug=False, port=1117, host='0.0.0.0')

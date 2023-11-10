@@ -1,8 +1,10 @@
 import json
+import os
 
 
 def config_path(con):
-    return './configs/{0}.json'.format(con)
+    script_dir = os.path.dirname(__file__)
+    return os.path.join(script_dir, '../configs/{0}.json'.format(con))
 
 
 def load_ba_config(con):

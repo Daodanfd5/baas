@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import time
 import uiautomator2 as u2
@@ -106,7 +107,8 @@ class Baas:
                 sys.exit(0)
 
     def config_path(self):
-        return './configs/{0}.json'.format(self.con)
+        script_dir = os.path.dirname(__file__)
+        return os.path.join(script_dir, '../configs/{0}.json'.format(self.con))
 
     def load_config(self):
         with open(self.config_path(), 'r', encoding='utf-8') as f:
