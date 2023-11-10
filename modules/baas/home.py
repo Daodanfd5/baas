@@ -4,7 +4,7 @@ from common import image
 from modules.baas import restart
 
 x = {
-    'cafe': (64, 676, 84, 694),  # 咖啡厅
+    'cafe': (88, 651, 96, 657),  # 咖啡厅
 }
 
 
