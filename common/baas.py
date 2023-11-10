@@ -6,7 +6,7 @@ from uiautomator2 import Device
 from datetime import datetime, timedelta
 from cnocr import CnOcr
 
-from common import stage
+from common import stage, process
 from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make
@@ -161,9 +161,10 @@ class Baas:
 
         waiting.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
         queue.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
-        if is_running:
+        if is_running and len(queue) > 0:
             running.append(queue.pop(0))
-        return {'running': running, 'waiting': waiting, 'queue': queue, 'closed': closed}
+        return {'running': running, 'waiting': waiting, 'queue': queue, 'closed': closed,
+                'run_state': process.m.state_process(self.con)}
 
     def finish_task(self, fn):
         self.load_config()
