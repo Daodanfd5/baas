@@ -2,6 +2,9 @@ from common import ocr
 from modules.baas import home
 from modules.daily import special_entrust
 
+x = {
+}
+
 entrust_position = {
     'gjgl': (950, 270), 'smtl': (950, 415), 'jt': (950, 550)
 }

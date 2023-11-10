@@ -2,7 +2,8 @@ import time
 
 from modules.baas import home
 from common import ocr, stage
-
+x = {
+}
 shop_position = {
     'general': (150, 150), 'arena': (150, 380)
 }

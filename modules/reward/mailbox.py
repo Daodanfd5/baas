@@ -1,6 +1,9 @@
 from modules.baas import home
 from common import stage, ocr, color
 
+x = {
+}
+
 
 def start(self):
     # 回到首页

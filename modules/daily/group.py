@@ -1,6 +1,9 @@
 from common import ocr
 from modules.baas import home
 
+x = {
+}
+
 
 def start(self):
     # 回到首页

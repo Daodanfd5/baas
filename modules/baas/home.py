@@ -7,15 +7,20 @@ x = {
 
 
 def is_home(self):
+    """
+    是否为首页
+    """
     return image.compare_image(self, 'home_lt')
 
 
 def go_home(self):
+    """
+    回到首页
+    """
     app = self.d.app_current()
     if app['package'] != self.bc['baas']['package']:
         # 启动游戏
         return restart.start(self)
-
     # 返回首页
     if recursion_click_house(self):
         return

@@ -5,7 +5,7 @@ from cnocr import CnOcr
 from common import image
 
 
-class TestMain(unittest.TestCase):
+class TestPosition(unittest.TestCase):
 
     def load_config(self):
         with open('../configs/baas.json', 'r', encoding='utf-8') as f:
@@ -23,7 +23,10 @@ class TestMain(unittest.TestCase):
 
     def test_ss(self):
         assets = [
-            'home_lt',
+            # 'home_lt',
+
+            # 'restart_menu',
+            'restart_maintain',
 
             # 'arena_id',
             # 'arena_cd',

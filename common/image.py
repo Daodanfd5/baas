@@ -35,11 +35,12 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, f
         return img
 
 
-def compare_image(self, name, threshold=5):
+def compare_image(self, name, retry=0, threshold=3):
     """
     对图片坐标内的图片和资源图片是否匹配
     @param self:
     @param name: 资源名称
+    @param retry: 重试次数 
     @param threshold: 匹配程度0为完全匹配
     @return: 是否匹配
     """
@@ -51,9 +52,11 @@ def compare_image(self, name, threshold=5):
     diff = cv2.absdiff(ss_img, res_img)
     # 计算MSE（Mean Squared Error）
     mse = np.mean(diff ** 2)
-    rst = mse <= threshold
-    print("\t\t对比:{0} MSE:{1} 结果:{2}".format(name, mse, rst))
-    return rst
+    compare = mse <= threshold
+    print("\t\t对比:{0} MSE:{1} 结果:{2}".format(name, mse, compare))
+    if not compare and retry > 0:
+        return compare_image(self, name, retry - 1, threshold)
+    return compare
 
 
 def get_box(name):

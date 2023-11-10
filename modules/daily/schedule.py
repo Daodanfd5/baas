@@ -2,6 +2,8 @@ import time
 from modules.baas import home
 from common import ocr, color
 
+x = {
+}
 schedule_position = {
     'sl_bus': (908, 182), 'sl_life': (908, 285), 'ghn': (908, 397), 'abds': (908, 502), 'qxn': (908, 606)
 }

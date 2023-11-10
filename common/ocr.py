@@ -64,10 +64,6 @@ def screenshot_get_position(self, text, area=(), wait=99999, before_wait=0, need
     return screenshot_get_position(self, text, area, wait)
 
 
-def is_login(self):
-    return screenshot_check_text(self, "菜单", (35, 625, 75, 650))
-
-
 def is_group(self):
     return screenshot_check_text(self, "小组大厅", (97, 7, 220, 41))
 

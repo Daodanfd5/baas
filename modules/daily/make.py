@@ -5,6 +5,8 @@ from fuzzywuzzy import fuzz
 from common import ocr, stage, color
 from modules.baas import home
 
+x = {
+}
 make_position = {
     1: (975, 279), 2: (975, 410), 3: (975, 551)
 }
