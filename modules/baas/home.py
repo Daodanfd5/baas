@@ -2,7 +2,7 @@ from common import image
 from modules.baas import restart
 
 x = {
-    'lt': (10, 24, 20, 34),  # 左上角蓝色区域
+    'cafe': (64, 676, 84, 694),  # 咖啡厅
 }
 
 
@@ -10,7 +10,7 @@ def is_home(self):
     """
     是否为首页
     """
-    return image.compare_image(self, 'home_lt')
+    return image.compare_image(self, 'home_cafe')
 
 
 def go_home(self):

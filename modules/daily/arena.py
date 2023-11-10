@@ -67,7 +67,7 @@ def start_fight(self, wait=False):
     self.double_click(1175, 665, True, 1, 1)
     while True:
         # 检查有没有出现ID
-        if image.compare_image(self, 'jjc_id'):
+        if image.compare_image(self, 'arena_id'):
             break
         # 关闭弹窗
         self.d.click(1235, 82)

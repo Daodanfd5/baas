@@ -23,10 +23,10 @@ class TestPosition(unittest.TestCase):
 
     def test_ss(self):
         assets = [
-            # 'home_lt',
+            'home_cafe',
 
             # 'restart_menu',
-            'restart_maintain',
+            # 'restart_maintain',
 
             # 'arena_id',
             # 'arena_cd',
