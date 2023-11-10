@@ -37,4 +37,5 @@
 ### 打包
 ```bash
 $ pyinstaller baas.spec
+$ pyinstaller -F --name=baas --add-data 'assets:assets' --add-data 'web/static:web/static' --add-data 'web/templates:web/templates' --icon='assets/ba.ico' main.py
 ```

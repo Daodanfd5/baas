@@ -1,5 +1,4 @@
 import json
-import os
 import sys
 import time
 import uiautomator2 as u2
@@ -7,7 +6,7 @@ from uiautomator2 import Device
 from datetime import datetime, timedelta
 from cnocr import CnOcr
 
-from common import stage, process
+from common import stage, process, config
 from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make
@@ -107,8 +106,7 @@ class Baas:
                 sys.exit(0)
 
     def config_path(self):
-        script_dir = os.path.dirname(__file__)
-        return os.path.join(script_dir, '../configs/{0}.json'.format(self.con))
+        return config.config_filepath(self.con)
 
     def load_config(self):
         with open(self.config_path(), 'r', encoding='utf-8') as f:

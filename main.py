@@ -1,4 +1,4 @@
-import logging
+import multiprocessing
 import threading
 
 from flask import Flask
@@ -13,6 +13,7 @@ def open_browser():
 
 
 if __name__ == '__main__':
+    multiprocessing.freeze_support()
     app = Flask(__name__, static_folder='web/static', static_url_path='/static')
     app.register_blueprint(baas)
     app.register_blueprint(configs)
