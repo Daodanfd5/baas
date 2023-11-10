@@ -34,7 +34,8 @@ class TestPosition(unittest.TestCase):
 
             # 'cafe_0.0',
 
-            'tutor_dept_entry'
+            # 'tutor_dept_entry',
+            'tutor_dept_title',
         ]
         for asset in assets:
             base, file = asset.split('_', 1)

@@ -57,6 +57,13 @@ def menus_list():
                 {'name': 'hard_task', 'text': '扫荡困难关卡'},
             ]
         },
+        {
+            'name': 'activity',
+            'text': '活动',
+            'child': [
+                {'name': 'tutor_dept', 'text': '补习部签到'},
+            ]
+        },
     ]
     return {'data': {'list': menus}, 'code': 200}, 200
 

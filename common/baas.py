@@ -124,6 +124,12 @@ class Baas:
         for ba_task, con in self.bc.items():
             if ba_task == 'baas':
                 continue
+            # 超出截止时间
+            if not con['enable'] or datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now():
+                continue
+            # 时间未到
+            if datetime.strptime(con['next'], "%Y-%m-%d %H:%M:%S") > datetime.now():
+                continue
             task = {'index': con['index'], 'next': con['next'], 'task': ba_task, 'con': con}
             queue.append(task)
         queue.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
