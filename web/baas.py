@@ -1,3 +1,5 @@
+import datetime
+import os
 import traceback
 
 from common import process
@@ -38,6 +40,23 @@ def state_baas(con):
 def schedule(con):
     running = process.m.state_process(con)
     return {'data': Baas(con).task_schedule(running), 'code': 200}, 200
+
+
+@baas.route('/baas/logs/<string:con>/<int:index>')
+def logs(con, index):
+    date = datetime.datetime.now().strftime('%Y-%m-%d')
+    fn = os.path.join('runtime', '{}_{}.txt'.format(date, con))
+    if not os.path.exists(fn):
+        return {'data': {'logs': '', 'index': 0}, 'code': 200}, 200
+    # 读取日志
+    with open(fn, 'r') as file:
+        if index == 0:
+            file.seek(0, os.SEEK_END)
+            index = max(file.tell() - 1024 * 100, 0)
+        file.seek(index)
+        datas = file.read()
+        new_index = file.tell()
+    return {'data': {'logs': datas, 'index': new_index}, 'code': 200}, 200
 
 
 # 处理所有Exception类型的错误
