@@ -65,5 +65,5 @@ def get_box(name):
     @param name:资源名称
     @return: 坐标
     """
-    module, name = name.split("_", 1)
+    module, name = name.rsplit("_", 1)
     return position.ibd[module][name]

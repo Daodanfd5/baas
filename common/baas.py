@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from cnocr import CnOcr
 
 from common import stage
+from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make
 from modules.reward import momo_talk, work_task, mailbox
@@ -27,6 +28,8 @@ func_dict = {
     'hard_task': hard_task.start,
     'mailbox': mailbox.start,
     'restart': restart.start,
+
+    'tutor_dept': tutor_dept.start,
 }
 
 
@@ -86,7 +89,7 @@ class Baas:
         # 使用字典将字符串映射到对应的函数
 
         while True:
-            fn, tc = self.task_schedule(True, True)
+            fn, tc = self.get_task()
             if fn is None:
                 print("没有要执行的任务")
                 time.sleep(3)
@@ -115,7 +118,20 @@ class Baas:
         with open(self.config_path(), 'w', encoding='utf-8') as f:
             f.write(json.dumps(self.bc, indent=4, ensure_ascii=False))
 
-    def task_schedule(self, is_running, get_task=False):
+    def get_task(self):
+        self.load_config()
+        queue = []
+        for ba_task, con in self.bc.items():
+            if ba_task == 'baas':
+                continue
+            task = {'index': con['index'], 'next': con['next'], 'task': ba_task, 'con': con}
+            queue.append(task)
+        queue.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
+        if len(queue) > 0:
+            return queue[0]['task'], queue[0]['con']
+        return None, None
+
+    def task_schedule(self, is_running):
         self.load_config()
         running = []
         waiting = []
@@ -134,20 +150,13 @@ class Baas:
             if datetime.strptime(con['next'], "%Y-%m-%d %H:%M:%S") > datetime.now():
                 waiting.append(task)
                 continue
-            # 第一个是正在运行
-            if get_task:
-                return ba_task, con
-            if is_running and len(running) == 0:
-                running.append(task)
-                continue
             # 队列中
             queue.append(task)
 
-        if get_task:
-            return None, None
-
         waiting.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
         queue.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
+        if is_running:
+            running.append(queue.pop(0))
         return {'running': running, 'waiting': waiting, 'queue': queue, 'closed': closed}
 
     def finish_task(self, fn):

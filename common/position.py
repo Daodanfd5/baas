@@ -1,6 +1,7 @@
 import os
 import aircv as ac
 
+from modules.activity import tutor_dept
 from modules.baas import home, restart
 
 # 图片资源数据 image assets data
@@ -27,6 +28,7 @@ ibd = {
     'work_task': work_task.x,
     'hard_task': hard_task.x,
     'normal_task': normal_task.x,
+    'tutor_dept': tutor_dept.x,
 }
 
 

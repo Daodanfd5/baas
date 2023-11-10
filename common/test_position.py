@@ -23,7 +23,7 @@ class TestPosition(unittest.TestCase):
 
     def test_ss(self):
         assets = [
-            'home_cafe',
+            # 'home_cafe',
 
             # 'restart_menu',
             # 'restart_maintain',
@@ -33,6 +33,8 @@ class TestPosition(unittest.TestCase):
             # 'arena_0-5',
 
             # 'cafe_0.0',
+
+            'tutor_dept_entry'
         ]
         for asset in assets:
             base, file = asset.split('_', 1)
