@@ -35,7 +35,7 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, f
         return img
 
 
-def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu=None, mis_argv=None):
+def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu=None, mis_argv=None, rate=0.1):
     """
     对图片坐标内的图片和资源图片是否匹配
     @param self:
@@ -61,9 +61,9 @@ def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu
     print("\t\t对比:{0} MSE:{1} 结果:{2}".format(name, mse, compare))
     if not compare and retry > 0:
         if mis_fu is not None:
-            time.sleep(self.bc['baas']['ss_rate'])
             mis_fu(*mis_argv)
-        return compare_image(self, name, retry - 1, threshold)
+            time.sleep(rate)
+        return compare_image(self, name, retry - 1, threshold, need_loading, mis_fu, mis_argv, rate)
     return compare
 
 

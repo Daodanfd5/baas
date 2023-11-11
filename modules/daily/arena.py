@@ -7,6 +7,7 @@ x = {
     'id': (476, 424, 496, 442),
     'cd': (153, 516, 212, 535),
     '0-5': (194, 479, 227, 497),
+    'skip': (1109, 591, 1135, 614)
 }
 
 finish_seconds = 55
@@ -47,6 +48,7 @@ def get_prize(self):
 
 def start_fight(self, wait=False):
     # 检查余票
+    time.sleep(0.5)
     if image.compare_image(self, 'arena_0-5', 0):
         print("没票了")
         get_prize(self)
@@ -61,6 +63,10 @@ def start_fight(self, wait=False):
     self.click(640, 570, True, 1, 0.5)
     # 等待出击加载
     ocr.screenshot_check_text(self, '出击', (1134, 650, 1207, 683))
+
+    # 检查跳过是否勾选
+    image.compare_image(self, 'arena_skip', 999, 3, False, self.d.click, (1125, 599), 0.5)
+
     # 角色加载太慢了... 暂时没有好办法 todo 吧
     time.sleep(3)
     # 出击

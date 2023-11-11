@@ -26,7 +26,8 @@ def start(self):
     # 选择地点加载
     image.compare_image(self, 'normal_task_menu')
 
-    cm.close_notice(self)
+    # 关闭主线剧情解锁
+    image.compare_image(self, 'cm_notice', 5, 3, False, home.click_house_under, (self,))
 
     if self.tc['task'] == 'hard_task':
         # 点击困难

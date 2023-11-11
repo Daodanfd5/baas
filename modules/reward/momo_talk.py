@@ -1,9 +1,10 @@
 import time
 
 from modules.baas import home
-from common import stage, ocr, color
+from common import stage, ocr, color, image
 
 x = {
+    'no-chat': (171, 120, 184, 125)
 }
 
 
@@ -11,7 +12,8 @@ def start(self):
     # 回到首页
     home.go_home(self)
 
-    if not color.check_rgb_similar(self, (183, 122, 184, 123), (1, 68, 241)):
+    # 查看可以互动的学生
+    if image.compare_image(self, 'momo_talk_no-chat', 0):
         print("没有可以互动的学生")
         return
     # 点击桃信

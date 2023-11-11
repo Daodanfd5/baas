@@ -61,6 +61,7 @@ class TestPosition(unittest.TestCase):
             # 'arena_id',
             # 'arena_cd',
             # 'arena_0-5',
+            # 'arena_skip',
 
             # 'cafe_0.0',
             # 'cafe_menu',
@@ -72,6 +73,8 @@ class TestPosition(unittest.TestCase):
 
             # 'mailbox_menu',
 
+            'momo_talk_no-chat',
+
             # 'work_task_menu',
 
             # 'shop_menu',
@@ -81,7 +84,7 @@ class TestPosition(unittest.TestCase):
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',
-            'buy_ap_limited',
+            # 'buy_ap_limited',
             # 'buy_ap_buy20',
             # 'buy_ap_buy19',
             # 'buy_ap_buy18',

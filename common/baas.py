@@ -6,7 +6,7 @@ from uiautomator2 import Device
 from datetime import datetime, timedelta
 from cnocr import CnOcr
 
-from common import stage, process, config
+from common import stage, process, config, position
 from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
@@ -42,13 +42,14 @@ class Baas:
     bc: dict  # baas config BA配置
     tc: dict  # task config 任务配置
 
-    def __init__(self, con):
+    def __init__(self, con, processes_task):
         self.con = con
         self.load_config()
         self.d = u2.connect(self.bc['baas']['serial'])
         self.ocr = CnOcr()
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
+        self.processes_task = processes_task
 
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:
@@ -97,11 +98,13 @@ class Baas:
                 continue
             # 从字典中获取函数并执行
             if fn in func_dict:
+                self.processes_task[self.con] = fn
                 self.tc = tc
                 self.tc['task'] = fn
                 self.finish_seconds = 0
                 func_dict[fn](self)
                 self.finish_task(fn)
+                del self.processes_task[self.con]
             else:
                 print(f"函数不存在:{fn}")
                 sys.exit(0)
@@ -138,7 +141,7 @@ class Baas:
             return queue[0]['task'], queue[0]['con']
         return None, None
 
-    def task_schedule(self, is_running):
+    def task_schedule(self, run_task):
         self.load_config()
         running = []
         waiting = []
@@ -148,8 +151,11 @@ class Baas:
             # 被关闭的功能
             if ba_task == 'baas':
                 continue
-            # 超出截止时间
             task = {'next': con['next'], 'task': ba_task, 'text': con['text'], 'index': con['index']}
+            # 正在运行中的任务
+            if run_task is not None and run_task == ba_task:
+                running.append(task)
+                continue
             if not con['enable'] or datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now():
                 closed.append(task)
                 continue
@@ -162,8 +168,6 @@ class Baas:
 
         waiting.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
         queue.sort(key=lambda x: (x['index'], datetime.strptime(x['next'], "%Y-%m-%d %H:%M:%S")))
-        if is_running and len(queue) > 0:
-            running.append(queue.pop(0))
         return {'running': running, 'waiting': waiting, 'queue': queue, 'closed': closed,
                 'run_state': process.m.state_process(self.con)}
 
