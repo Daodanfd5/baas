@@ -45,7 +45,7 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        ocr.screenshot_check_text(self, '',(610, 146, 640, 175), 0)
+        ocr.screenshot_check_text(self, '', (610, 146, 640, 175), 0)
         # self.tc = {}
         # self.tc['task'] = 'normal_task'
         # normal_task.start(self)
@@ -81,18 +81,18 @@ class TestPosition(unittest.TestCase):
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',
-            # 'buy_ap_limited',
+            'buy_ap_limited',
             # 'buy_ap_buy20',
             # 'buy_ap_buy19',
             # 'buy_ap_buy18',
             # 'buy_ap_buy17',
             # 'buy_ap_buy16',
             # 'buy_ap_buy15',
-            'buy_ap_buy14',
+            # 'buy_ap_buy14',
             # 'buy_ap_buy13',
             # 'buy_ap_buy12',
             # 'buy_ap_buy11',
-            # 'buy_ap_buy10,
+            # 'buy_ap_buy10',
             # 'buy_ap_buy9',
             # 'buy_ap_buy8',
             # 'buy_ap_buy7',

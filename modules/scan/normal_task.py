@@ -1,7 +1,7 @@
 import time
 
 from common import ocr, color, stage, image
-from modules.baas import home
+from modules.baas import home, cm
 from modules.scan import hard_task
 
 x = {
@@ -24,7 +24,9 @@ def start(self):
     self.click(816, 285)
 
     # 选择地点加载
-    image.compare_image(self, 'normal_task_menu', 999, 10, False, home.click_house_under, (self,))
+    image.compare_image(self, 'normal_task_menu')
+
+    cm.close_notice(self)
 
     if self.tc['task'] == 'hard_task':
         # 点击困难

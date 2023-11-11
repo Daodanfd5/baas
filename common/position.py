@@ -4,7 +4,7 @@ import sys
 import aircv as ac
 
 from modules.activity import tutor_dept
-from modules.baas import home, restart
+from modules.baas import home, restart, cm
 
 # 图片资源数据 image assets data
 from modules.daily import arena, cafe, wanted, special_entrust, shop, schedule, make, group, buy_ap
@@ -15,6 +15,7 @@ iad = {
 }
 # 图片坐标数据 image box data
 ibd = {
+    'cm': cm.x,
     'home': home.x,
     'restart': restart.x,
     'arena': arena.x,

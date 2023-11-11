@@ -12,6 +12,17 @@
         "end": "2099-12-31 23:59:59",
         "interval": 3888
     },
+    "buy_ap": {
+        "config": {
+            "count": 15
+        },
+        "enable": true,
+        "end": "2099-12-31 23:59:59",
+        "index": 5,
+        "next": "2023-11-1 05:00:00",
+        "text": "购买体力",
+        "link_task": "special_entrust"
+    },
     "group": {
         "enable": true,
         "text": "小组",
@@ -184,7 +195,8 @@
         "index": 12,
         "next": "2023-11-10 15:41:42",
         "end": "2099-12-31 23:59:59",
-        "interval": 3600
+        "interval": 3600,
+        "link_task": "special_entrust"
     },
     "momo_talk": {
         "enable": true,
@@ -200,7 +212,8 @@
         "index": 11,
         "next": "2023-11-10 15:41:37",
         "end": "2099-12-31 23:59:59",
-        "interval": 3600
+        "interval": 3600,
+        "link_task": "special_entrust"
     },
     "normal_task": {
         "enable": true,

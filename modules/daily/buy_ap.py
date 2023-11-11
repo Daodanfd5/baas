@@ -62,16 +62,12 @@ def start(self):
 
         # 确认超出持有上限弹窗
         if image.compare_image(self, 'buy_ap_limited', 5):
-            # 查找和购买体力相关任务，重新运行
-            exec_next_task(self)
-            # 自己也重新运行
+            # 延迟重新运行
             self.finish_seconds = 30
             return home.go_home(self)
 
         # 关闭获得奖励
         stage.close_prize_info(self, False, True)
-        # 查找和购买体力相关任务，重新运行
-        exec_next_task(self)
         # 如果要购买的次数大于3次,1分钟后重新运行该任务
         if buy_count > 3:
             self.finish_seconds = 30
@@ -85,17 +81,6 @@ def calc_surplus_count(self):
     计算剩余购买次数,这里必须用图片匹配才能精准,用文字识别小数字必出bug
     """
     for i in range(20, 0, -1):
-        if image.compare_image(self, 'buy_ap_buy{0}'.format(i), 5):
+        if image.compare_image(self, 'buy_ap_buy{0}'.format(i), 0):
             return i
     return 0
-
-
-def exec_next_task(self):
-    """
-    立刻执行和购买ap相关的任务
-    """
-    if self.tc['config']['exec'] == '':
-        return
-    self.finish_seconds = 1
-    self.finish_task(self.tc['config']['exec'])
-    self.finish_seconds = 0

@@ -124,9 +124,7 @@ def init_window(self):
     # 点击咖啡厅
     self.double_click(89, 653)
     # 等待进入咖啡厅
-    image.compare_image(self, 'cafe_menu')
-    # 关闭到访成员
-    self.click(919, 186)
+    image.compare_image(self, 'cafe_menu', 999, 10, False, self.d.click, (919, 186))
     # 双指捏合
     sx1, sy1 = 1000, 330
     sx2, sy2 = 800, 330

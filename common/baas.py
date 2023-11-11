@@ -167,6 +167,16 @@ class Baas:
         return {'running': running, 'waiting': waiting, 'queue': queue, 'closed': closed,
                 'run_state': process.m.state_process(self.con)}
 
+    def find_exec_task(self):
+        """
+        查找关联任务立刻执行
+        """
+        if 'link_task' in self.tc:
+            self.finish_seconds = 1
+            task = self.tc['link_task']
+            self.tc = self.bc[task]
+            self.finish_task(task)
+
     def finish_task(self, fn):
         self.load_config()
         # 获取当前日期时间
@@ -187,3 +197,5 @@ class Baas:
         if 'task' in self.tc:
             del self.tc["task"]
         self.save_config()
+        # 查找关联任务立刻执行
+        self.find_exec_task()
