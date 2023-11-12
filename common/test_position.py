@@ -75,6 +75,8 @@ class TestPosition(unittest.TestCase):
             # 'mailbox_menu',
 
             # 'momo_talk_no-chat',
+            # 'momo_talk_sort-field',
+            'momo_talk_sort-direction',
 
             # 'work_task_menu',
 
@@ -82,7 +84,7 @@ class TestPosition(unittest.TestCase):
             # 'shop_buy3',
             # 'shop_buy2',
             # 'shop_buy1',
-            'shop_confirm',
+            # 'shop_confirm',
 
             # 'schedule_menu',
             # 'normal_task_menu',

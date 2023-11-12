@@ -4,7 +4,9 @@ from modules.baas import home
 from common import stage, ocr, color, image
 
 x = {
-    'no-chat': (171, 120, 184, 125)
+    'no-chat': (176, 120, 184, 125),
+    'sort-field': (493, 168, 527, 185),
+    'sort-direction': (634, 169, 645, 186),
 }
 
 
@@ -25,11 +27,12 @@ def start(self):
     # 等短信页面加载
     ocr.screenshot_check_text(self, '未读信息', (226, 167, 321, 189))
 
-    # 查看排序 todo
+    # 查看排序
+    check_sort(self)
 
     # 查看第一个学生是否可以聊天
     if not color.check_rgb_similar(self, (640, 245, 641, 246), (25, 71, 251)):
-        print("没人可以聊天了...")
+        home.go_home(self)
         return
 
     # 点击第一个学生
@@ -40,6 +43,15 @@ def start(self):
     self.click(1121, 125)
     # 重新桃信
     start(self)
+
+
+def check_sort(self):
+    if not image.compare_image(self, 'momo_talk_sort-field', 0):
+        self.d.click(509, 175)
+        time.sleep(0.5)
+        self.d.click(449, 293)
+        self.d.click(451, 370)
+    image.compare_image(self, 'momo_talk_sort-direction', mis_fu=self.d.click, mis_argv=(625, 180), rate=0.5)
 
 
 def start_chat(self):
