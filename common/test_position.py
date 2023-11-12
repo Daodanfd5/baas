@@ -45,7 +45,8 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        ocr.screenshot_check_text(self, '', (610, 146, 640, 175), 0)
+        print(image.compare_image(self, 'shop_buy3'))
+        # ocr.screenshot_check_text(self, '', (610, 146, 640, 175), 0)
         # self.tc = {}
         # self.tc['task'] = 'normal_task'
         # normal_task.start(self)
@@ -73,11 +74,15 @@ class TestPosition(unittest.TestCase):
 
             # 'mailbox_menu',
 
-            'momo_talk_no-chat',
+            # 'momo_talk_no-chat',
 
             # 'work_task_menu',
 
             # 'shop_menu',
+            # 'shop_buy3',
+            # 'shop_buy2',
+            # 'shop_buy1',
+            'shop_confirm',
 
             # 'schedule_menu',
             # 'normal_task_menu',

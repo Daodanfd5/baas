@@ -4,7 +4,11 @@ from modules.baas import home
 from common import ocr, stage, image
 
 x = {
-    'menu': (107, 9, 162, 36)
+    'menu': (107, 9, 162, 36),
+    'buy3': (682, 311, 714, 327),
+    'buy2': (682, 311, 714, 327),
+    'buy1': (682, 311, 714, 327),
+    'confirm': (737, 446, 766, 476)
 }
 shop_position = {
     'general': (150, 150), 'arena': (150, 380)
@@ -31,33 +35,72 @@ def start(self):
     home.go_home(self)
 
 
+def refresh_shop(self, shop):
+    """
+    刷新商店
+    """
+    need_count = shop['count']
+    purchased_count = 4 - calc_surplus_count(self)
+    # 次数已满
+    if need_count <= purchased_count:
+        # 关闭购买弹窗
+        home.click_house_under(self)
+        return False
+    # 点击购买
+    self.d.click(765, 460)
+    return True
+
+
+def calc_surplus_count(self):
+    """
+    计算剩余购买次数,这里必须用图片匹配才能精准,用文字识别小数字必出bug
+    """
+    self.d.click(945, 659)
+    # 等待确认购买加载
+    if not image.compare_image(self, 'shop_confirm', 10):
+        # 未能加载还剩0次
+        return 0
+    for i in range(3, 0, -1):
+        if image.compare_image(self, 'shop_buy{0}'.format(i), 0):
+            return i
+    return 0
+
+
 def buy_goods(self):
+    """
+    刷新并购买商品
+    """
     for shop in self.tc['config']:
         if not shop['enable']:
             continue
-        self.click(*shop_position[shop['shop']])
-        # 检查商品是否选中
-        # todo
-        # 选择商品
-        choose_goods(self, shop['goods'])
+        self.d.double_click(*shop_position[shop['shop']])
+        start_buy(self, shop)
+        while refresh_shop(self, shop):
+            start_buy(self, shop)
 
-        if not ocr.screenshot_check_text(self, '选择购买', (1116, 645, 1213, 676), 0):
-            print("没有选中道具")
-            continue
 
-        # 点击选择购买
-        self.d.click(1164, 660)
+def start_buy(self, shop):
+    """
+    开始购买商品
+    """
+    # 选择商品
+    choose_goods(self, shop['goods'])
 
-        # 等待确认购买页面
-        ocr.screenshot_check_text(self, '是否购买', (581, 229, 698, 264))
+    if not ocr.screenshot_check_text(self, '选择购买', (1116, 645, 1213, 676), 0):
+        print("没有选中道具")
+        return
 
-        # 确认购买
-        self.d.click(769, 484)
+    # 点击选择购买
+    self.d.click(1164, 660)
 
-        # 关闭获得奖励
-        stage.close_prize_info(self, True)
+    # 等待确认购买页面
+    ocr.screenshot_check_text(self, '是否购买', (581, 229, 698, 264))
 
-        # 刷新功能 todo
+    # 确认购买
+    self.d.click(769, 484)
+
+    # 关闭获得奖励
+    stage.close_prize_info(self, True)
 
 
 def choose_goods(self, goods):

@@ -32,7 +32,7 @@ def go_home(self):
 
 
 def click_house_under(self):
-    self.d.click(1236, 67)
+    self.d.double_click(1236, 67)
 
 
 def recursion_click_house(self, check_text=False, fail_count=0):
