@@ -45,7 +45,7 @@ def schedule(con):
 @baas.route('/baas/logs/<string:con>/<int:index>')
 def logs(con, index):
     date = datetime.datetime.now().strftime('%Y-%m-%d')
-    fn = os.path.join('runtime', '{}_{}.txt'.format(date, con))
+    fn = os.path.join('runtime', '{}_{}.log'.format(date, con))
     if not os.path.exists(fn):
         return {'data': {'logs': '', 'index': 0}, 'code': 200}, 200
     # 读取日志

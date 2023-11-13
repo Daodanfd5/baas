@@ -4,13 +4,15 @@ from common.baas import Baas
 
 
 def baas_dashboard(con, pt):
-    position.init_assets_data()
-    Baas(con, pt).dashboard()
+    b = Baas(con, pt)
+    position.init_assets_data(b)
+    b.dashboard()
 
 
 # 主进程运行中的任务
 manager = None
 processes_task = None
+
 
 class Main:
     def __init__(self):

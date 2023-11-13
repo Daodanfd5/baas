@@ -50,7 +50,7 @@ def start_fight(self, wait=False):
     # 检查余票
     time.sleep(0.5)
     if image.compare_image(self, 'arena_0-5', 0):
-        print("没票了")
+        self.logger.info("没票了")
         get_prize(self)
         return True
     # 检测已有冷却
@@ -94,7 +94,7 @@ def choose_enemy(self):
             continue
         # 识别对手等级
         enemy_lv = float(ocr.screenshot_get_text(self, (551, 298, 581, 317), self.ocrNum))
-        print("对手等级 ", enemy_lv)
+        self.logger.info("对手等级 {0}".format(enemy_lv))
         if enemy_lv + less_level <= my_lv:
             break
         # 更换对手

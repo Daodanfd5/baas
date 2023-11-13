@@ -16,7 +16,7 @@ def start(self):
 
     # 查看可以互动的学生
     if image.compare_image(self, 'momo_talk_no-chat', 0):
-        print("没有可以互动的学生")
+        self.logger.info("没有可以互动的学生")
         return
     # 点击桃信
     self.double_click(170, 144)
@@ -78,7 +78,7 @@ def start_chat(self):
 def reply_message(self, position):
     # 往回复的下方移动60px点击第一条回复
     self.click(774 + position[1][0], 196 + position[1][1] + 60)
-    print("开始回复妹子")
+    self.logger.info("开始回复妹子")
 
 
 def good_story(self, position):

@@ -87,7 +87,7 @@ def start_buy(self, shop):
     choose_goods(self, shop['goods'])
 
     if not ocr.screenshot_check_text(self, '选择购买', (1116, 645, 1213, 676), 0):
-        print("没有选中道具")
+        self.logger.info("没有选中道具")
         return
 
     # 点击选择购买
@@ -107,7 +107,7 @@ def choose_goods(self, goods):
     swipe = False
     # todo 商品渲染需要时间...
     time.sleep(0.5)
-    print("开始点击所需商品")
+    self.logger.info("开始点击所需商品")
     for g in goods:
         if g > 8 and not swipe:
             swipe = True

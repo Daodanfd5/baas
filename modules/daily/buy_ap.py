@@ -72,7 +72,7 @@ def start(self):
         if buy_count > 3:
             self.finish_seconds = 30
     except ValueError:
-        print("次数识别失败")
+        self.logger.info("次数识别失败")
     home.go_home(self)
 
 

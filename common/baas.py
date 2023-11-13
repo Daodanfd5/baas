@@ -6,7 +6,7 @@ from uiautomator2 import Device
 from datetime import datetime, timedelta
 from cnocr import CnOcr
 
-from common import stage, process, config, position
+from common import stage, process, config, log
 from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
@@ -52,12 +52,13 @@ class Baas:
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.processes_task = processes_task
+        self.logger = log.create_logger()
 
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:
             stage.wait_loading(self)
         for i in range(count):
-            print("\t\t\n\n Click", x, y, "\n\n")
+            self.logger.info("click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
             self.d.click(x, y)
@@ -84,7 +85,7 @@ class Baas:
         if wait:
             stage.wait_loading(self)
         for i in range(count):
-            print("\t\t\n\n DoubleClick", x, y, "\n\n")
+            self.logger.info("double_click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
             self.d.double_click(x, y)
@@ -95,7 +96,7 @@ class Baas:
         while True:
             fn, tc = self.get_task()
             if fn is None:
-                print("没有要执行的任务")
+                self.logger.info("没有要执行的任务")
                 time.sleep(3)
                 continue
             # 从字典中获取函数并执行
@@ -108,7 +109,7 @@ class Baas:
                 self.finish_task(fn)
                 del self.processes_task[self.con]
             else:
-                print(f"函数不存在:{fn}")
+                self.logger.info(f"函数不存在:{fn}")
                 sys.exit(0)
 
     def config_path(self):

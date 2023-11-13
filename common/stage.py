@@ -85,11 +85,11 @@ def wait_loading(self):
     out = self.ocrEN.ocr(config.get_ss_path(self))
     text = "Now Loading"
     ex = any(map(lambda d: fuzz.ratio(d.get('text'), text) > 20, out))
-    print("判断是否 为", text, "结果", ex)
-    print("\t\t\t=======>>> \t\t", out)
+
+    self.logger.info("wait_loading Text:%s Result:%s", text, ex)
     # 如果找到加载继续等待
     if ex:
-        print("\t\t\t正在加载..............")
+        self.logger.info("loading......")
         time.sleep(self.bc['baas']['ss_rate'])
         return wait_loading(self)
     return True

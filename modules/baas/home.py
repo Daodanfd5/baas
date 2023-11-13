@@ -41,7 +41,7 @@ def recursion_click_house(self, check_text=False, fail_count=0):
     """
     # 多次返回失败
     if fail_count >= 30:
-        print("多次返回首页失败,开始重启")
+        self.logger.info("多次返回首页失败! 开始重启")
         return False
     if is_home(self):
         # 在首页先点击右上角

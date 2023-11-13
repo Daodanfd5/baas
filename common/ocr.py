@@ -35,8 +35,7 @@ def screenshot_cut_get_text(self, area, before_wait=0, need_loading=True):
 def screenshot_check_text(self, text, area=(), wait=99999, before_wait=0, need_loading=True):
     out = screenshot_cut_get_text(self, area, before_wait, need_loading)
     ex = any(map(lambda d: fuzz.ratio(d.get('text'), text) > 60, out))
-    print("判断是否 为", text, "结果", ex)
-    print("\t\t\t", out)
+    self.logger.info("screenshot_check_text Text:%s Result:%s", text, ex)
     # 如果已经找到 或 不需要等待直接返回结果
     if ex or wait == 0:
         return ex
@@ -48,13 +47,12 @@ def screenshot_check_text(self, text, area=(), wait=99999, before_wait=0, need_l
 
 def screenshot_get_position(self, text, area=(), wait=99999, before_wait=0, need_loading=True):
     out = screenshot_cut_get_text(self, area, before_wait, need_loading)
-    print("\t\t\t", out)
     for t in out:
         if fuzz.ratio(t.get('text'), text) <= 60:
             continue
-        print("判断是否 为", text, "结果", True)
+        self.logger.info("screenshot_check_text Text:%s Result:%s", text, True)
         return True, t.get('position')
-    print("判断是否 为", text, "结果", False)
+    self.logger.info("screenshot_check_text Text:%s Result:%s", text, False)
     # 不需要等待直接返回结果
     if wait == 0:
         return False, ()

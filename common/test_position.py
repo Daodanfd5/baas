@@ -24,22 +24,40 @@ class TestPosition(unittest.TestCase):
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.file_path = "../assets"
-        position.init_assets_data(self.file_path)
+        position.init_assets_data(self)
 
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:
             stage.wait_loading(self)
         for i in range(count):
-            print("\t\t\n\n Click", x, y, "\n\n")
+            self.logger.info("click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
+            self.d.click(x, y)
+
+    def click_condition(self, x, y, cond, fn, fn_args, wait=True, rate=0):
+        """
+        条件点击，直到不满足条件为止
+        @param x: x坐标
+        @param y: y坐标
+        @param cond: true 或 false
+        @param fn: 要执行的函数，需要返回bool
+        @param fn_args: 执行函数的参数
+        @param wait: 是否需要等待加载
+        @param rate: 每次点击等待时间
+        """
+        if wait:
+            stage.wait_loading(self)
+        self.d.click(x, y)
+        while cond != fn(self, *fn_args):
+            time.sleep(rate)
             self.d.click(x, y)
 
     def double_click(self, x, y, wait=True, count=1, rate=0):
         if wait:
             stage.wait_loading(self)
         for i in range(count):
-            print("\t\t\n\n DoubleClick", x, y, "\n\n")
+            self.logger.info("double_click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
             self.d.double_click(x, y)

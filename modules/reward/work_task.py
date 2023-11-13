@@ -16,7 +16,7 @@ def start(self):
 
     while True:
         if color.check_rgb_similar(self):
-            print("开始领取奖励")
+            self.logger.info("开始领取奖励")
             # 点击一键领取
             self.click(1136, 669)
             # 关闭获得奖励
@@ -24,7 +24,7 @@ def start(self):
             # 点击空白处防止体力超出
             self.click(1236, 79)
         else:
-            print("没有需要领取的奖励")
+            self.logger.info("没有奖励可以领取")
             break
 
     # 回到首页

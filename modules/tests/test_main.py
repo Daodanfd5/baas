@@ -1,7 +1,7 @@
 import unittest
 import uiautomator2 as u2
 from cnocr import CnOcr
-from common import ocr, image, iconst
+from common import ocr, image, iconst, log
 
 
 class TestMain(unittest.TestCase):
@@ -11,6 +11,7 @@ class TestMain(unittest.TestCase):
         self.ocr = CnOcr()
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
+        self.logger = log.create_logger()
 
     def test_ss(self):
         print(ocr.screenshot_check_text(self, '制造工坊', (732, 482, 803, 518), 0, 0, False))
@@ -20,4 +21,3 @@ class TestMain(unittest.TestCase):
 
         # print(color.check_rgb_similar(self, (1022, 634, 1023, 635), (61, 219, 250)))
         # ocr.check_rgb_similar(self, (700, 150, 701, 151), 0)
-

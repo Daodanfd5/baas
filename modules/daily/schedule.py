@@ -26,7 +26,7 @@ def start(self):
     # 检查余票
     surplus = ocr.screenshot_get_text(self, (281, 89, 318, 112))
     if surplus == '0/5':
-        print("没票了")
+        self.logger.info("没票了")
         home.go_home(self)
         return
     # 选择课程
@@ -60,7 +60,7 @@ def learn_course(self, courses):
         ocr.screenshot_check_text(self, '全部日程', (568, 97, 717, 132))
         # 检查课程是否可用
         if not color.check_rgb(self, curse_position[c], (255, 255, 255)):
-            print("课程状态不可用")
+            self.logger.info("课程状态不可用")
             continue
         # 点击课程
         self.click(*curse_position[c])

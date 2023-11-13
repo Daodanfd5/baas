@@ -27,7 +27,7 @@ def start(self):
         # 检查维护
         if image.compare_image(self, 'restart_maintain', 0):
             self.d.click(640, 500)
-            print("维护中...")
+            self.logger.info("维护中......")
             time.sleep(60)
             continue
         # 检查跳过live2d
