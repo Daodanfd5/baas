@@ -1,9 +1,6 @@
-import multiprocessing
 from multiprocessing import Process, Manager
 from common import position
 from common.baas import Baas
-
-multiprocessing.set_start_method('fork')
 
 
 def baas_dashboard(con, pt):
@@ -12,9 +9,8 @@ def baas_dashboard(con, pt):
 
 
 # 主进程运行中的任务
-manager = multiprocessing.Manager()
-processes_task = manager.dict()
-
+manager = None
+processes_task = None
 
 class Main:
     def __init__(self):
