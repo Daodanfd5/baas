@@ -39,7 +39,7 @@ def state_baas(con):
 @baas.route('/baas/schedule/<string:con>')
 def schedule(con):
     run_task = process.m.run_task(con)
-    return {'data': Baas(con, {}).task_schedule(run_task), 'code': 200}, 200
+    return {'data': Baas(con, None).task_schedule(run_task), 'code': 200}, 200
 
 
 @baas.route('/baas/logs/<string:con>/<int:index>')

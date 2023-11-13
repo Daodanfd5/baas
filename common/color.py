@@ -2,8 +2,7 @@ import math
 import cv2
 import numpy as np
 
-from common import ocr
-from common.iconst import *
+from common import ocr, config
 
 
 def color_distance(rgb1, rgb2):
@@ -18,7 +17,7 @@ def check_rgb(self, area, rgb):
     """
     area = (area[0], area[1], area[0] + 10, area[1] + 10)
     ocr.screenshot_check_text(self, '', area, 0)
-    img = cv2.imread(SS_FILE)
+    img = cv2.imread(config.get_ss_path(self))
     return np.array_equal(img[0][0], np.array(rgb))
 
 
@@ -27,6 +26,6 @@ def check_rgb_similar(self, area=(1090, 683, 1091, 684), rgb=(75, 238, 249)):
     判断颜色是否相近，用来判断按钮是否可以点击
     """
     ocr.screenshot_check_text(self, '', area, 0)
-    img = cv2.imread(SS_FILE)
+    img = cv2.imread(config.get_ss_path(self))
     dist = color_distance(img[0][0], rgb)
     return dist <= 20

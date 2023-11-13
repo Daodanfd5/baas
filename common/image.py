@@ -3,11 +3,11 @@ import cv2
 import aircv as ac
 import os
 import time
-from common import stage, position
+from common import stage, position, config
 from common.iconst import *
 
 
-def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, file=SS_FILE):
+def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, file=''):
     """
     截图并裁剪图片
     @param self:
@@ -18,6 +18,8 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, f
     @param file: 文件保存完整路径
     @return: 图片对象
     """
+    if file == '':
+        file = config.get_ss_path(self)
     if before_wait > 0:
         time.sleep(before_wait)
     # 检查文字前，等待加载完成
@@ -51,7 +53,7 @@ def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu
         stage.wait_loading(self)
     box = get_box(name)
     screenshot_cut(self, box, 0, False)
-    ss_img = ac.imread(SS_FILE)
+    ss_img = ac.imread(config.get_ss_path(self))
     res_img = position.iad[name]
     # 计算差异值
     diff = cv2.absdiff(ss_img, res_img)

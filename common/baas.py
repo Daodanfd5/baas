@@ -44,6 +44,8 @@ class Baas:
 
     def __init__(self, con, processes_task):
         self.con = con
+        if processes_task is None:
+            return
         self.load_config()
         self.d = u2.connect(self.bc['baas']['serial'])
         self.ocr = CnOcr()

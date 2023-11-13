@@ -65,7 +65,7 @@ def start_fight(self, wait=False):
     ocr.screenshot_check_text(self, '出击', (1134, 650, 1207, 683))
 
     # 检查跳过是否勾选
-    image.compare_image(self, 'arena_skip', 999, 3, False, self.d.click, (1125, 599), 0.5)
+    image.compare_image(self, 'arena_skip', 999, 20, False, self.d.click, (1125, 599), 0.5)
 
     # 角色加载太慢了... 暂时没有好办法 todo 吧
     time.sleep(3)

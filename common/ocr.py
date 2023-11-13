@@ -1,12 +1,12 @@
 import os
 import time
 from fuzzywuzzy import fuzz
-from common import stage, image
+from common import stage, image, config
 from common.iconst import *
 
 
 def screenshot(self):
-    self.d.screenshot(SS_FILE)
+    self.d.screenshot(config.get_ss_path(self))
 
 
 def screenshot_get_text(self, area, ocr=None, wait=99999, i=0):
@@ -15,11 +15,11 @@ def screenshot_get_text(self, area, ocr=None, wait=99999, i=0):
     if not os.path.exists(SS_PATH):
         os.makedirs(SS_PATH)
     img = self.d.screenshot().crop(area)
-    img.save(SS_FILE)
+    img.save(config.get_ss_path(self))
     if ocr is None:
-        out = self.ocr.ocr(SS_FILE)
+        out = self.ocr.ocr(config.get_ss_path(self))
     else:
-        out = ocr.ocr(SS_FILE)
+        out = ocr.ocr(config.get_ss_path(self))
     if len(out) == 0 and wait > 0:
         return screenshot_get_text(self, area, ocr, wait)
     if len(out) == 0:
@@ -29,7 +29,7 @@ def screenshot_get_text(self, area, ocr=None, wait=99999, i=0):
 
 def screenshot_cut_get_text(self, area, before_wait=0, need_loading=True):
     image.screenshot_cut(self, area, before_wait, need_loading)
-    return self.ocr.ocr(SS_FILE)
+    return self.ocr.ocr(config.get_ss_path(self))
 
 
 def screenshot_check_text(self, text, area=(), wait=99999, before_wait=0, need_loading=True):

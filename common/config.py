@@ -18,3 +18,7 @@ def config_filepath(con):
 
 def config_dir():
     return './configs/'
+
+
+def get_ss_path(self):
+    return './runtime/ss_{0}.png'.format(self.con)

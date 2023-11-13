@@ -1,9 +1,9 @@
-from common import ocr
+from common import ocr, config
 import os
 import time
 from fuzzywuzzy import fuzz
 
-from common.iconst import SS_PATH, SS_FILE
+from common.iconst import SS_PATH
 from modules.baas import home
 
 
@@ -81,8 +81,8 @@ def wait_loading(self):
         os.makedirs(SS_PATH)
     ss = self.d.screenshot()
     img = ss.crop((925, 650, 1170, 685))
-    img.save(SS_FILE)
-    out = self.ocrEN.ocr(SS_FILE)
+    img.save(config.get_ss_path(self))
+    out = self.ocrEN.ocr(config.get_ss_path(self))
     text = "Now Loading"
     ex = any(map(lambda d: fuzz.ratio(d.get('text'), text) > 20, out))
     print("判断是否 为", text, "结果", ex)
