@@ -52,7 +52,7 @@ class Baas:
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.processes_task = processes_task
-        self.logger = log.create_logger()
+        self.logger = log.create_logger(con)
 
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:
@@ -92,7 +92,7 @@ class Baas:
 
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
-
+        self.logger.info("BA启动!!!")
         while True:
             fn, tc = self.get_task()
             if fn is None:
