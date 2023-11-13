@@ -33,20 +33,20 @@ def start_interactive(self):
     preset = self.tc['config']['blank_preset']
     load_preset(self, preset)
     # 收起菜单
-    self.d.sleep(0.2)
-    self.d.double_click(555, 622)
+    time.sleep(0.2)
+    self.double_click(555, 622, False)
     i = 3
     while i > 0:
         click_girl_plus(self, i)
         if ocr.screenshot_check_text(self, '好感等级提升', (473, 593, 757, 644), 3):
             # 关闭好感窗口,重新开始
-            self.d.double_click(651, 285)
+            self.double_click(651, 285, False)
             time.sleep(0.5)
             i = 3
             continue
         i -= 1
     # 暂开菜单
-    self.d.click(57, 624)
+    self.click(57, 624, False)
     # 恢复玩家原有预设
     recover_preset(self, preset)
 
@@ -54,7 +54,7 @@ def start_interactive(self):
 def recover_preset(self, preset):
     # 恢复玩家原有预设
     open_preset_window(self, preset)
-    self.d.click(*preset_position[preset])
+    self.click(*preset_position[preset], False)
     confirm_load_preset(self)
 
 
@@ -67,7 +67,7 @@ def load_preset(self, preset):
     # 等待确认加载
     ocr.screenshot_check_text(self, '确认', (732, 482, 803, 518))
     # 确认收纳
-    self.d.click(769, 498)
+    self.click(769, 498, False)
 
 
 def open_preset_window(self, preset):
@@ -90,7 +90,7 @@ def create_blank_preset(self, preset):
     # 等待确认加载
     ocr.screenshot_check_text(self, '确认', (732, 482, 803, 518))
     # 确认收纳
-    self.d.click(769, 498)
+    self.click(769, 498, False)
     # 重新打开预设
     open_preset_window(self, preset)
     # 保存预设
@@ -98,13 +98,13 @@ def create_blank_preset(self, preset):
     # 等待加载
     ocr.screenshot_check_text(self, '制造工坊', (732, 482, 803, 518), 0, 0, False)
     # 点击确认
-    self.d.click(769, 498)
+    self.click(769, 498, False)
 
 
 def save_preset(self, preset):
     area = preset_position[preset]
     # 点击保存当前配置
-    self.d.click(area[0] - 250, area[1])
+    self.click(area[0] - 250, area[1], False)
     # 确认加载预设
     confirm_load_preset(self)
 
@@ -113,18 +113,18 @@ def confirm_load_preset(self):
     # 等待加载
     ocr.screenshot_check_text(self, '确认', (732, 482, 803, 518))
     # 确认加载
-    self.d.click(771, 500)
+    self.click(771, 500, False)
     # 等待预设弹窗加载
     ocr.screenshot_check_text(self, '预设', (604, 127, 678, 157))
     # 关闭预设
-    self.d.double_click(934, 146)
+    self.double_click(934, 146, False)
 
 
 def init_window(self):
     # 点击咖啡厅
     self.double_click(89, 653)
     # 等待进入咖啡厅
-    image.compare_image(self, 'cafe_menu', 999, 10, False, self.d.click, (919, 186))
+    image.compare_image(self, 'cafe_menu', 999, 10, False, self.click, (919, 186, False))
     # 双指捏合
     sx1, sy1 = 1000, 330
     sx2, sy2 = 800, 330
@@ -165,9 +165,9 @@ def get_cafe_money(self):
     # 关闭获得奖励
     stage.close_prize_info(self, True)
     # 关闭领取界面
-    self.d.click(903, 155)
+    self.click(903, 155, False)
     # 防止体力超出
-    self.d.click(903, 155)
+    self.click(903, 155, False)
 
 
 def click_girl_plus(self, i):
@@ -214,4 +214,4 @@ def click_girl_plus(self, i):
     # 打乱坐标
     np.random.shuffle(finial)
     for p in finial:
-        self.d.click(int(p[1]), int(p[0]))
+        self.click(int(p[1]), int(p[0]), False)

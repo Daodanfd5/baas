@@ -42,7 +42,7 @@ def start_make(self):
         if not choose_tone(self):
             break
         # 点击第1阶段启动
-        self.d.click(1114, 653)
+        self.click(1114, 653, False)
         # 等待加载
         stage.wait_loading(self)
         # 等待制造页面加载
@@ -56,16 +56,16 @@ def start_make(self):
         # 等待加载
         ocr.screenshot_check_text(self, '开始制造', (1049, 632, 1187, 670))
         # 点击开始制造
-        self.d.click(1116, 652)
+        self.click(1116, 652, False)
         time.sleep(2)
         # 等待制造页面加载
         is_make_page(self)
         # 点击立即完成
-        self.d.click(1128, 278)
+        self.click(1128, 278, False)
         # 等待确认
         ocr.screenshot_check_text(self, '确认', (732, 461, 807, 498))
         # 点击确认
-        self.d.click(771, 478)
+        self.click(771, 478, False)
         # 点击领取
         self.click(1122, 275)
         # 关闭奖励
@@ -76,7 +76,7 @@ def start_make(self):
 
 def choose_item(self):
     time.sleep(3)
-    self.d.click(445, 552)
+    self.click(445, 552, False)
     # 选择优先级最高物品
     check_index = get_high_priority(self)
     # 选择最高优先级物品
@@ -88,7 +88,7 @@ def get_high_priority(self):
     # 遍历查看所有物品
     items = []
     for i, position in priority_position.items():
-        self.d.click(*position)
+        self.click(*position, False)
         item = ocr.screenshot_get_text(self, (720, 204, 1134, 269))
         items.append(item)
     # 计算优先级最高的物品
@@ -108,7 +108,7 @@ def get_high_priority(self):
 
 def choose_tone(self):
     # 点击拱心石
-    self.d.click(908, 199)
+    self.click(908, 199, False)
     time.sleep(0.5)
     # 检查是否满足
     if color.check_rgb_similar(self, (995, 631, 996, 632), (61, 219, 250)):

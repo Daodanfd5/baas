@@ -66,7 +66,7 @@ def learn_course(self, courses):
         self.click(*curse_position[c])
         ocr.screenshot_check_text(self, '开始日程', (570, 528, 710, 565))
         # 点击开始日程
-        self.d.click(640, 546)
+        self.click(640, 546, False)
 
         if ocr.screenshot_check_text(self, '每日入场次数已耗尽', (500, 312, 760, 350), 0, 0.5):
             self.click(1233, 25, False, 3)

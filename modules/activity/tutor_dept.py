@@ -15,14 +15,14 @@ def start(self):
     image.compare_image(self, 'tutor_dept_entry')
 
     # 点击活动页
-    self.d.click(1191, 198)
+    self.click(1191, 198, False)
 
     # 等待活动页加载
     image.compare_image(self, 'tutor_dept_title')
 
     # 一键领取
     while color.check_rgb_similar(self, (1066, 600, 1067, 601), (74, 236, 252)):
-        self.d.click(1146, 599)
+        self.click(1146, 599, False)
         stage.close_prize_info(self)
 
     # 回到首页

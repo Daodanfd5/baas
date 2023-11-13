@@ -33,7 +33,7 @@ class TestPosition(unittest.TestCase):
             self.logger.info("click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
-            self.d.click(x, y)
+            self.click(x, y, False)
 
     def click_condition(self, x, y, cond, fn, fn_args, wait=True, rate=0):
         """
@@ -48,10 +48,10 @@ class TestPosition(unittest.TestCase):
         """
         if wait:
             stage.wait_loading(self)
-        self.d.click(x, y)
+        self.click(x, y, False)
         while cond != fn(self, *fn_args):
             time.sleep(rate)
-            self.d.click(x, y)
+            self.click(x, y, False)
 
     def double_click(self, x, y, wait=True, count=1, rate=0):
         if wait:
@@ -60,7 +60,7 @@ class TestPosition(unittest.TestCase):
             self.logger.info("double_click x:%s y:%s", x, y)
             if rate > 0:
                 time.sleep(rate)
-            self.d.double_click(x, y)
+            self.double_click(x, y, False)
 
     def test_task(self):
         print(image.compare_image(self, 'shop_buy3'))

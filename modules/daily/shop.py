@@ -47,7 +47,7 @@ def refresh_shop(self, shop):
         home.click_house_under(self)
         return False
     # 点击购买
-    self.d.click(765, 460)
+    self.click(765, 460, False)
     return True
 
 
@@ -55,7 +55,7 @@ def calc_surplus_count(self):
     """
     计算剩余购买次数,这里必须用图片匹配才能精准,用文字识别小数字必出bug
     """
-    self.d.click(945, 659)
+    self.click(945, 659, False)
     # 等待确认购买加载
     if not image.compare_image(self, 'shop_confirm', 10):
         # 未能加载还剩0次
@@ -73,7 +73,7 @@ def buy_goods(self):
     for shop in self.tc['config']:
         if not shop['enable']:
             continue
-        self.d.double_click(*shop_position[shop['shop']])
+        self.double_click(*shop_position[shop['shop']], False)
         start_buy(self, shop)
         while refresh_shop(self, shop):
             start_buy(self, shop)
@@ -91,13 +91,13 @@ def start_buy(self, shop):
         return
 
     # 点击选择购买
-    self.d.click(1164, 660)
+    self.click(1164, 660, False)
 
     # 等待确认购买页面
     ocr.screenshot_check_text(self, '是否购买', (581, 229, 698, 264))
 
     # 确认购买
-    self.d.click(769, 484)
+    self.click(769, 484, False)
 
     # 关闭获得奖励
     stage.close_prize_info(self, True)
@@ -116,4 +116,4 @@ def choose_goods(self, goods):
             time.sleep(0.5)
         # 点击商品,防止太快点不到
         time.sleep(0.2)
-        self.d.click(*goods_position[g])
+        self.click(*goods_position[g], False)

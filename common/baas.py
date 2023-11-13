@@ -76,10 +76,10 @@ class Baas:
         """
         if wait:
             stage.wait_loading(self)
-        self.d.click(x, y)
+        self.click(x, y, False)
         while cond != fn(self, *fn_args):
             time.sleep(rate)
-            self.d.click(x, y)
+            self.click(x, y, False)
 
     def double_click(self, x, y, wait=True, count=1, rate=0):
         if wait:

@@ -16,12 +16,12 @@ def confirm_scan(self, tk):
         # 扫荡指定次数
         self.click(1034, 299, False, tk['count'] - 1, 0.6)
     # 点击开始扫荡
-    self.d.click(938, 403)
+    self.click(938, 403, False)
     # 判断困难次数
     if self.tc['task'] == 'hard_task':
         # 查看次数是否足够
         if ocr.screenshot_check_text(self, '是否恢复挑战次数', (522, 251, 729, 279), 0, 0.5):
-            self.d.double_click(1236, 98)
+            self.double_click(1236, 98, False)
             return 'continue'
     # 判断统计悬赏票数
     if self.tc['task'] == 'wanted':
@@ -40,18 +40,18 @@ def confirm_scan(self, tk):
     # 等待确认加载
     ocr.screenshot_check_text(self, '通知', (599, 144, 675, 178))
     # 确认扫荡
-    self.d.click(770, 500)
+    self.click(770, 500, False)
     # 检查跳过,最多检查30次
     if tk['count'] >= 3:
         ocr.screenshot_check_text(self, '跳过', (600, 488, 684, 526), 30)
         # 点击跳过
-        self.d.click(641, 504)
+        self.click(641, 504, False)
     # 等待结算,这里很有可能会升级点击关闭升级弹窗
     while not ocr.screenshot_check_text(self, '确认', (597, 562, 680, 600), 0):
-        self.d.click(850, 582)
+        self.click(850, 582, False)
         time.sleep(1)
     # 确认奖励
-    self.d.click(641, 580)
+    self.click(641, 580, False)
     return 'nothing'
 
 
@@ -89,7 +89,7 @@ def wait_loading(self):
     self.logger.info("wait_loading Text:%s Result:%s", text, ex)
     # 如果找到加载继续等待
     if ex:
-        self.logger.info("loading......")
+        self.logger.info("Now Loading......")
         time.sleep(self.bc['baas']['ss_rate'])
         return wait_loading(self)
     return True

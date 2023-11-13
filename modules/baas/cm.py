@@ -12,4 +12,4 @@ def close_notice(self):
     @param self:
     """
     if image.compare_image(self, 'cm_notice', 3):
-        self.d.click(888, 160)
+        self.click(888, 160, False)

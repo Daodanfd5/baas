@@ -47,11 +47,11 @@ def start(self):
 
 def check_sort(self):
     if not image.compare_image(self, 'momo_talk_sort-field', 0):
-        self.d.click(509, 175)
+        self.click(509, 175, False)
         time.sleep(0.5)
-        self.d.click(449, 293)
-        self.d.click(451, 370)
-    image.compare_image(self, 'momo_talk_sort-direction', mis_fu=self.d.click, mis_argv=(625, 180), rate=0.5)
+        self.click(449, 293, False)
+        self.click(451, 370, False)
+    image.compare_image(self, 'momo_talk_sort-direction', mis_fu=self.click, mis_argv=(625, 180, False), rate=0.5)
 
 
 def start_chat(self):
@@ -99,7 +99,7 @@ def good_story(self, position):
         if ocr.screenshot_check_text(self, '确认', (730, 503, 807, 539), 2):
             break
     # 确认跳过
-    self.d.click(770, 516)
+    self.click(770, 516, False)
     # 关闭奖励
     stage.close_prize_info(self, True)
 

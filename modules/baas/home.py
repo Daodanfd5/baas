@@ -32,7 +32,7 @@ def go_home(self):
 
 
 def click_house_under(self):
-    self.d.double_click(1236, 67)
+    self.double_click(1236, 67, False)
 
 
 def recursion_click_house(self, check_text=False, fail_count=0):
@@ -45,12 +45,12 @@ def recursion_click_house(self, check_text=False, fail_count=0):
         return False
     if is_home(self):
         # 在首页先点击右上角
-        self.d.click(1233, 11)
+        self.click(1233, 11, False)
         # 和妹子互动
-        self.d.double_click(851, 262)
+        self.double_click(851, 262, False)
         return True
     # 返回首页
-    self.d.double_click(1233, 11)
+    self.double_click(1233, 11, False)
     # 重新检查
     time.sleep(self.bc['baas']['ss_rate'])
     return recursion_click_house(self, check_text, fail_count + 1)

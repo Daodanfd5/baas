@@ -33,7 +33,7 @@ def start(self):
     home.go_home(self)
 
     # 点击购买体力
-    self.d.double_click(619, 37)
+    self.double_click(619, 37, False)
 
     # 购买上限检查
     if image.compare_image(self, 'buy_ap_limited', 5):
@@ -53,12 +53,12 @@ def start(self):
         # 增加次数
         self.click(806, 345, False, buy_count - 1)
         # 点击确认
-        self.d.click(770, 501)
+        self.click(770, 501, False)
 
         # 确认购买弹窗检测
         if image.compare_image(self, 'buy_ap_notice2', 5):
             # 再次确认购买
-            self.d.click(768, 485)
+            self.click(768, 485, False)
 
         # 确认超出持有上限弹窗
         if image.compare_image(self, 'buy_ap_limited', 5):

@@ -26,15 +26,15 @@ def start(self):
             break
         # 检查维护
         if image.compare_image(self, 'restart_maintain', 0):
-            self.d.click(640, 500)
+            self.click(640, 500, False)
             self.logger.info("维护中......")
             time.sleep(60)
             continue
         # 检查跳过live2d
         if ocr.screenshot_check_text(self, '通知', (599, 144, 675, 178), 0, 0, False):
             # 确认跳过
-            self.d.click(770, 500)
+            self.click(770, 500, False)
             continue
         # 关闭签到或公告
-        self.d.double_click(1233, 11)
+        self.double_click(1233, 11, False)
         time.sleep(self.bc['baas']['ss_rate'])
