@@ -54,6 +54,11 @@ class Baas:
         self.processes_task = processes_task
         self.logger = log.create_logger(con)
 
+    def log_title(self, msg):
+        pre = 'Scheduler: Start task `{0}`</br>'.format(msg)
+        s = '<span style="color: #14ce14; text-decoration-color: #14ce14">═════════════════════════════════════════════════════════════════════════════════════════════════</span>'
+        self.logger.info(pre + s + "</br><div style='color:#42A5F5;width:800px;' align='center'>" + msg + "</div>" + s)
+
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:
             stage.wait_loading(self)
@@ -92,7 +97,7 @@ class Baas:
 
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
-        self.logger.info("BA启动!!!")
+        self.log_title("BA启动")
         while True:
             fn, tc = self.get_task()
             if fn is None:
@@ -105,8 +110,10 @@ class Baas:
                 self.tc = tc
                 self.tc['task'] = fn
                 self.finish_seconds = 0
+                self.log_title("开始执行【" + tc['text'] + "】")
                 func_dict[fn](self)
                 self.finish_task(fn)
+                self.log_title("执行完成【" + tc['text'] + "】")
                 del self.processes_task[self.con]
             else:
                 self.logger.info(f"函数不存在:{fn}")
