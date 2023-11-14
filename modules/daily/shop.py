@@ -10,6 +10,7 @@ x = {
     'buy1': (682, 311, 714, 327),
     'confirm': (737, 446, 766, 476)
 }
+render = {}
 shop_position = {
     'general': (150, 150), 'arena': (150, 380)
 }

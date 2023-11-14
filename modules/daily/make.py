@@ -7,10 +7,10 @@ from modules.baas import home
 
 x = {
 }
+render = {}
 make_position = {
     1: (975, 279), 2: (975, 410), 3: (975, 551)
 }
-
 priority_position = {
     1: (174, 552), 2: (303, 527), 3: (414, 473), 4: (505, 388), 5: (569, 275)
 }

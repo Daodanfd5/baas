@@ -5,6 +5,7 @@ from common import ocr, color, image
 x = {
     'menu': (107, 9, 162, 36)
 }
+render = {}
 schedule_position = {
     'sl_bus': (908, 182), 'sl_life': (908, 285), 'ghn': (908, 397), 'abds': (908, 502), 'qxn': (908, 606)
 }

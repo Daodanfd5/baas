@@ -7,6 +7,7 @@ x = {
     'menu': (38, 628, 75, 646),
     'maintain': (604, 301, 654, 327)
 }
+render = {}
 
 
 def start(self):

@@ -4,6 +4,7 @@ from common import stage, color, image
 x = {
     'menu': (107, 9, 162, 36)
 }
+render = {}
 
 
 def start(self):

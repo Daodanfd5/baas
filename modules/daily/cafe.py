@@ -1,12 +1,24 @@
 import time
 from collections import defaultdict
 import numpy as np
-from common import stage, ocr, color, image
+from common import stage, ocr, image
 from modules.baas import home
 
 x = {
     'menu': (107, 9, 162, 36),
     '0.0': (1114, 642, 1155, 665)
+}
+render = {
+    'config.blank_preset': {
+        "type": "num",
+        "name": "空白配置序号",
+        "desc": "Baas会使用当前咖啡厅保存到该序号，请确保自己的咖啡厅信息有正确保存到其它配置上，防止丢失",
+        "opts": {
+            "min": "1",
+            "max": "5",
+            "step": "1"
+        }
+    }
 }
 
 preset_position = {

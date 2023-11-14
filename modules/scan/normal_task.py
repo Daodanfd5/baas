@@ -7,6 +7,7 @@ from modules.scan import hard_task
 x = {
     'menu': (107, 9, 162, 36),
 }
+render = {}
 normal_position = {
     1: (1120, 240), 2: (1120, 340), 3: (1120, 440), 4: (1120, 540), 5: (1120, 568),
 }

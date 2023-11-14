@@ -4,7 +4,7 @@ from modules.daily import special_entrust
 
 x = {
 }
-
+render = {}
 entrust_position = {
     'gjgl': (950, 270), 'smtl': (950, 415), 'jt': (950, 550)
 }

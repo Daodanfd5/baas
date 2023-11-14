@@ -5,6 +5,7 @@ from common import ocr, stage, image
 
 x = {
 }
+render = {}
 entrust_position = {
     'jdfy': (962, 270), 'xyhs': (962, 410)
 }

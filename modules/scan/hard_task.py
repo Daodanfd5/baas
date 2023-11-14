@@ -2,7 +2,7 @@ from modules.scan import normal_task
 
 x = {
 }
-
+render = {}
 hard_position = {
     1: (1120, 250), 2: (1120, 370), 3: (1120, 480),
 }

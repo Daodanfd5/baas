@@ -24,7 +24,7 @@ ibd = {
     'make': make.x,
     'schedule': schedule.x,
     'shop': shop.x,
-    'se': special_entrust.x,
+    'special_entrust': special_entrust.x,
     'wanted': wanted.x,
     'mailbox': mailbox.x,
     'momo_talk': momo_talk.x,

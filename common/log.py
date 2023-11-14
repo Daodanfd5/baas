@@ -1,4 +1,5 @@
 import logging
+import os
 import sys
 from datetime import datetime
 
@@ -60,6 +61,11 @@ def create_logger(con):
     logger.setLevel(logging.DEBUG)
 
     if not logger.handlers:
+
+        log_dir_path = './runtime/logs'
+        if not os.path.exists(log_dir_path):
+            os.makedirs(log_dir_path)
+            print(f"The directory {log_dir_path} was created.")
         current_date = datetime.now().strftime('%Y-%m-%d')
         file_handler = logging.FileHandler(f'./runtime/logs/{current_date}_{con}.log', encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)

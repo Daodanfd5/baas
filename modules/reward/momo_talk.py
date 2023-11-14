@@ -8,6 +8,7 @@ x = {
     'sort-field': (493, 168, 527, 185),
     'sort-direction': (634, 169, 645, 186),
 }
+render = {}
 
 
 def start(self):

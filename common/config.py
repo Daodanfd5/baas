@@ -1,4 +1,9 @@
 import json
+from modules.daily import arena, cafe, wanted, special_entrust, shop, schedule, make, group, buy_ap
+from modules.reward import mailbox, momo_talk, work_task
+from modules.scan import hard_task, normal_task
+from modules.activity import tutor_dept
+from modules.baas import restart, cm, setting
 
 
 def load_ba_config(con):
@@ -22,3 +27,34 @@ def config_dir():
 
 def get_ss_path(self):
     return './runtime/ss_{0}.png'.format(self.con)
+
+
+def get_render(con):
+    bc = load_ba_config(con)
+    data = {
+        'baas': setting.render,
+        'restart': restart.render,
+        'arena': arena.render,
+        'cafe': cafe.render,
+        'group': group.render,
+        'make': make.render,
+        'schedule': schedule.render,
+        'shop': shop.render,
+        'special_entrust': special_entrust.render,
+        'wanted': wanted.render,
+        'mailbox': mailbox.render,
+        'momo_talk': momo_talk.render,
+        'work_task': work_task.render,
+        'hard_task': hard_task.render,
+        'normal_task': normal_task.render,
+        'tutor_dept': tutor_dept.render,
+        'buy_ap': buy_ap.render,
+    }
+    cr = cm.render
+    for task, task_config in bc.items():
+        if task not in data:
+            continue
+        for k, v in task_config.items():
+            if k in cr:
+                data[task][k] = cr[k]
+    return data

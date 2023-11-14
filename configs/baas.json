@@ -129,8 +129,7 @@
     },
     "cafe": {
         "config": {
-            "blank_preset": 5,
-            "my_preset": 1
+            "blank_preset": 5
         },
         "enable": true,
         "end": "2099-12-31 23:59:59",
