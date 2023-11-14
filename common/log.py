@@ -61,7 +61,7 @@ def create_logger(con):
 
     if not logger.handlers:
         current_date = datetime.now().strftime('%Y-%m-%d')
-        file_handler = logging.FileHandler(f'./runtime/logs/{current_date}_{con}.log')
+        file_handler = logging.FileHandler(f'./runtime/logs/{current_date}_{con}.log', encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)
 
         formatter = ColoredHTMLFormatter(
