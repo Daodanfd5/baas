@@ -1,5 +1,5 @@
 from multiprocessing import Process, Manager
-from common import position
+from common import position, log
 from common.baas import Baas
 
 
@@ -38,6 +38,7 @@ class Main:
             self.processes[con].terminate()
             # 等待进程实际结束
             self.processes[con].join()
+            log.create_logger(con).info("Stop running")
             del processes_task[con]
 
     def state_process(self, con):

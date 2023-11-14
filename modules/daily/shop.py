@@ -111,8 +111,8 @@ def choose_goods(self, goods):
     for g in goods:
         if g > 8 and not swipe:
             swipe = True
-            self.d.swipe(933, 586, 933, 230)
-            self.d.swipe(933, 586, 933, 230)
+            self.swipe(933, 586, 933, 230)
+            self.swipe(933, 586, 933, 230)
             time.sleep(0.5)
         # 点击商品,防止太快点不到
         time.sleep(0.2)

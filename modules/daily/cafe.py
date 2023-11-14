@@ -78,7 +78,7 @@ def open_preset_window(self, preset):
     # 等待预设弹窗加载
     ocr.screenshot_check_text(self, '预设', (604, 127, 678, 157))
     if preset > 3:
-        self.d.swipe(933, 586, 933, 230)
+        self.swipe(933, 586, 933, 230)
         time.sleep(0.5)
 
 
@@ -132,7 +132,7 @@ def init_window(self):
     ex2, ey2 = 150, 330
     self.d().gesture((sx1, sy1), (sx2, sy2), (ex1, ey1), (ex2, ey2))
     # 拖到最左边
-    self.d.swipe(392, 564, 983, 82)
+    self.swipe(392, 564, 983, 82)
 
 
 def invite_girl(self):
@@ -172,9 +172,9 @@ def get_cafe_money(self):
 
 def click_girl_plus(self, i):
     if i % 2 == 0:
-        self.d.swipe(327, 512, 1027, 125)
+        self.swipe(327, 512, 1027, 125)
     else:
-        self.d.swipe(1008, 516, 300, 150)
+        self.swipe(1008, 516, 300, 150)
     time.sleep(0.5)
     before = self.d.screenshot()
     time.sleep(1)

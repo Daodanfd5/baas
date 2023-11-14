@@ -45,11 +45,11 @@ def choose_entrust(self, position):
 
         if tk['stage'] <= 4 and not part1_swipe:
             part1_swipe = True
-            self.d.swipe(933, 230, 933, 586)
+            self.swipe(933, 230, 933, 586)
             time.sleep(0.5)
         if tk['stage'] >= 5 and not part2_swipe:
             part2_swipe = True
-            self.d.swipe(933, 586, 933, 230)
+            self.swipe(933, 586, 933, 230)
             time.sleep(0.5)
         # 点击关卡
         self.click(*level_position[tk['stage']])

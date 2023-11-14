@@ -95,6 +95,10 @@ class Baas:
                 time.sleep(rate)
             self.d.double_click(x, y)
 
+    def swipe(self, fx, fy, tx, ty):
+        self.logger.info("swipe %s %s %s %s", fx, fy, tx, ty)
+        self.d.swipe(fx, fy, tx, ty)
+
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
         self.log_title("BA启动")

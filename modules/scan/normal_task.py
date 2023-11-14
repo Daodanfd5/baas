@@ -55,10 +55,10 @@ def start_scan(self):
             self.click(*hard_task.hard_position[tk['stage']])
         else:
             if prev_region == tk['region'] and swipe:
-                self.d.swipe(933, 230, 933, 586)
+                self.swipe(933, 230, 933, 586)
                 time.sleep(0.5)
             if tk['stage'] > 4:
-                self.d.swipe(933, 586, 933, 230)
+                self.swipe(933, 586, 933, 230)
                 time.sleep(0.5)
             prev_region = tk['region']
             swipe = tk['stage'] > 4
