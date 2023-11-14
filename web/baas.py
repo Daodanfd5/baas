@@ -52,7 +52,12 @@ def logs(con, index):
     with open(fn, 'r') as file:
         if index == 0:
             file.seek(0, os.SEEK_END)
-            index = max(file.tell() - 1024 * 100, 0)
+            end_position = file.tell()
+            index = max(end_position - 1024 * 100, 0)
+            if index > 0:
+                file.seek(index)   # 移动到预估的起始位置
+                file.readline()    # 读取并丢弃部分行以确保从完整行开始
+                index = file.tell()  # 更新索引以指向完整行的起始位置
         file.seek(index)
         datas = file.read()
         new_index = file.tell()

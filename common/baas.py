@@ -98,11 +98,16 @@ class Baas:
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
         self.log_title("BA启动")
+        no_task = False
         while True:
             fn, tc = self.get_task()
             if fn is None:
+                if not no_task:
+                    self.logger.info("All tasks have been executed.")
+                no_task = True
                 time.sleep(3)
                 continue
+            no_task = False
             # 从字典中获取函数并执行
             if fn in func_dict:
                 self.processes_task[self.con] = fn
