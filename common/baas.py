@@ -53,6 +53,14 @@ class Baas:
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.processes_task = processes_task
         self.logger = log.create_logger(con)
+        self.check_resolution()
+
+    def check_resolution(self):
+        # 1280 * 720
+        if self.d.info['displayWidth'] != 1280 or self.d.info['displayHeight'] != 720:
+            self.logger.critical("分辨率必须为 1280 * 720")
+            sys.exit(1)
+            
 
     def log_title(self, msg):
         pre = 'Scheduler: Start task `{0}`</br>'.format(msg)

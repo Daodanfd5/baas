@@ -65,7 +65,7 @@ def create_logger(con):
         file_handler.setLevel(logging.DEBUG)
 
         formatter = ColoredHTMLFormatter(
-            '<p>%(levelname)s     <span style="color:#0598bc">%(asctime)s</span> │ <span style="color:#616161">%(message)s</span></p>')
+            '<p>%(levelname)s\t<span style="color:#0598bc">%(asctime)s</span> │ <span style="color:#616161">%(message)s</span></p>')
         file_handler.setFormatter(formatter)
 
         logger.addHandler(file_handler)
