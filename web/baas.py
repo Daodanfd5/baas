@@ -49,10 +49,10 @@ def logs(con, index):
     if not os.path.exists(fn):
         return {'data': {'logs': '', 'index': 0}, 'code': 200}, 200
     # 读取日志
-    with open(fn, 'r') as file:
+    with open(fn, 'r', encoding='utf-8', errors='replace') as file:
         if index == 0:
             file.seek(0, os.SEEK_END)
-            index = max(file.tell() - 1024 * 50, 0)
+            index = max(file.tell() - 1024 * 30, 0)
         file.seek(index)
         datas = file.read()
         new_index = file.tell()

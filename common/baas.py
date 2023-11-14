@@ -57,10 +57,10 @@ class Baas:
 
     def check_resolution(self):
         # 1280 * 720
-        if self.d.info['displayWidth'] != 1280 or self.d.info['displayHeight'] != 720:
+        ss = self.d.screenshot()
+        if ss.size[0] != 1280 or ss.size[1] != 720:
             self.logger.critical("分辨率必须为 1280 * 720")
             sys.exit(1)
-            
 
     def log_title(self, msg):
         pre = 'Scheduler: Start task `{0}`</br>'.format(msg)
