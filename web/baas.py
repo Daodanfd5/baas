@@ -52,16 +52,13 @@ def logs(con, index):
     with open(fn, 'r') as file:
         if index == 0:
             file.seek(0, os.SEEK_END)
-            end_position = file.tell()
-            index = max(end_position - 1024 * 100, 0)
-            if index > 0:
-                file.seek(index)   # 移动到预估的起始位置
-                file.readline()    # 读取并丢弃部分行以确保从完整行开始
-                index = file.tell()  # 更新索引以指向完整行的起始位置
+            index = max(file.tell() - 1024 * 50, 0)
         file.seek(index)
         datas = file.read()
         new_index = file.tell()
-    return {'data': {'logs': datas, 'index': new_index}, 'code': 200}, 200
+    parts = datas.split('\n', 1)
+    cleaned_data = parts[1] if len(parts) > 1 else ""
+    return {'data': {'logs': cleaned_data, 'index': new_index}, 'code': 200}, 200
 
 
 # 处理所有Exception类型的错误
