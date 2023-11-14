@@ -101,7 +101,6 @@ class Baas:
         while True:
             fn, tc = self.get_task()
             if fn is None:
-                self.logger.info("没有要执行的任务")
                 time.sleep(3)
                 continue
             # 从字典中获取函数并执行
