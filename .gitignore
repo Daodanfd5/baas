@@ -3,7 +3,6 @@
 .DS_Store
 **/runtime
 **__pycache__
-docs/
 build/
 dist/
 .vscode
