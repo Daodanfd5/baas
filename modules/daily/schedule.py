@@ -6,6 +6,9 @@ x = {
     'menu': (107, 9, 162, 36)
 }
 render = {
+    'config': {
+        'name': '日程设置'
+    },
     "config.schedule": {
         "type": "sel",
         "name": "区域",

@@ -5,6 +5,9 @@ from modules.daily import special_entrust
 x = {
 }
 render = {
+    'config': {
+        'name': '关卡设置'
+    },
     "config.stage": {
         "type": "sel",
         "name": "关卡",

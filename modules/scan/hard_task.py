@@ -3,6 +3,9 @@ from modules.scan import normal_task
 x = {
 }
 render = {
+    'config': {
+        'name': '关卡设置'
+    },
     "config.region": {
         "type": "sel",
         "name": "区域",

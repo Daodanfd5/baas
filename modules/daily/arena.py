@@ -10,6 +10,9 @@ x = {
     'skip': (1109, 591, 1135, 614)
 }
 render = {
+    'config': {
+        'name': '寻敌设置'
+    },
     'config.less_level': {
         "type": "num",
         "name": "攻击低我N级",

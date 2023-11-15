@@ -6,6 +6,9 @@ from common import ocr, stage, color
 from modules.baas import home
 
 x = {
+    'config': {
+        'name': '制造设置'
+    },
     'config.count': {
         "type": "num",
         "name": "制造次数",

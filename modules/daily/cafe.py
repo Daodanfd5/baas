@@ -9,6 +9,9 @@ x = {
     '0.0': (1114, 642, 1155, 665)
 }
 render = {
+    'config': {
+        'name': '预设设置'
+    },
     'config.blank_preset': {
         "type": "num",
         "name": "空白配置序号",

@@ -6,6 +6,9 @@ from common import ocr, stage, image
 x = {
 }
 render = {
+    'config': {
+        'name': '关卡设置'
+    },
     "config.stage": {
         "type": "sel",
         "name": "关卡",

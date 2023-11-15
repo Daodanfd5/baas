@@ -8,6 +8,9 @@ x = {
     'menu': (107, 9, 162, 36),
 }
 render = {
+    'config': {
+        'name': '关卡设置'
+    },
     "config.region": {
         "type": "sel",
         "name": "区域",

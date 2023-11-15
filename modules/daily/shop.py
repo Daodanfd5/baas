@@ -11,6 +11,9 @@ x = {
     'confirm': (737, 446, 766, 476)
 }
 render = {
+    'config': {
+        'name': '购买设置'
+    },
     'config.count': {
         "type": "num",
         "name": "购买次数",
