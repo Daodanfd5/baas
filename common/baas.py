@@ -154,11 +154,13 @@ class Baas:
         for ba_task, con in self.bc.items():
             if ba_task == 'baas':
                 continue
+            if con['next'] == '':
+                con['next'] = datetime.now().strftime('%Y-%m-%d 00:00:00')
             # 超出截止时间
             if not con['enable'] or datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now():
                 continue
             # 时间未到
-            if datetime.strptime(con['next'], "%Y-%m-%d %H:%M:%S") > datetime.now():
+            if datetime.strptime(con['next'], "%Y-%m-%d %H:%M:%S") >= datetime.now():
                 continue
             task = {'index': con['index'], 'next': con['next'], 'task': ba_task, 'con': con}
             queue.append(task)
@@ -177,6 +179,8 @@ class Baas:
             # 被关闭的功能
             if ba_task == 'baas':
                 continue
+            if con['next'] == '':
+                con['next'] = datetime.now().strftime('%Y-%m-%d 00:00:00')
             task = {'next': con['next'], 'task': ba_task, 'text': con['text'], 'index': con['index']}
             # 正在运行中的任务
             if run_task is not None and run_task == ba_task:
