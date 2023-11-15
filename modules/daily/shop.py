@@ -25,7 +25,7 @@ render = {
         }
     },
     'config.enable': {
-        "type": "num",
+        "type": "bool",
         "name": "启用该功能"
     },
     "config.shop": {
