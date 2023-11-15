@@ -9,7 +9,28 @@ x = {
     '0-5': (194, 479, 227, 497),
     'skip': (1109, 591, 1135, 614)
 }
-render = {}
+render = {
+    'config.less_level': {
+        "type": "num",
+        "name": "攻击低我N级",
+        "desc": "只会找低于我N级的对手，如果实在找不到会降低等级继续寻找",
+        "opts": {
+            "min": "0",
+            "max": "50",
+            "step": "1"
+        }
+    },
+    'config.max_refresh': {
+        "type": "num",
+        "name": "每轮刷新次数",
+        "desc": "如果找不到对手，会降低地方1级条件继续刷新，直到找到满足条件的对手为止",
+        "opts": {
+            "min": "1",
+            "max": "50",
+            "step": "1"
+        }
+    }
+}
 finish_seconds = 55
 
 

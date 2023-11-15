@@ -5,7 +5,42 @@ from common import ocr, stage, image
 
 x = {
 }
-render = {}
+render = {
+    "config.stage": {
+        "type": "sel",
+        "name": "关卡",
+        "desc": "从左往右，从上往下的顺序数",
+        "items": {
+            "min": "1",
+            "max": "8",
+            "step": "1"
+        }
+    },
+    'config.count': {
+        "type": "num",
+        "name": "扫荡次数",
+        "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
+        "opts": {
+            "min": "1",
+            "max": "99",
+            "step": "10"
+        }
+    },
+    "config.entrust": {
+        "type": "sel",
+        "name": "委托",
+        "items": [
+            {
+                "value": "jdfy",
+                "name": "据点防御"
+            },
+            {
+                "value": "xyhs",
+                "name": "信用回收"
+            }
+        ]
+    },
+}
 entrust_position = {
     'jdfy': (962, 270), 'xyhs': (962, 410)
 }

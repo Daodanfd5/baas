@@ -5,7 +5,43 @@ from common import ocr, color, image
 x = {
     'menu': (107, 9, 162, 36)
 }
-render = {}
+render = {
+    "config.schedule": {
+        "type": "sel",
+        "name": "区域",
+        "items": [
+            {
+                "value": "sl_bus",
+                "name": "沙勒业务区"
+            }, {
+                "value": "sl_life",
+                "name": "沙勒生活区"
+            }, {
+                "value": "ghn",
+                "name": "歌赫娜"
+            }, {
+                "value": "abds",
+                "name": "阿拜多斯"
+            }, {
+                "value": "qxn",
+                "name": "千禧年"
+            }
+        ]
+    },
+    "config.stage": {
+        "type": "sel",
+        "name": "日程序号",
+        "desc": "从左往右，从上往下的顺序数",
+        "opts": {
+            "multiple": "true"
+        },
+        "items": {
+            "min": "1",
+            "max": "8",
+            "step": "1"
+        }
+    },
+}
 schedule_position = {
     'sl_bus': (908, 182), 'sl_life': (908, 285), 'ghn': (908, 397), 'abds': (908, 502), 'qxn': (908, 606)
 }

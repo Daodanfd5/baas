@@ -10,7 +10,48 @@ x = {
     'buy1': (682, 311, 714, 327),
     'confirm': (737, 446, 766, 476)
 }
-render = {}
+render = {
+    'config.count': {
+        "type": "num",
+        "name": "购买次数",
+        "desc": "默认可购买一次+刷新次数=购买次数，比如购买2次=默认买1次+刷新购买1次",
+        "opts": {
+            "min": "1",
+            "max": "4",
+            "step": "1"
+        }
+    },
+    'config.enable': {
+        "type": "num",
+        "name": "启用该功能"
+    },
+    "config.shop": {
+        "type": "sel",
+        "name": "商店",
+        "items": [
+            {
+                "value": "general",
+                "name": "常规道具"
+            }, {
+                "value": "arena",
+                "name": "战术对抗赛"
+            }
+        ]
+    },
+    "config.goods": {
+        "type": "sel",
+        "name": "道具序号",
+        "desc": "从左往右，从上往下的顺序数",
+        "opts": {
+            "multiple": "true"
+        },
+        "items": {
+            "min": "1",
+            "max": "16",
+            "step": "1"
+        }
+    },
+}
 shop_position = {
     'general': (150, 150), 'arena': (150, 380)
 }
