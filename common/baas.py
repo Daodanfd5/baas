@@ -157,7 +157,8 @@ class Baas:
             if con['next'] == '':
                 con['next'] = datetime.now().strftime('%Y-%m-%d 00:00:00')
             # 超出截止时间
-            if not con['enable'] or datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now():
+            if not con['enable'] or (
+                    con['end'] != '' and datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now()):
                 continue
             # 时间未到
             if datetime.strptime(con['next'], "%Y-%m-%d %H:%M:%S") >= datetime.now():
@@ -186,7 +187,8 @@ class Baas:
             if run_task is not None and run_task == ba_task:
                 running.append(task)
                 continue
-            if not con['enable'] or datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now():
+            if not con['enable'] or (
+                    con['end'] != '' and datetime.strptime(con['end'], "%Y-%m-%d %H:%M:%S") < datetime.now()):
                 closed.append(task)
                 continue
             # 时间未到
