@@ -56,9 +56,10 @@ def logs(con, index):
         file.seek(index)
         datas = file.read()
         new_index = file.tell()
-    parts = datas.split('\n', 1)
-    cleaned_data = parts[1] if len(parts) > 1 else ""
-    return {'data': {'logs': cleaned_data, 'index': new_index}, 'code': 200}, 200
+    if index == 0:
+        parts = datas.split('\n', 1)
+        datas = parts[1] if len(parts) > 1 else ""
+    return {'data': {'logs': datas, 'index': new_index}, 'code': 200}, 200
 
 
 # 处理所有Exception类型的错误

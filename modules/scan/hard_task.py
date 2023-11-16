@@ -12,7 +12,7 @@ render = {
     "config.region": {
         "type": "sel",
         "name": "区域",
-        "opts": {
+        "items": {
             "min": 4,
             "max": 20,
             "step": 1

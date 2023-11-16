@@ -310,12 +310,12 @@
             "type": "num"
         },
         "config.region": {
-            "name": "区域",
-            "opts": {
+            "items": {
                 "max": 20,
                 "min": 4,
                 "step": 1
             },
+            "name": "区域",
             "type": "sel"
         },
         "config.stage": {
