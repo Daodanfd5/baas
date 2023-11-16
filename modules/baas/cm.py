@@ -36,7 +36,7 @@ render = {
         "items": [
             {
                 "value": "",
-                "name": "不关联任务"
+                "name": "不关联"
             },
             {
                 "value": "restart",

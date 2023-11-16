@@ -42,9 +42,9 @@ render = {
             "multiple": "true"
         },
         "items": {
-            "min": "1",
-            "max": "8",
-            "step": "1"
+            "min": 1,
+            "max": 8,
+            "step": 1
         }
     },
 }

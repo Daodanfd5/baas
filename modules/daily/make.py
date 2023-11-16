@@ -18,9 +18,9 @@ render = {
         "name": "制造次数",
         "desc": "优先使用拱心石，其次使用碎片",
         "opts": {
-            "min": "1",
-            "max": "100",
-            "step": "10"
+            "min": 1,
+            "max": 100,
+            "step": 10
         }
     },
     'config.priority': {

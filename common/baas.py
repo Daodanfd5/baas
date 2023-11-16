@@ -63,7 +63,7 @@ class Baas:
             sys.exit(1)
 
     def log_title(self, msg):
-        pre = 'Scheduler: Start task `{0}`</br>'.format(msg)
+        pre = '</br>'
         s = '<span style="color: #14ce14; text-decoration-color: #14ce14">═════════════════════════════════════════════════════════════════════════════════════════════════</span>'
         self.logger.info(pre + s + "</br><div style='color:#42A5F5;width:800px;' align='center'>" + msg + "</div>" + s)
 
@@ -110,12 +110,14 @@ class Baas:
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
         self.log_title("BA启动")
+        self.log_title("【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！\n项目开源地址: https://github.com/baas-pro/baas")
         no_task = False
         while True:
             fn, tc = self.get_task()
             if fn is None:
                 if not no_task:
-                    self.logger.info("All tasks have been executed.")
+                    self.log_title("任务全部执行成功。")
+                    self.log_title("【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！\n项目开源地址: https://github.com/baas-pro/baas")
                 no_task = True
                 time.sleep(3)
                 continue

@@ -30,6 +30,18 @@ render = {
     "base": {
         "name": "功能设置"
     },
+    'config': {
+        'name': '购买设置'
+    },
+    'config.count': {
+        "type": "num",
+        "name": "购买次数",
+        "opts": {
+            "min": 1,
+            "max": 20,
+            "step": 1
+        }
+    },
 }
 
 

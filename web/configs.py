@@ -33,11 +33,26 @@ def menus_list():
                 {'name': 'group', 'text': '小组'},
                 {'name': 'make', 'text': '制造'},
                 {'name': 'schedule', 'text': '日程'},
+                {'name': 'cafe', 'text': '咖啡厅'}
+            ]
+        },
+        {
+            'name': 'shop',
+            'text': '商店',
+            'child': [
                 {'name': 'shop', 'text': '商店购买'},
-                {'name': 'cafe', 'text': '咖啡厅'},
-                {'name': 'arena', 'text': '战术对抗赛'},
+                {'name': 'buy_ap', 'text': '购买体力'},
+            ]
+        },
+        {
+            'name': 'scan',
+            'text': '出击',
+            'child': [
                 {'name': 'special_entrust', 'text': '特殊委托'},
                 {'name': 'wanted', 'text': '通缉悬赏'},
+                {'name': 'arena', 'text': '战术对抗赛'},
+                {'name': 'normal_task', 'text': '扫荡普通关卡'},
+                {'name': 'hard_task', 'text': '扫荡困难关卡'},
             ]
         },
         {
@@ -47,14 +62,6 @@ def menus_list():
                 {'name': 'mailbox', 'text': '领取邮箱'},
                 {'name': 'momo_talk', 'text': 'MomoTalk'},
                 {'name': 'work_task', 'text': '工作任务'},
-            ]
-        },
-        {
-            'name': 'scan',
-            'text': '出击',
-            'child': [
-                {'name': 'normal_task', 'text': '扫荡普通关卡'},
-                {'name': 'hard_task', 'text': '扫荡困难关卡'},
             ]
         },
         {

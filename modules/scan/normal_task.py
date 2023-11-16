@@ -18,9 +18,9 @@ render = {
         "type": "sel",
         "name": "区域",
         "items": {
-            "min": "4",
-            "max": "20",
-            "step": "1"
+            "min": 4,
+            "max": 20,
+            "step": 1
         }
     },
     "config.stage": {
@@ -28,9 +28,9 @@ render = {
         "name": "关卡",
         "desc": "从上往下的顺序数",
         "items": {
-            "min": "1",
-            "max": "5",
-            "step": "1"
+            "min": 1,
+            "max": 5,
+            "step": 1
         }
     },
     'config.count': {
@@ -38,9 +38,9 @@ render = {
         "name": "扫荡次数",
         "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
         "opts": {
-            "min": "1",
-            "max": "99",
-            "step": "10"
+            "min": 1,
+            "max": 99,
+            "step": 10
         }
     }
 }

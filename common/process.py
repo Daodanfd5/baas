@@ -38,8 +38,9 @@ class Main:
             self.processes[con].terminate()
             # 等待进程实际结束
             self.processes[con].join()
-            log.create_logger(con).info("Stop running")
-            del processes_task[con]
+            log.create_logger(con).info("停止运行")
+            if con in processes_task:
+                del processes_task[con]
 
     def state_process(self, con):
         """
