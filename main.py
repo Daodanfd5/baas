@@ -28,5 +28,5 @@ if __name__ == '__main__':
         app.register_blueprint(configs)
         log = logging.getLogger('werkzeug')
         log.setLevel(logging.ERROR)
-        threading.Timer(1, open_browser).start()
-        app.run(debug=False, port=1117, host='0.0.0.0')
+        # threading.Timer(1, open_browser).start()
+        app.run(debug=False, port=1118, host='0.0.0.0')

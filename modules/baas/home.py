@@ -21,7 +21,7 @@ def go_home(self):
     回到首页
     """
     app = self.d.app_current()
-    if app['package'] != self.bc['baas']['package']:
+    if app['package'] != self.bc['baas']['base']['package']:
         # 启动游戏
         return restart.start(self)
     # 返回首页
@@ -52,5 +52,5 @@ def recursion_click_house(self, check_text=False, fail_count=0):
     # 返回首页
     self.double_click(1233, 11, False)
     # 重新检查
-    time.sleep(self.bc['baas']['ss_rate'])
+    time.sleep(self.bc['baas']['base']['ss_rate'])
     return recursion_click_house(self, check_text, fail_count + 1)

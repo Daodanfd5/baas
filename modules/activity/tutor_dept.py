@@ -5,7 +5,11 @@ x = {
     'title': (108, 9, 161, 37),
     'entry': (1172, 172, 1210, 205),
 }
-render = {}
+render = {
+    "base": {
+        "name": "功能设置"
+    },
+}
 
 
 def start(self):

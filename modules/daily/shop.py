@@ -11,6 +11,9 @@ x = {
     'confirm': (737, 446, 766, 476)
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '购买设置'
     },

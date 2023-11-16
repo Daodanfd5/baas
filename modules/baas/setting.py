@@ -1,5 +1,8 @@
 render = {
-    "package": {
+    "base": {
+        "name": "功能设置"
+    },
+    "base.package": {
         "type": "sel",
         "name": "游戏服务器",
         "desc": "目前仅支持国服 官服和B站",
@@ -14,7 +17,7 @@ render = {
             }
         ]
     },
-    "serial": {
+    "base.serial": {
         "type": "txt",
         "name": "模拟器 Serial",
         "desc": "常见的模拟器 Serial 可以查询下方列表</br> Serial：</br>- 蓝叠模拟器 127.0.0.1:5555</br>- 蓝叠模拟器4 "
@@ -25,7 +28,7 @@ render = {
                 "WSA，填\"wsa-0\"使游戏在后台运行，需要使用第三方软件操控或关闭（建议使用scrcpy操控）</br>如果你使用了模拟器的多开功能，它们的 Serial 将不是默认的，可以在 "
                 "console.bat 中执行 `adb devices` 查询，或根据模拟器官方的教程填写",
     },
-    "ss_rate": {
+    "base.ss_rate": {
         "type": "num",
         "name": "截图频率(秒)",
         "desc": "执行两次截图之间的最小间隔，限制在 0.1 ~ 0.3，对于高配置电脑能降低 CPU 占用",

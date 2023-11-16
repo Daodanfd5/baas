@@ -4,32 +4,32 @@ x = {
     'notice': (610, 146, 640, 175)
 }
 render = {
-    "enable": {
+    "base.enable": {
         "type": "bool",
         "name": "启用该功能",
         "desc": "将这个任务加入调度器"
     },
-    "next": {
+    "base.next": {
         "type": "txt",
         "name": "下一次运行时间",
         "desc": "自动计算的数值，不需要手动修改。清空后将立即运行"
     },
-    "end": {
+    "base.end": {
         "type": "txt",
         "name": "任务截止时间",
         "desc": "超出该时间的任务不会执行。不填则永不停止"
     },
-    "index": {
+    "base.index": {
         "type": "num",
         "name": "任务优先级",
         "desc": "数字越低，越先执行"
     },
-    "interval": {
+    "base.interval": {
         "type": "num",
         "name": "再次执行任务时间",
         "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行"
     },
-    "link_task": {
+    "base.link_task": {
         "type": "sel",
         "name": "关联任务",
         "desc": "完成本任务后，立刻执行关联任务",
@@ -89,7 +89,7 @@ render = {
             }
         ]
     },
-    "text": "skip"
+    "base.text": "skip"
 }
 
 

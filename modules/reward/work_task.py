@@ -4,7 +4,11 @@ from common import stage, color, image
 x = {
     'menu': (107, 9, 162, 36)
 }
-render = {}
+render = {
+    "base": {
+        "name": "功能设置"
+    },
+}
 
 
 def start(self):

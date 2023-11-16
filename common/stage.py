@@ -90,6 +90,6 @@ def wait_loading(self):
     # 如果找到加载继续等待
     if ex:
         self.logger.info("Now Loading......")
-        time.sleep(self.bc['baas']['ss_rate'])
+        time.sleep(self.bc['baas']['base']['ss_rate'])
         return wait_loading(self)
     return True

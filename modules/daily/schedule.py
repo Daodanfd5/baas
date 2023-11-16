@@ -6,6 +6,9 @@ x = {
     'menu': (107, 9, 162, 36)
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '日程设置'
     },
@@ -118,7 +121,7 @@ def learn_course(self, courses):
             if ocr.screenshot_check_text(self, '日程报告', (579, 120, 700, 150), 0):
                 break
             self.click(774, 141)
-            time.sleep(self.bc['baas']['ss_rate'])
+            time.sleep(self.bc['baas']['base']['ss_rate'])
 
         # todo 截图到记录中
         # 确认日程报告

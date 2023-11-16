@@ -8,12 +8,15 @@ x = {
     'maintain': (604, 301, 654, 327)
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
 }
 
 
 def start(self):
     # 重启应用
-    pkg = self.bc['baas']['package']
+    pkg = self.bc['baas']['base']['package']
     self.d.app_stop(pkg)
     self.d.app_start(pkg)
     # 强制等待
@@ -39,4 +42,4 @@ def start(self):
             continue
         # 关闭签到或公告
         self.double_click(1233, 11, False)
-        time.sleep(self.bc['baas']['ss_rate'])
+        time.sleep(self.bc['baas']['base']['ss_rate'])

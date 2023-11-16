@@ -8,13 +8,16 @@ x = {
     'menu': (107, 9, 162, 36),
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '关卡设置'
     },
     "config.region": {
         "type": "sel",
         "name": "区域",
-        "opts": {
+        "items": {
             "min": "4",
             "max": "20",
             "step": "1"

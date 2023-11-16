@@ -5,6 +5,9 @@ from modules.daily import special_entrust
 x = {
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '关卡设置'
     },

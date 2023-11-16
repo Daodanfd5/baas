@@ -10,6 +10,9 @@ x = {
     'skip': (1109, 591, 1135, 614)
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '寻敌设置'
     },
@@ -101,7 +104,7 @@ def start_fight(self, wait=False):
             break
         # 关闭弹窗
         self.click(1235, 82, False)
-        time.sleep(self.bc['baas']['ss_rate'])
+        time.sleep(self.bc['baas']['base']['ss_rate'])
     start_fight(self, True)
 
 

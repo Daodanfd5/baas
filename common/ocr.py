@@ -39,7 +39,7 @@ def screenshot_check_text(self, text, area=(), wait=99999, before_wait=0, need_l
     # 如果已经找到 或 不需要等待直接返回结果
     if ex or wait == 0:
         return ex
-    time.sleep(self.bc['baas']['ss_rate'])
+    time.sleep(self.bc['baas']['base']['ss_rate'])
     if wait < 99999:
         wait -= 1
     return screenshot_check_text(self, text, area, wait)
@@ -56,7 +56,7 @@ def screenshot_get_position(self, text, area=(), wait=99999, before_wait=0, need
     # 不需要等待直接返回结果
     if wait == 0:
         return False, ()
-    time.sleep(self.bc['baas']['ss_rate'])
+    time.sleep(self.bc['baas']['base']['ss_rate'])
     if wait < 99999:
         wait -= 1
     return screenshot_get_position(self, text, area, wait)

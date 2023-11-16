@@ -3,6 +3,9 @@ from modules.scan import normal_task
 x = {
 }
 render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '关卡设置'
     },

@@ -5,7 +5,11 @@ from fuzzywuzzy import fuzz
 from common import ocr, stage, color
 from modules.baas import home
 
-x = {
+x = {}
+render = {
+    "base": {
+        "name": "功能设置"
+    },
     'config': {
         'name': '制造设置'
     },
@@ -25,7 +29,6 @@ x = {
         "desc": "会根据优先级，依次寻找优先级最高的物品进行制造",
     },
 }
-render = {}
 make_position = {
     1: (975, 279), 2: (975, 410), 3: (975, 551)
 }

@@ -14,7 +14,7 @@ def load_ba_config(con):
 
 def save_ba_config(con, data):
     with open(config_filepath(con), 'w', encoding='utf-8') as f:
-        f.write(json.dumps(data, indent=4, ensure_ascii=False))
+        f.write(json.dumps(data, indent=4, ensure_ascii=False, sort_keys=False))
 
 
 def config_filepath(con):
@@ -54,7 +54,11 @@ def get_render(con):
     for task, task_config in bc.items():
         if task not in data:
             continue
-        for k, v in task_config.items():
-            if k in cr:
-                data[task][k] = cr[k]
+        for fn, module in task_config.items():
+            if fn != 'base':
+                continue
+            for field, value in module.items():
+                key = "{0}.{1}".format(fn, field)
+                if key in cr:
+                    data[task][key] = cr[key]
     return data

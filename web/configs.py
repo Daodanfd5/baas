@@ -71,7 +71,7 @@ def menus_list():
 @configs.route('/configs/render', methods=['GET'])
 def render_config():
     data = config.get_render('baas')
-    return {'data': data, 'code': 200}, 200
+    return data, 200
 
 
 @configs.route('/configs/<string:con>/<string:fn>', methods=['GET'])
