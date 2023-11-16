@@ -23,7 +23,11 @@ class ColoredHTMLFormatter(logging.Formatter):
     def format(self, record):
         level_color = self.COLORS.get(record.levelname, 'black')
         record.asctime = self.formatTime(record, "%H:%M:%S")
-        record.levelname = f'<span style="color: {level_color};">{record.levelname}</span>'
+
+        # 保证levelname至少10个字符长，不足的话用&nbsp;补齐
+        padded_levelname = record.levelname.ljust(10).replace(' ', '&nbsp;')
+        record.levelname = f'<span style="color: {level_color};">{padded_levelname}</span>'
+
         message = super().format(record)
         return message.replace('\n', '<br />')
 
@@ -58,6 +62,13 @@ class StreamToLogger:
         pass
 
 
+def pad_string(s):
+    length = len(s)
+    if length < 10:
+        s += '&nbsp;' * (10 - length)
+    return s
+
+
 def create_logger(con):
     logger = logging.getLogger('my_logger')
     logger.setLevel(logging.DEBUG)
@@ -72,7 +83,7 @@ def create_logger(con):
         file_handler.setLevel(logging.DEBUG)
 
         formatter = ColoredHTMLFormatter(
-            '<p>%(levelname)s\t<span style="color:#0598bc">%(asctime)s</span> │ <span style="color:#616161">%(message)s</span></p>')
+            '<p>%(levelname)s<span style="color:#0598bc">%(asctime)s</span> │ <span style="color:#616161">%(message)s</span></p>')
         file_handler.setFormatter(formatter)
 
         logger.addHandler(file_handler)

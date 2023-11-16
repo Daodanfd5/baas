@@ -41,7 +41,7 @@ def start():
     layout = QVBoxLayout()
     layout.setSpacing(0)
     lab = QLabel(
-        '<!DOCTYPE html> <html> <head> <style> .centered-text { color: white; text-shadow: 4px 4px 8px #000000; font-size: 18pt; font-weight: 600; font-style: italic; } </style> </head> <body> <p align="center"><span class="centered-text">【Baas】是一款完全免费开源的蔚蓝档案自动化脚本，如遇收费请立即退款！</span></p> <p align="center"><span class="centered-text">项目开源地址：https://github.com/baas-pro/baas</span></p> <p align="center"><span class="centered-text">QQ交流群：621628600</span></p></body> </html>')
+        '<!DOCTYPE html> <html> <head> <style> .centered-text { color: white; text-shadow: 4px 4px 8px #000000; font-size: 15px; font-weight: 600; font-style: italic; } </style> </head> <body> <p align="center"><span class="centered-text">【Baas】是一款完全免费开源的蔚蓝档案自动化脚本，如遇收费请立即退款！</span></p> <p align="center"><span class="centered-text">项目开源地址：https://github.com/baas-pro/baas</span></p> <p align="center"><span class="centered-text">QQ交流群：621628600</span></p></body> </html>')
     lab.setAlignment(Qt.AlignCenter)
     lab.setTextInteractionFlags(Qt.TextSelectableByMouse)
     layout.addWidget(lab)

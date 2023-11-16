@@ -46,14 +46,24 @@ class Baas:
         self.con = con
         if processes_task is None:
             return
+        self.logger = log.create_logger(con)
         self.load_config()
-        self.d = u2.connect(self.bc['baas']['base']['serial'])
+        self.connect_serial()
         self.ocr = CnOcr()
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.processes_task = processes_task
-        self.logger = log.create_logger(con)
         self.check_resolution()
+
+    def connect_serial(self):
+        serial = self.bc['baas']['base']['serial']
+        try:
+            self.logger.info("开始连接模拟器:{0}".format(serial))
+            self.d = u2.connect(serial)
+            ta = self.d.info
+            self.logger.info("模拟器连接成功:{0}".format(self.d.device_info['udid']))
+        except Exception as e:
+            self.logger.critical("模拟器连接失败:{0}".format(e))
 
     def check_resolution(self):
         # 1280 * 720

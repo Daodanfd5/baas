@@ -17,6 +17,7 @@ render = {
 def start(self):
     # 重启应用
     pkg = self.bc['baas']['base']['package']
+    self.log_title("开始打开蔚蓝档案")
     self.d.app_stop(pkg)
     self.d.app_start(pkg)
     # 强制等待

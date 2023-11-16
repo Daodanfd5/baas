@@ -4,12 +4,15 @@ from common.baas import Baas
 
 
 def baas_dashboard(con, pt):
+    b = None
     try:
         b = Baas(con, pt)
         position.init_assets_data(b)
         b.dashboard()
     except Exception as e:
         with open(config.resource_path('runtime/logs/error.txt'), 'w') as file:
+            if b is not None:
+                b.logger.info("{0}".format(e))
             file.write("{0}".format(e))
 
         # 主进程运行中的任务
