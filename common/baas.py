@@ -109,15 +109,14 @@ class Baas:
 
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
-        self.log_title("BA启动")
-        self.log_title("【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！\n项目开源地址: https://github.com/baas-pro/baas")
+        self.log_title("BA启动</br>【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！</br>项目开源地址: https://github.com/baas-pro/baas")
         no_task = False
         while True:
             fn, tc = self.get_task()
             if fn is None:
                 if not no_task:
-                    self.log_title("任务全部执行成功。")
-                    self.log_title("【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！\n项目开源地址: https://github.com/baas-pro/baas")
+                    self.log_title(
+                        "任务全部执行成功。</br>【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！</br>项目开源地址: https://github.com/baas-pro/baas")
                 no_task = True
                 time.sleep(3)
                 continue

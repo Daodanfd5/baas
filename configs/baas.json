@@ -2,7 +2,7 @@
     "baas": {
         "base": {
             "package": "com.RoamingStar.BlueArchive",
-            "serial": "emulator-5554",
+            "serial": "127.0.0.1:5554",
             "ss_rate": 0.1
         }
     },
@@ -11,18 +11,18 @@
             "enable": false,
             "text": "重启设置",
             "index": 999,
-            "next": "2023-11-08 23:29:31",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3888
         }
     },
     "buy_ap": {
         "base": {
-            "enable": true,
+            "enable": false,
             "end": "",
             "index": 5,
             "link_task": "special_entrust",
-            "next": "2023-11-16 11:45:08",
+            "next": "2023-11-17 00:00:00",
             "text": "购买体力"
         },
         "config": {
@@ -34,7 +34,7 @@
             "enable": true,
             "text": "小组",
             "index": 4,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "end": ""
         }
     },
@@ -43,7 +43,7 @@
             "enable": true,
             "end": "",
             "index": 9,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "补习部签到"
         }
     },
@@ -52,7 +52,7 @@
             "enable": true,
             "text": "制造",
             "index": 9,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "end": ""
         },
         "config": {
@@ -80,7 +80,7 @@
             "enable": true,
             "end": "",
             "index": 3,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "日程"
         },
         "config": [
@@ -111,7 +111,7 @@
             "enable": true,
             "text": "商店购买",
             "index": 2,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "end": ""
         },
         "config": [
@@ -151,7 +151,7 @@
             "end": "",
             "index": 1,
             "interval": 3600,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "咖啡厅"
         },
         "config": {
@@ -164,7 +164,7 @@
             "end": "",
             "index": 0,
             "interval": 3600,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "战术对抗赛"
         },
         "config": {
@@ -177,7 +177,7 @@
             "enable": true,
             "text": "特殊委托",
             "index": 6,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "end": ""
         },
         "config": [
@@ -193,7 +193,7 @@
             "enable": true,
             "text": "通缉悬赏",
             "index": 5,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "end": ""
         },
         "config": [
@@ -219,7 +219,7 @@
             "enable": true,
             "text": "领取邮箱",
             "index": 12,
-            "next": "2023-11-10 15:41:42",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600,
             "link_task": "special_entrust"
@@ -230,7 +230,7 @@
             "enable": true,
             "text": "MomoTalk",
             "index": 10,
-            "next": "2023-11-10 15:41:31",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600
         }
@@ -240,7 +240,7 @@
             "enable": true,
             "text": "工作任务",
             "index": 11,
-            "next": "2023-11-10 15:41:37",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600,
             "link_task": "special_entrust"
@@ -251,7 +251,7 @@
             "enable": true,
             "end": "",
             "index": 7,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "扫荡普通关卡"
         },
         "config": []
@@ -261,7 +261,7 @@
             "enable": true,
             "end": "",
             "index": 8,
-            "next": "2023-11-17 05:00:00",
+            "next": "2023-11-17 00:00:00",
             "text": "扫荡困难关卡"
         },
         "config": [
