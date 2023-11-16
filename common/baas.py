@@ -211,7 +211,7 @@ class Baas:
         """
         查找关联任务立刻执行
         """
-        if 'link_task' in self.tc:
+        if 'link_task' in self.tc['base']:
             self.finish_seconds = 1
             task = self.tc['base']['link_task']
             self.tc = self.bc[task]

@@ -183,8 +183,8 @@
         "config": [
             {
                 "entrust": "jdfy",
-                "stage": 8,
-                "count": 99
+                "stage": 1,
+                "count": 1
             }
         ]
     },
