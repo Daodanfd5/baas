@@ -2,7 +2,6 @@ import os
 import time
 from fuzzywuzzy import fuzz
 from common import stage, image, config
-from common.iconst import *
 
 
 def screenshot(self):
@@ -12,8 +11,9 @@ def screenshot(self):
 def screenshot_get_text(self, area, ocr=None, wait=99999, i=0):
     # 检查文字前，等待加载完成
     stage.wait_loading(self)
-    if not os.path.exists(SS_PATH):
-        os.makedirs(SS_PATH)
+    ss_path = config.get_ss_path(self)
+    if not os.path.exists(ss_path):
+        os.makedirs(ss_path)
     img = self.d.screenshot().crop(area)
     img.save(config.get_ss_path(self))
     if ocr is None:

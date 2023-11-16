@@ -4,17 +4,16 @@ import aircv as ac
 import os
 import time
 from common import stage, position, config
-from common.iconst import *
 
 
-def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, file=''):
+def screenshot_cut(self, area, before_wait=0, need_loading=True, ss_path=None, file=''):
     """
     截图并裁剪图片
     @param self:
     @param area: 剪切区域
     @param before_wait: 前置等待时间
     @param need_loading: 等待加载
-    @param path: 文件保存目录
+    @param ss_path: 文件保存目录
     @param file: 文件保存完整路径
     @return: 图片对象
     """
@@ -26,8 +25,10 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, path=SS_PATH, f
     if need_loading:
         stage.wait_loading(self)
     # 创建目录
-    if not os.path.exists(path):
-        os.makedirs(path)
+    if ss_path is None:
+        ss_path = config.get_runtime_path()
+    if not os.path.exists(ss_path):
+        os.makedirs(ss_path)
     if len(area) == 0:
         return self.d.screenshot(file)
     else:

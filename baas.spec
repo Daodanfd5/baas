@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('assets','assets'),('web/static','web/static'),('web/templates','web/templates')],
+    datas=[('assets', 'assets'), ('web/static', 'web/static'), ('web/templates', 'web/templates')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -18,20 +18,37 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
+    exclude_binaries=True,
     name='baas',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
-    icon='assets/ba.ico'
+    entitlements_file=None,
+    icon=['assets/ba.icns'],
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='baas',
+)
+app = BUNDLE(
+    coll,
+    name='baas.app',
+    icon='assets/ba.icns',
+    bundle_identifier='com.KilluaaaCHEN.baas',
+        info_plist={
+            'CFBundleVersion': '1.0.0',
+            'CFBundleShortVersionString': '1.0.0',
+        },
 )

@@ -3,7 +3,6 @@ import os
 import time
 from fuzzywuzzy import fuzz
 
-from common.iconst import SS_PATH
 from modules.baas import home
 
 
@@ -77,8 +76,9 @@ def wait_loading(self):
     """
     检查是否加载中，
     """
-    if not os.path.exists(SS_PATH):
-        os.makedirs(SS_PATH)
+    ss_path = config.get_ss_path(self)
+    if not os.path.exists(ss_path):
+        os.makedirs(ss_path)
     ss = self.d.screenshot()
     img = ss.crop((925, 650, 1170, 685))
     img.save(config.get_ss_path(self))

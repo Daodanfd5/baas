@@ -3,6 +3,8 @@ import os
 import sys
 from datetime import datetime
 
+from common import config
+
 
 class ColoredHTMLFormatter(logging.Formatter):
     """
@@ -59,15 +61,14 @@ class StreamToLogger:
 def create_logger(con):
     logger = logging.getLogger('my_logger')
     logger.setLevel(logging.DEBUG)
-
     if not logger.handlers:
-
-        log_dir_path = './runtime/logs'
+        log_dir_path = config.resource_path('runtime/logs')
         if not os.path.exists(log_dir_path):
             os.makedirs(log_dir_path)
             print(f"The directory {log_dir_path} was created.")
         current_date = datetime.now().strftime('%Y-%m-%d')
-        file_handler = logging.FileHandler(f'./runtime/logs/{current_date}_{con}.log', encoding='utf-8')
+        file_handler = logging.FileHandler(config.resource_path(f'runtime/logs/{current_date}_{con}.log'),
+                                           encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)
 
         formatter = ColoredHTMLFormatter(
@@ -81,5 +82,4 @@ def create_logger(con):
 
         sys.stdout = stdout_logger_handler
         sys.stderr = stderr_logger_handler
-
     return logger

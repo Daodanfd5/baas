@@ -1,15 +1,20 @@
-from multiprocessing import Process, Manager
-from common import position, log
+from multiprocessing import Process
+from common import position, log, config
 from common.baas import Baas
 
 
 def baas_dashboard(con, pt):
-    b = Baas(con, pt)
-    position.init_assets_data(b)
-    b.dashboard()
+    try:
+        b = Baas(con, pt)
+        position.init_assets_data(b)
+        b.dashboard()
+    except Exception as e:
+        with open(config.resource_path('runtime/logs/error.txt'), 'w') as file:
+            file.write("{0}".format(e))
+
+        # 主进程运行中的任务
 
 
-# 主进程运行中的任务
 manager = None
 processes_task = None
 
