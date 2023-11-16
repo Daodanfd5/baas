@@ -8,3 +8,4 @@ onnxruntime
 opencv-python~=4.8.0.74
 python-Levenshtein
 flask~=3.0.0
+PySide6~=6.6.0

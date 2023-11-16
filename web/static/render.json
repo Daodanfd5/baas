@@ -1,4 +1,5 @@
 {
+    "version": "1.0.0",
     "arena": {
         "base": {
             "name": "功能设置"
@@ -272,30 +273,6 @@
         "base.text": "skip"
     },
     "hard_task": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
-        "base.text": "skip",
         "config": {
             "name": "关卡设置"
         },
@@ -327,7 +304,31 @@
             },
             "name": "关卡",
             "type": "sel"
-        }
+        },
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.text": "skip"
     },
     "mailbox": {
         "base": {
