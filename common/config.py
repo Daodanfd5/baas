@@ -22,8 +22,14 @@ def save_ba_config(con, data):
 
 def resource_path(relative_path):
     if hasattr(sys, 'frozen'):
-        # 当使用 PyInstaller 打包后，'sys.executable' 将指向 '.app' 中的 'MacOS' 目录内的可执行文件
-        base = os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(sys.executable), '..', '..')))
+        # 当使用 PyInstaller 打包后
+        if sys.platform == 'darwin':
+            # 对于 macOS, 'sys.executable' 将指向 '.app' 中的 'MacOS' 目录内的可执行文件
+            # 所以我们需要往上跳转三层目录找到 '.app' 包的根目录
+            base = os.path.abspath(os.path.join(os.path.dirname(sys.executable), '..', '..', '..'))
+        else:
+            # 其他平台，或者其他情况下保守处理，默认与Windows相同处理
+            base = os.path.dirname(sys.executable)
     else:
         # 在开发环境中，直接返回脚本所在目录
         base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
