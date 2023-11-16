@@ -214,7 +214,7 @@ class Baas:
         """
         if 'link_task' in self.tc:
             self.finish_seconds = 1
-            task = self.tc['link_task']
+            task = self.tc['base']['link_task']
             self.tc = self.bc[task]
             self.finish_task(task)
 
@@ -226,7 +226,7 @@ class Baas:
             future = now + timedelta(seconds=self.finish_seconds)
         else:
             # 计算下次执行时间
-            if 'interval' in self.tc:
+            if 'interval' in self.tc['base'] and self.tc['base']['interval'] > 0:
                 future = now + timedelta(seconds=self.tc['base']['interval'])
             else:
                 future = now + timedelta(days=1)
