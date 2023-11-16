@@ -68,7 +68,7 @@ def start(self):
         # 计算还要购买的次数
         buy_count = need_count - purchased_count
         # 增加次数
-        self.click(806, 345, False, buy_count - 1)
+        self.click(806, 345, False, min(buy_count, 3) - 1)
         # 点击确认
         self.click(770, 501, False)
 
