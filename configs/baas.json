@@ -11,108 +11,34 @@
             "enable": false,
             "text": "重启设置",
             "index": 999,
-            "next": "2023-11-17 00:00:00",
+            "next": "2023-11-17 11:17:17",
             "end": "",
             "interval": 3888
         }
     },
-    "buy_ap": {
+    "arena": {
         "base": {
-            "enable": false,
+            "enable": true,
             "end": "",
-            "index": 5,
-            "link_task": "special_entrust",
-            "next": "2023-11-17 00:00:00",
-            "text": "购买体力"
+            "index": -999,
+            "interval": 3600,
+            "next": "2023-11-17 11:17:17",
+            "text": "战术对抗赛",
+            "link_task": ""
         },
         "config": {
-            "count": 6
+            "less_level": 2,
+            "max_refresh": 10
         }
-    },
-    "group": {
-        "base": {
-            "enable": true,
-            "text": "小组",
-            "index": 4,
-            "next": "2023-11-17 00:00:00",
-            "end": ""
-        }
-    },
-    "tutor_dept": {
-        "base": {
-            "enable": true,
-            "end": "",
-            "index": 9,
-            "next": "2023-11-17 00:00:00",
-            "text": "补习部签到"
-        }
-    },
-    "make": {
-        "base": {
-            "enable": true,
-            "text": "制造",
-            "index": 9,
-            "next": "2023-11-17 00:00:00",
-            "end": ""
-        },
-        "config": {
-            "count": 1,
-            "priority": [
-                "灿烂",
-                "光芒",
-                "万圣节",
-                "MomoFriends咖啡厅",
-                "果冻游戏中心",
-                "色彩",
-                "家具",
-                "花",
-                "金属",
-                "黄金",
-                "铜",
-                "白银",
-                "隐然",
-                "玲珑"
-            ]
-        }
-    },
-    "schedule": {
-        "base": {
-            "enable": true,
-            "end": "",
-            "index": 3,
-            "next": "2023-11-17 00:00:00",
-            "text": "日程"
-        },
-        "config": [
-            {
-                "schedule": "qxn",
-                "stage": [
-                    7,
-                    8
-                ]
-            },
-            {
-                "schedule": "ghn",
-                "stage": [
-                    7,
-                    8
-                ]
-            },
-            {
-                "schedule": "sl_life",
-                "stage": [
-                    5
-                ]
-            }
-        ]
     },
     "shop": {
         "base": {
             "enable": true,
             "text": "商店购买",
-            "index": 2,
-            "next": "2023-11-17 00:00:00",
-            "end": ""
+            "index": 10,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "link_task": ""
         },
         "config": [
             {
@@ -149,52 +75,66 @@
         "base": {
             "enable": true,
             "end": "",
-            "index": 1,
+            "index": 20,
             "interval": 3600,
-            "next": "2023-11-17 00:00:00",
-            "text": "咖啡厅"
+            "next": "2023-11-17 11:17:17",
+            "text": "咖啡厅",
+            "link_task": ""
         },
         "config": {
             "blank_preset": 5
         }
     },
-    "arena": {
+    "schedule": {
         "base": {
             "enable": true,
             "end": "",
-            "index": 0,
-            "interval": 3600,
-            "next": "2023-11-17 00:00:00",
-            "text": "战术对抗赛"
-        },
-        "config": {
-            "less_level": 2,
-            "max_refresh": 10
-        }
-    },
-    "special_entrust": {
-        "base": {
-            "enable": true,
-            "text": "特殊委托",
-            "index": 6,
-            "next": "2023-11-17 00:00:00",
-            "end": ""
+            "index": 30,
+            "next": "2023-11-17 11:17:17",
+            "text": "日程",
+            "link_task": ""
         },
         "config": [
             {
-                "entrust": "jdfy",
-                "stage": 1,
-                "count": 1
+                "schedule": "qxn",
+                "stage": [
+                    7,
+                    8
+                ]
+            },
+            {
+                "schedule": "ghn",
+                "stage": [
+                    7,
+                    8
+                ]
+            },
+            {
+                "schedule": "sl_life",
+                "stage": [
+                    5
+                ]
             }
         ]
+    },
+    "group": {
+        "base": {
+            "enable": true,
+            "text": "小组",
+            "index": 40,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "link_task": ""
+        }
     },
     "wanted": {
         "base": {
             "enable": true,
             "text": "通缉悬赏",
-            "index": 5,
-            "next": "2023-11-17 00:00:00",
-            "end": ""
+            "index": 50,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "link_task": ""
         },
         "config": [
             {
@@ -214,55 +154,31 @@
             }
         ]
     },
-    "mailbox": {
+    "special_entrust": {
         "base": {
             "enable": true,
-            "text": "领取邮箱",
-            "index": 12,
-            "next": "2023-11-17 00:00:00",
+            "text": "特殊委托",
+            "index": 60,
+            "next": "2023-11-17 11:17:17",
             "end": "",
-            "interval": 3600,
-            "link_task": "special_entrust"
-        }
-    },
-    "momo_talk": {
-        "base": {
-            "enable": true,
-            "text": "MomoTalk",
-            "index": 10,
-            "next": "2023-11-17 00:00:00",
-            "end": "",
-            "interval": 3600
-        }
-    },
-    "work_task": {
-        "base": {
-            "enable": true,
-            "text": "工作任务",
-            "index": 11,
-            "next": "2023-11-17 00:00:00",
-            "end": "",
-            "interval": 3600,
-            "link_task": "special_entrust"
-        }
-    },
-    "normal_task": {
-        "base": {
-            "enable": true,
-            "end": "",
-            "index": 7,
-            "next": "2023-11-17 00:00:00",
-            "text": "扫荡普通关卡"
+            "link_task": ""
         },
-        "config": []
+        "config": [
+            {
+                "entrust": "jdfy",
+                "stage": 1,
+                "count": 1
+            }
+        ]
     },
     "hard_task": {
         "base": {
             "enable": true,
             "end": "",
-            "index": 8,
-            "next": "2023-11-17 00:00:00",
-            "text": "扫荡困难关卡"
+            "index": 70,
+            "next": "2023-11-17 11:17:17",
+            "text": "扫荡困难关卡",
+            "link_task": ""
         },
         "config": [
             {
@@ -271,5 +187,107 @@
                 "stage": 3
             }
         ]
+    },
+    "normal_task": {
+        "base": {
+            "enable": true,
+            "end": "",
+            "index": 80,
+            "link_task": "",
+            "next": "2023-11-17 11:17:17",
+            "text": "扫荡普通关卡"
+        },
+        "config": [
+            {
+                "count": 99,
+                "region": 13,
+                "stage": 3
+            }
+        ]
+    },
+    "work_task": {
+        "base": {
+            "enable": true,
+            "text": "工作任务",
+            "index": 90,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "interval": 3600,
+            "link_task": ""
+        }
+    },
+    "mailbox": {
+        "base": {
+            "enable": true,
+            "end": "",
+            "index": 100,
+            "interval": 3600,
+            "link_task": "normal_task",
+            "next": "2023-11-17 11:17:17",
+            "text": "领取邮箱"
+        }
+    },
+    "buy_ap": {
+        "base": {
+            "enable": true,
+            "end": "",
+            "index": 100,
+            "next": "2023-11-17 11:17:17",
+            "text": "购买体力",
+            "link_task": "normal_task"
+        },
+        "config": {
+            "count": 6
+        }
+    },
+    "make": {
+        "base": {
+            "enable": true,
+            "text": "制造",
+            "index": 110,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "link_task": "work_task"
+        },
+        "config": {
+            "count": 1,
+            "priority": [
+                "灿烂",
+                "光芒",
+                "万圣节",
+                "MomoFriends咖啡厅",
+                "果冻游戏中心",
+                "色彩",
+                "家具",
+                "花",
+                "金属",
+                "黄金",
+                "铜",
+                "白银",
+                "隐然",
+                "玲珑"
+            ]
+        }
+    },
+    "tutor_dept": {
+        "base": {
+            "enable": true,
+            "end": "",
+            "index": 200,
+            "next": "2023-11-17 11:17:17",
+            "text": "补习部签到",
+            "link_task": ""
+        }
+    },
+    "momo_talk": {
+        "base": {
+            "enable": true,
+            "text": "MomoTalk",
+            "index": 999,
+            "next": "2023-11-17 11:17:17",
+            "end": "",
+            "interval": 3600,
+            "link_task": ""
+        }
     }
 }

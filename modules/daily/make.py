@@ -129,12 +129,13 @@ def get_high_priority(self):
 
 def choose_tone(self):
     # 点击拱心石
+    time.sleep(1)
     self.click(908, 199, False)
-    time.sleep(0.5)
+    time.sleep(1)
     # 检查是否满足
     if color.check_rgb_similar(self, (995, 631, 996, 632), (61, 219, 250)):
         return True
     # 点击拱心石碎片
     self.click(769, 200, False, 10)
-    time.sleep(0.5)
+    time.sleep(1)
     return color.check_rgb_similar(self, (995, 631, 996, 632), (61, 219, 250))

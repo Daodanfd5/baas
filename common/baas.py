@@ -41,6 +41,7 @@ class Baas:
     d: Device
     bc: dict  # baas config BA配置
     tc: dict  # task config 任务配置
+    next_task: str
 
     def __init__(self, con, processes_task):
         self.con = con
@@ -54,19 +55,22 @@ class Baas:
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.processes_task = processes_task
         self.check_resolution()
+        self.next_task = ''
 
     def connect_serial(self):
         serial = self.bc['baas']['base']['serial']
         try:
-            self.logger.info("开始连接模拟器:{0}".format(serial))
+            self.logger.info("开始连接模拟器:{0}...".format(serial))
             self.d = u2.connect(serial)
             ta = self.d.info
             self.logger.info("模拟器连接成功:{0}".format(self.d.device_info['udid']))
         except Exception as e:
             self.logger.critical("模拟器连接失败:{0}".format(e))
+            sys.exit(1)
 
     def check_resolution(self):
         # 1280 * 720
+        self.logger.info("开始检查分辨率...")
         ss = self.d.screenshot()
         if ss.size[0] != 1280 or ss.size[1] != 720:
             self.logger.critical("分辨率必须为 1280 * 720")
@@ -163,6 +167,11 @@ class Baas:
     def get_task(self):
         self.load_config()
         queue = []
+        if hasattr(self, 'next_task') and self.next_task != '':
+            nt = self.next_task
+            self.next_task = ''
+            self.log_title("执行关联任务【{0}】".format(self.bc[nt]['base']['text']))
+            return nt, self.bc[nt]
         for ba_task, con in self.bc.items():
             if ba_task == 'baas':
                 continue
@@ -223,10 +232,7 @@ class Baas:
         查找关联任务立刻执行
         """
         if 'link_task' in self.tc['base']:
-            self.finish_seconds = 1
-            task = self.tc['base']['link_task']
-            self.tc = self.bc[task]
-            self.finish_task(task)
+            self.next_task = self.tc['base']['link_task']
 
     def finish_task(self, fn):
         self.load_config()

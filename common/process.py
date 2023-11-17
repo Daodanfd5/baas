@@ -1,6 +1,7 @@
 from multiprocessing import Process
-from common import position, log, config
+from common import position, log
 from common.baas import Baas
+import traceback
 
 
 def baas_dashboard(con, pt):
@@ -10,12 +11,12 @@ def baas_dashboard(con, pt):
         position.init_assets_data(b)
         b.dashboard()
     except Exception as e:
-        with open(config.resource_path('runtime/logs/error.txt'), 'w') as file:
-            if b is not None:
-                b.logger.info("{0}".format(e))
-            file.write("{0}".format(e))
+        if b is not None:
+            stack_trace = traceback.format_exc()  # 获取堆栈跟踪信息
+            b.logger.critical("Exception occurred: {0}".format(e))
+            b.logger.critical("Stack trace:\n{0}".format(stack_trace))
 
-        # 主进程运行中的任务
+    # 主进程运行中的任务
 
 
 manager = None
