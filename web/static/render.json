@@ -8,15 +8,20 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
             "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
         },
         "base.interval": {
             "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
@@ -97,11 +102,6 @@
             ],
             "name": "关联任务",
             "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
         },
         "base.text": "skip",
         "config": {
@@ -172,128 +172,20 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
             "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
         },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
         },
-        "base.text": "skip",
-        "config": {
-            "name": "购买设置"
-        },
-        "config.count": {
-            "name": "购买次数",
-            "opts": {
-                "max": 20,
-                "min": 1,
-                "step": 1
-            },
-            "type": "num"
-        }
-    },
-    "cafe": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
         },
         "base.interval": {
             "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
@@ -375,10 +267,123 @@
             "name": "关联任务",
             "type": "sel"
         },
+        "base.text": "skip",
+        "config": {
+            "name": "购买设置"
+        },
+        "config.count": {
+            "name": "购买次数",
+            "opts": {
+                "max": 20,
+                "min": 1,
+                "step": 1
+            },
+            "type": "num"
+        }
+    },
+    "cafe": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
         },
         "base.text": "skip",
         "config": {
@@ -404,249 +409,20 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
             "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
         },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
         },
-        "base.text": "skip"
-    },
-    "hard_task": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
-        "base.text": "skip",
-        "config": {
-            "name": "关卡设置"
-        },
-        "config.count": {
-            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
-            "name": "扫荡次数",
-            "opts": {
-                "max": 99,
-                "min": 1,
-                "step": 10
-            },
-            "type": "num"
-        },
-        "config.region": {
-            "items": {
-                "max": 20,
-                "min": 4,
-                "step": 1
-            },
-            "name": "区域",
-            "type": "sel"
-        },
-        "config.stage": {
-            "desc": "从上往下的顺序数",
-            "items": {
-                "max": 3,
-                "min": 1,
-                "step": 1
-            },
-            "name": "关卡",
-            "type": "sel"
-        }
-    },
-    "mailbox": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
         },
         "base.interval": {
             "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
@@ -728,14 +504,9 @@
             "name": "关联任务",
             "type": "sel"
         },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
         "base.text": "skip"
     },
-    "make": {
+    "hard_task": {
         "base": {
             "name": "功能设置"
         },
@@ -744,14 +515,24 @@
             "name": "启用该功能",
             "type": "bool"
         },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
         },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
             "type": "num"
         },
         "base.link_task": {
@@ -829,10 +610,249 @@
             "name": "关联任务",
             "type": "sel"
         },
+        "base.text": "skip",
+        "config": {
+            "name": "关卡设置"
+        },
+        "config.region": {
+            "items": {
+                "max": 20,
+                "min": 4,
+                "step": 1
+            },
+            "name": "区域",
+            "type": "sel"
+        },
+        "config.stage": {
+            "desc": "从上往下的顺序数",
+            "items": {
+                "max": 3,
+                "min": 1,
+                "step": 1
+            },
+            "name": "关卡",
+            "type": "sel"
+        },
+        "config.count": {
+            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
+            "name": "扫荡次数",
+            "opts": {
+                "max": 99,
+                "min": 1,
+                "step": 10
+            },
+            "type": "num"
+        }
+    },
+    "mailbox": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
+        },
+        "base.text": "skip"
+    },
+    "make": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
         },
         "base.text": "skip",
         "config": {
@@ -863,15 +883,20 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
             "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
         },
         "base.interval": {
             "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
@@ -953,11 +978,6 @@
             "name": "关联任务",
             "type": "sel"
         },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
         "base.text": "skip"
     },
     "normal_task": {
@@ -969,14 +989,24 @@
             "name": "启用该功能",
             "type": "bool"
         },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
         },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
             "type": "num"
         },
         "base.link_task": {
@@ -1054,24 +1084,9 @@
             "name": "关联任务",
             "type": "sel"
         },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
         "base.text": "skip",
         "config": {
             "name": "关卡设置"
-        },
-        "config.count": {
-            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
-            "name": "扫荡次数",
-            "opts": {
-                "max": 99,
-                "min": 1,
-                "step": 10
-            },
-            "type": "num"
         },
         "config.region": {
             "items": {
@@ -1091,6 +1106,16 @@
             },
             "name": "关卡",
             "type": "sel"
+        },
+        "config.count": {
+            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
+            "name": "扫荡次数",
+            "opts": {
+                "max": 99,
+                "min": 1,
+                "step": 10
+            },
+            "type": "num"
         }
     },
     "restart": {
@@ -1102,25 +1127,25 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
-            "type": "num"
-        },
-        "base.interval": {
-            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
-            "name": "再次执行任务时间",
             "type": "num"
         },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
         },
         "base.text": "skip"
     },
@@ -1133,14 +1158,24 @@
             "name": "启用该功能",
             "type": "bool"
         },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
         },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
             "type": "num"
         },
         "base.link_task": {
@@ -1217,11 +1252,6 @@
             ],
             "name": "关联任务",
             "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
         },
         "base.text": "skip",
         "config": {
@@ -1276,541 +1306,20 @@
             "name": "启用该功能",
             "type": "bool"
         },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
         "base.index": {
             "desc": "数字越低，越先执行",
             "name": "任务优先级",
             "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
         },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
         },
-        "base.text": "skip",
-        "config": {
-            "name": "购买设置"
-        },
-        "config.count": {
-            "desc": "默认可购买一次+刷新次数=购买次数，比如购买2次=默认买1次+刷新购买1次",
-            "name": "购买次数",
-            "opts": {
-                "max": 4,
-                "min": 1,
-                "step": 1
-            },
-            "type": "num"
-        },
-        "config.enable": {
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "config.goods": {
-            "desc": "从左往右，从上往下的顺序数",
-            "items": {
-                "max": 16,
-                "min": 1,
-                "step": 1
-            },
-            "name": "道具序号",
-            "opts": {
-                "multiple": "true"
-            },
-            "type": "sel"
-        },
-        "config.shop": {
-            "items": [
-                {
-                    "name": "常规道具",
-                    "value": "general"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                }
-            ],
-            "name": "商店",
-            "type": "sel"
-        }
-    },
-    "special_entrust": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
         "base.end": {
             "desc": "超出该时间的任务不会执行。不填则永不停止",
             "name": "任务截止时间",
             "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
-        "base.text": "skip",
-        "config": {
-            "name": "关卡设置"
-        },
-        "config.count": {
-            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
-            "name": "扫荡次数",
-            "opts": {
-                "max": 99,
-                "min": 1,
-                "step": 10
-            },
-            "type": "num"
-        },
-        "config.entrust": {
-            "items": [
-                {
-                    "name": "据点防御",
-                    "value": "jdfy"
-                },
-                {
-                    "name": "信用回收",
-                    "value": "xyhs"
-                }
-            ],
-            "name": "委托",
-            "type": "sel"
-        },
-        "config.stage": {
-            "desc": "从左往右，从上往下的顺序数",
-            "items": {
-                "max": 8,
-                "min": 1,
-                "step": 1
-            },
-            "name": "关卡",
-            "type": "sel"
-        }
-    },
-    "tutor_dept": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
-        "base.text": "skip"
-    },
-    "wanted": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
-        },
-        "base.link_task": {
-            "desc": "完成本任务后，立刻执行关联任务",
-            "items": [
-                {
-                    "name": "不关联",
-                    "value": ""
-                },
-                {
-                    "name": "重启",
-                    "value": "restart"
-                },
-                {
-                    "name": "购买体力",
-                    "value": "buy_ap"
-                },
-                {
-                    "name": "小组",
-                    "value": "group"
-                },
-                {
-                    "name": "补习部签到",
-                    "value": "tutor_dept"
-                },
-                {
-                    "name": "制造",
-                    "value": "make"
-                },
-                {
-                    "name": "日程",
-                    "value": "schedule"
-                },
-                {
-                    "name": "商店购买",
-                    "value": "shop"
-                },
-                {
-                    "name": "咖啡厅",
-                    "value": "cafe"
-                },
-                {
-                    "name": "战术对抗赛",
-                    "value": "arena"
-                },
-                {
-                    "name": "特殊委托",
-                    "value": "special_entrust"
-                },
-                {
-                    "name": "通缉悬赏",
-                    "value": "wanted"
-                },
-                {
-                    "name": "领取邮箱",
-                    "value": "mailbox"
-                },
-                {
-                    "name": "MomoTalk",
-                    "value": "momo_talk"
-                },
-                {
-                    "name": "工作任务",
-                    "value": "work_task"
-                },
-                {
-                    "name": "扫荡普通关卡",
-                    "value": "normal_task"
-                },
-                {
-                    "name": "扫荡困难关卡",
-                    "value": "hard_task"
-                }
-            ],
-            "name": "关联任务",
-            "type": "sel"
-        },
-        "base.next": {
-            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
-            "name": "下一次运行时间",
-            "type": "txt"
-        },
-        "base.text": "skip",
-        "config": {
-            "name": "关卡设置"
-        },
-        "config.count": {
-            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
-            "name": "扫荡次数",
-            "opts": {
-                "max": 99,
-                "min": 1,
-                "step": 10
-            },
-            "type": "num"
-        },
-        "config.entrust": {
-            "items": [
-                {
-                    "name": "高架公路",
-                    "value": "gjgl"
-                },
-                {
-                    "name": "沙漠铁路",
-                    "value": "smtl"
-                },
-                {
-                    "name": "讲堂",
-                    "value": "jt"
-                }
-            ],
-            "name": "委托",
-            "type": "sel"
-        },
-        "config.stage": {
-            "desc": "从左往右，从上往下的顺序数",
-            "items": {
-                "max": 8,
-                "min": 1,
-                "step": 1
-            },
-            "name": "关卡",
-            "type": "sel"
-        }
-    },
-    "work_task": {
-        "base": {
-            "name": "功能设置"
-        },
-        "base.enable": {
-            "desc": "将这个任务加入调度器",
-            "name": "启用该功能",
-            "type": "bool"
-        },
-        "base.end": {
-            "desc": "超出该时间的任务不会执行。不填则永不停止",
-            "name": "任务截止时间",
-            "type": "txt"
-        },
-        "base.index": {
-            "desc": "数字越低，越先执行",
-            "name": "任务优先级",
-            "type": "num"
         },
         "base.interval": {
             "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
@@ -1892,10 +1401,551 @@
             "name": "关联任务",
             "type": "sel"
         },
+        "base.text": "skip",
+        "config": {
+            "name": "购买设置"
+        },
+        "config.enable": {
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "config.shop": {
+            "items": [
+                {
+                    "name": "常规道具",
+                    "value": "general"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                }
+            ],
+            "name": "商店",
+            "type": "sel"
+        },
+        "config.count": {
+            "desc": "默认可购买一次+刷新次数=购买次数，比如购买2次=默认买1次+刷新购买1次",
+            "name": "购买次数",
+            "opts": {
+                "max": 4,
+                "min": 1,
+                "step": 1
+            },
+            "type": "num"
+        },
+        "config.goods": {
+            "desc": "从左往右，从上往下的顺序数",
+            "items": {
+                "max": 16,
+                "min": 1,
+                "step": 1
+            },
+            "name": "道具序号",
+            "opts": {
+                "multiple": "true"
+            },
+            "type": "sel"
+        }
+    },
+    "special_entrust": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
         "base.next": {
             "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
             "name": "下一次运行时间",
             "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
+        },
+        "base.text": "skip",
+        "config": {
+            "name": "关卡设置"
+        },
+        "config.entrust": {
+            "items": [
+                {
+                    "name": "据点防御",
+                    "value": "jdfy"
+                },
+                {
+                    "name": "信用回收",
+                    "value": "xyhs"
+                }
+            ],
+            "name": "委托",
+            "type": "sel"
+        },
+        "config.count": {
+            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
+            "name": "扫荡次数",
+            "opts": {
+                "max": 99,
+                "min": 1,
+                "step": 10
+            },
+            "type": "num"
+        },
+        "config.stage": {
+            "desc": "从左往右，从上往下的顺序数",
+            "items": {
+                "max": 8,
+                "min": 1,
+                "step": 1
+            },
+            "name": "关卡",
+            "type": "sel"
+        }
+    },
+    "tutor_dept": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
+        },
+        "base.text": "skip"
+    },
+    "wanted": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
+        },
+        "base.text": "skip",
+        "config": {
+            "name": "关卡设置"
+        },
+        "config.entrust": {
+            "items": [
+                {
+                    "name": "高架公路",
+                    "value": "gjgl"
+                },
+                {
+                    "name": "沙漠铁路",
+                    "value": "smtl"
+                },
+                {
+                    "name": "讲堂",
+                    "value": "jt"
+                }
+            ],
+            "name": "委托",
+            "type": "sel"
+        },
+        "config.count": {
+            "desc": "可指定1-99次，次数比较小的时候点击比较慢，99次会高频点击用光所有体力",
+            "name": "扫荡次数",
+            "opts": {
+                "max": 99,
+                "min": 1,
+                "step": 10
+            },
+            "type": "num"
+        },
+        "config.stage": {
+            "desc": "从左往右，从上往下的顺序数",
+            "items": {
+                "max": 8,
+                "min": 1,
+                "step": 1
+            },
+            "name": "关卡",
+            "type": "sel"
+        }
+    },
+    "work_task": {
+        "base": {
+            "name": "功能设置"
+        },
+        "base.enable": {
+            "desc": "将这个任务加入调度器",
+            "name": "启用该功能",
+            "type": "bool"
+        },
+        "base.index": {
+            "desc": "数字越低，越先执行",
+            "name": "任务优先级",
+            "type": "num"
+        },
+        "base.next": {
+            "desc": "自动计算的数值，不需要手动修改。清空后将立即运行",
+            "name": "下一次运行时间",
+            "type": "txt"
+        },
+        "base.end": {
+            "desc": "超出该时间的任务不会执行。不填则永不停止",
+            "name": "任务截止时间",
+            "type": "txt"
+        },
+        "base.interval": {
+            "desc": "完成任务后，间隔多少秒后重复执行任务，填0：表示明天再执行 填3600：表示1小时候再执行",
+            "name": "再次执行任务时间",
+            "type": "num"
+        },
+        "base.link_task": {
+            "desc": "完成本任务后，立刻执行关联任务",
+            "items": [
+                {
+                    "name": "不关联",
+                    "value": ""
+                },
+                {
+                    "name": "重启",
+                    "value": "restart"
+                },
+                {
+                    "name": "购买体力",
+                    "value": "buy_ap"
+                },
+                {
+                    "name": "小组",
+                    "value": "group"
+                },
+                {
+                    "name": "补习部签到",
+                    "value": "tutor_dept"
+                },
+                {
+                    "name": "制造",
+                    "value": "make"
+                },
+                {
+                    "name": "日程",
+                    "value": "schedule"
+                },
+                {
+                    "name": "商店购买",
+                    "value": "shop"
+                },
+                {
+                    "name": "咖啡厅",
+                    "value": "cafe"
+                },
+                {
+                    "name": "战术对抗赛",
+                    "value": "arena"
+                },
+                {
+                    "name": "特殊委托",
+                    "value": "special_entrust"
+                },
+                {
+                    "name": "通缉悬赏",
+                    "value": "wanted"
+                },
+                {
+                    "name": "领取邮箱",
+                    "value": "mailbox"
+                },
+                {
+                    "name": "MomoTalk",
+                    "value": "momo_talk"
+                },
+                {
+                    "name": "工作任务",
+                    "value": "work_task"
+                },
+                {
+                    "name": "扫荡普通关卡",
+                    "value": "normal_task"
+                },
+                {
+                    "name": "扫荡困难关卡",
+                    "value": "hard_task"
+                }
+            ],
+            "name": "关联任务",
+            "type": "sel"
         },
         "base.text": "skip"
     }

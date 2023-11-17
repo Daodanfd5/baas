@@ -11,7 +11,7 @@
             "enable": false,
             "text": "重启设置",
             "index": 999,
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3888
         }
@@ -22,7 +22,7 @@
             "end": "",
             "index": -999,
             "interval": 3600,
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "text": "战术对抗赛",
             "link_task": ""
         },
@@ -36,7 +36,8 @@
             "enable": true,
             "text": "商店购买",
             "index": 10,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "link_task": ""
         },
@@ -77,7 +78,7 @@
             "end": "",
             "index": 20,
             "interval": 3600,
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "text": "咖啡厅",
             "link_task": ""
         },
@@ -90,7 +91,8 @@
             "enable": true,
             "end": "",
             "index": 30,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "text": "日程",
             "link_task": ""
         },
@@ -122,7 +124,8 @@
             "enable": true,
             "text": "小组",
             "index": 40,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "link_task": ""
         }
@@ -132,7 +135,8 @@
             "enable": true,
             "text": "通缉悬赏",
             "index": 50,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "link_task": ""
         },
@@ -159,7 +163,8 @@
             "enable": true,
             "text": "特殊委托",
             "index": 60,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "link_task": ""
         },
@@ -176,7 +181,8 @@
             "enable": true,
             "end": "",
             "index": 70,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "text": "扫荡困难关卡",
             "link_task": ""
         },
@@ -194,7 +200,8 @@
             "end": "",
             "index": 80,
             "link_task": "",
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "text": "扫荡普通关卡"
         },
         "config": [
@@ -210,7 +217,7 @@
             "enable": true,
             "text": "工作任务",
             "index": 90,
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600,
             "link_task": ""
@@ -223,7 +230,7 @@
             "index": 100,
             "interval": 3600,
             "link_task": "normal_task",
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "text": "领取邮箱"
         }
     },
@@ -232,7 +239,8 @@
             "enable": true,
             "end": "",
             "index": 100,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "text": "购买体力",
             "link_task": "normal_task"
         },
@@ -245,7 +253,8 @@
             "enable": true,
             "text": "制造",
             "index": 110,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "link_task": "work_task"
         },
@@ -274,7 +283,8 @@
             "enable": true,
             "end": "",
             "index": 200,
-            "next": "2023-11-17 11:17:17",
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
             "text": "补习部签到",
             "link_task": ""
         }
@@ -284,7 +294,7 @@
             "enable": true,
             "text": "MomoTalk",
             "index": 999,
-            "next": "2023-11-17 11:17:17",
+            "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600,
             "link_task": ""
