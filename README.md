@@ -58,3 +58,7 @@ $ pyinstaller baas.spec
 $ pyinstaller -F --name=baas --add-data 'assets:assets' --add-data 'web/static:web/static' --add-data 'web/templates:web/templates' --icon='assets/ba.ico' main.py
 $ pyinstaller -w --name=baas --add-data 'assets:assets' --add-data 'web/static:web/static' --add-data 'web/templates:web/templates' --icon='assets/ba.icns' main.py
 ```
+
+### 赞助
+
+![](docs/sponsor.jpg)
