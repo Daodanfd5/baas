@@ -11,7 +11,7 @@ configs = Blueprint('configs', __name__)
 @configs.route('/configs', methods=['GET'])
 def config_list():
     config_dir = config.config_dir()
-    con_list = [os.path.splitext(f)[0] for f in os.listdir(config_dir) if f.endswith('.json')]
+    con_list = sorted([os.path.splitext(f)[0] for f in os.listdir(config_dir) if f.endswith('.json')])
     return {'data': {'list': con_list}, 'code': 200}, 200
 
 

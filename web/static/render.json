@@ -398,6 +398,11 @@
                 "step": 1
             },
             "type": "num"
+        },
+        "config.receive_ap": {
+            "desc": "",
+            "name": "是否领取体力",
+            "type": "bool"
         }
     },
     "group": {

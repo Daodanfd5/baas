@@ -83,7 +83,8 @@
             "link_task": ""
         },
         "config": {
-            "blank_preset": 5
+            "blank_preset": 5,
+            "receive_ap": true
         }
     },
     "schedule": {
@@ -175,6 +176,20 @@
                 "count": 1
             }
         ]
+    },
+    "main_story": {
+        "base": {
+            "enable": true,
+            "text": "主线故事",
+            "index": 65,
+            "next": "2023-11-19 23:34:54",
+            "end": "",
+            "interval": 3600,
+            "link_task": ""
+        },
+        "config": {
+            "story": 3
+        }
     },
     "hard_task": {
         "base": {

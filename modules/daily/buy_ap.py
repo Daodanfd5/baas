@@ -85,9 +85,9 @@ def start(self):
 
         # 关闭获得奖励
         stage.close_prize_info(self, False, True)
-        # 如果要购买的次数大于3次,1分钟后重新运行该任务
+        # 如果要购买的次数大于3次,再次运行
         if buy_count > 3:
-            self.finish_seconds = 30
+            return start(self)
     except ValueError:
         self.logger.info("次数识别失败")
     home.go_home(self)

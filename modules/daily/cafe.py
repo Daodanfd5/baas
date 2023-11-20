@@ -171,6 +171,9 @@ def invite_girl(self):
 
 
 def get_cafe_money(self):
+    # 查看是否需要领取体力
+    if not self.tc['config']['receive_ap']:
+        return
     # 查看收益
     if image.compare_image(self, 'cafe_0.0', 0):
         return
