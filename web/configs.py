@@ -71,6 +71,13 @@ def menus_list():
                 {'name': 'tutor_dept', 'text': '补习部签到'},
             ]
         },
+        {
+            'name': 'story',
+            'text': '剧情',
+            'child': [
+                {'name': 'main_story', 'text': '主线剧情'},
+            ]
+        },
     ]
     return {'data': {'list': menus}, 'code': 200}, 200
 

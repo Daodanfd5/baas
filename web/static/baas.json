@@ -285,5 +285,19 @@
                 "count": 3
             }
         ]
+    },
+    "main_story": {
+        "base": {
+            "enable": true,
+            "text": "主线故事",
+            "index": 9,
+            "next": "2023-11-20 13:36:16",
+            "end": "",
+            "interval": 3600,
+            "link_task": ""
+        },
+        "config": {
+            "story": 3
+        }
     }
 }
