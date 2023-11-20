@@ -2,6 +2,8 @@ import os
 import sys
 
 import aircv as ac
+import cv2
+import numpy as np
 
 from modules.activity import tutor_dept
 from modules.baas import home, restart, cm
@@ -57,6 +59,6 @@ def init_assets_data(self,filepath='assets'):
             filepath = os.path.join(dp, fn)
             key = os.path.relpath(filepath, assets_dir)  # 获取文件在assets目录下的相对路径作为键
             key = os.path.splitext(key)[0].replace(os.sep, '_')  # 去除文件扩展名
-            iad[key] = ac.imread(filepath)
+            iad[key] = cv2.imdecode(np.fromfile(filepath, dtype=np.uint8), -1)
             count += 1
     self.logger.info("init_assets_data finished. access_data:{0}".format(count))
