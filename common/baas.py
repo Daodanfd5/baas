@@ -11,7 +11,7 @@ from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
 from modules.reward import momo_talk, work_task, mailbox
-from modules.scan import normal_task, hard_task
+from modules.scan import normal_task, hard_task, main_story
 
 func_dict = {
     'group': group.start,
@@ -31,6 +31,7 @@ func_dict = {
 
     'tutor_dept': tutor_dept.start,
     'buy_ap': buy_ap.start,
+    'main_story': main_story.start,
 }
 
 

@@ -9,7 +9,7 @@ from modules.baas import home, restart, cm
 # 图片资源数据 image assets data
 from modules.daily import arena, cafe, wanted, special_entrust, shop, schedule, make, group, buy_ap
 from modules.reward import mailbox, momo_talk, work_task
-from modules.scan import hard_task, normal_task
+from modules.scan import hard_task, normal_task, main_story
 
 iad = {
 }
@@ -33,10 +33,11 @@ ibd = {
     'normal_task': normal_task.x,
     'tutor_dept': tutor_dept.x,
     'buy_ap': buy_ap.x,
+    'main_story': main_story.x,
 }
 
 
-def init_assets_data(self):
+def init_assets_data(self,filepath='assets'):
     """
     初始化资源文件数据
     """
@@ -45,7 +46,6 @@ def init_assets_data(self):
     # 如果我们是在 PyInstaller 打包后的版本中运行，那么改变 base_path 到正确的目录
     if getattr(sys, 'frozen', False):
         base_path = sys._MEIPASS
-    filepath = 'assets'
     if hasattr(self, 'filepath'):
         filepath = self.filepath
     assets_dir = os.path.join(base_path, filepath)

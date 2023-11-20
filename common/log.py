@@ -69,10 +69,10 @@ def pad_string(s):
     return s
 
 
-def create_logger(con):
+def create_logger(con, html_logger=True):
     logger = logging.getLogger('my_logger')
     logger.setLevel(logging.DEBUG)
-    if not logger.handlers:
+    if html_logger and not logger.handlers:
         log_dir_path = config.resource_path('runtime/logs')
         if not os.path.exists(log_dir_path):
             os.makedirs(log_dir_path)

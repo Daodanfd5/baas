@@ -1,3 +1,4 @@
+import logging
 import multiprocessing
 import os
 from common import process, app
@@ -23,6 +24,8 @@ if __name__ == '__main__':
 
     if os.getpid() == main_process_pid:
         flask_thread = threading.Thread(target=run_flask)
+        log = logging.getLogger('werkzeug')
+        log.setLevel(logging.ERROR)
         flask_thread.daemon = True
         flask_thread.start()
         app.start()
