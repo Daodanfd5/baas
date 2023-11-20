@@ -38,7 +38,7 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, ss_path=None, f
         return img
 
 
-def compare_image(self, name, retry=999, threshold=20, need_loading=False, mis_fu=None, mis_argv=None, rate=0.1):
+def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu=None, mis_argv=None, rate=0.1):
     """
     对图片坐标内的图片和资源图片是否匹配
     @param self:
