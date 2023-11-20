@@ -76,13 +76,13 @@ def skip_polt(self):
 
 def start_admission(self):
     # 检查是否通关
-    if image.compare_image(self, 'main_story_clearance', 0):
+    if image.compare_image(self, 'main_story_clearance', 0, 10):
         return
-        # 检查是否通关
-    if image.compare_image(self, 'main_story_current-clearance', 0):
+    # 检查是否通关
+    if image.compare_image(self, 'main_story_current-clearance', 0, 10):
         return
-        # 查看第一个是否锁住了
-    if image.compare_image(self, 'main_story_first-lock', 10):
+    # 查看第一个是否锁住了
+    if image.compare_image(self, 'main_story_first-lock', 10, 20):
         # 锁住了点第二个任务
         self.click(1114, 339, False)
     else:
@@ -90,7 +90,7 @@ def start_admission(self):
     # 等待剧情信息加载
     image.compare_image(self, 'main_story_plot-info')
 
-    is_fight = image.compare_image(self, 'main_story_plot-fight', 0)
+    is_fight = image.compare_image(self, 'main_story_plot-fight', 0, 10)
 
     # 进入剧情
     self.click(641, 516, False)
