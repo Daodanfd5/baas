@@ -25,7 +25,7 @@ class TestPosition(unittest.TestCase):
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
         self.file_path = "../assets"
-        position.init_assets_data(self, self.file_path)
+        position.init_assets_data(self)
 
     def click(self, x, y, wait=True, count=1, rate=0):
         if wait:

@@ -1,8 +1,7 @@
 import os
-import sys
-
 import aircv as ac
 
+from common import config
 from modules.activity import tutor_dept
 from modules.baas import home, restart, cm
 
@@ -37,19 +36,12 @@ ibd = {
 }
 
 
-def init_assets_data(self,filepath='assets'):
+def init_assets_data(self):
     """
     初始化资源文件数据
     """
-    # 默认假设我们在源代码目录下运行
-    base_path = ''
-    # 如果我们是在 PyInstaller 打包后的版本中运行，那么改变 base_path 到正确的目录
-    if getattr(sys, 'frozen', False):
-        base_path = sys._MEIPASS
-    if hasattr(self, 'filepath'):
-        filepath = self.filepath
-    assets_dir = os.path.join(base_path, filepath)
     count = 0
+    assets_dir = config.resource_path('assets')
     for dp, dns, fns in os.walk(assets_dir):
         for fn in fns:
             if not fn.endswith('.png'):
