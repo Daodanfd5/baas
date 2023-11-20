@@ -1,4 +1,6 @@
 import math
+import time
+
 import cv2
 import numpy as np
 
@@ -21,11 +23,25 @@ def check_rgb(self, area, rgb):
     return np.array_equal(img[0][0], np.array(rgb))
 
 
-def check_rgb_similar(self, area=(1090, 683, 1091, 684), rgb=(75, 238, 249)):
+def wait_rgb_similar(self, area, rgb, retry=999, threshold=20, rate=0.1):
+    """
+    等待相似颜色出现
+    """
+    compare = check_rgb_similar(self, area, rgb)
+    if not compare and retry > 0:
+        time.sleep(rate)
+        return wait_rgb_similar(self, area, rgb, retry - 1, threshold)
+    return compare
+
+
+def check_rgb_similar(self, area=(1090, 683, 1091, 684), rgb=(75, 238, 249), threshold=20):
     """
     判断颜色是否相近，用来判断按钮是否可以点击
     """
     ocr.screenshot_check_text(self, '', area, 0)
     img = cv2.imread(config.get_ss_path(self))
     dist = color_distance(img[0][0], rgb)
-    return dist <= 20
+    result = dist <= threshold
+    self.logger.info("check_rgb_similar area:%s target_rgb:%s get_rgb:%s color_dist: %s result:%s", area, rgb,
+                     img[0][0], dist, result)
+    return result

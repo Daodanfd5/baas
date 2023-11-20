@@ -1,7 +1,7 @@
 import time
 
 from modules.baas import home
-from common import ocr, stage, image
+from common import ocr, stage, image, color
 
 x = {
     'menu': (107, 9, 162, 36),
@@ -118,6 +118,7 @@ def buy_goods(self):
     """
     刷新并购买商品
     """
+    time.sleep(0.5)
     for shop in self.tc['config']:
         if not shop['enable']:
             continue
@@ -138,14 +139,19 @@ def start_buy(self, shop):
         self.logger.info("没有选中道具")
         return
 
+    # 检查是否可以购买
+    if not color.check_rgb_similar(self, (1108, 657, 1109, 658), (68, 229, 249)):
+        self.logger.info("货币不足，无法购买")
+        return
+
     # 点击选择购买
     self.click(1164, 660, False)
 
     # 等待确认购买页面
-    ocr.screenshot_check_text(self, '是否购买', (581, 229, 698, 264))
+    color.wait_rgb_similar(self, (700, 500, 701, 501), (75, 233, 246))
 
     # 确认购买
-    self.click(769, 484, False)
+    self.click(700, 500, False)
 
     # 关闭获得奖励
     stage.close_prize_info(self, True)

@@ -64,7 +64,7 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        color.check_rgb_similar(self, (1169, 664, 1170, 665), (39, 231, 255))
+        assert color.check_rgb_similar(self, (700, 500, 701, 501), (75, 233, 246))
 
     def test_ss(self):
         assets = [
@@ -99,7 +99,7 @@ class TestPosition(unittest.TestCase):
             # 'shop_buy3',
             # 'shop_buy2',
             # 'shop_buy1',
-            # 'shop_confirm',
+            'shop_confirm',
 
             # 'schedule_menu',
             # 'normal_task_menu',
