@@ -59,4 +59,4 @@ def init_assets_data(self,filepath='assets'):
             key = os.path.splitext(key)[0].replace(os.sep, '_')  # 去除文件扩展名
             iad[key] = ac.imread(filepath)
             count += 1
-    self.logger.info("init_assets_data finished. access_data:{0}".format(count))
+    self.logger.info("init_assets_data finished. assets_data:{0}".format(count))
