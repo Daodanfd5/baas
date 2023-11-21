@@ -51,7 +51,6 @@ def init_assets_data(self,filepath='assets'):
     if hasattr(self, 'filepath'):
         filepath = self.filepath
     assets_dir = os.path.join(base_path, filepath)
-    count = 0
     for dp, dns, fns in os.walk(assets_dir):
         for fn in fns:
             if not fn.endswith('.png'):
@@ -60,5 +59,4 @@ def init_assets_data(self,filepath='assets'):
             key = os.path.relpath(filepath, assets_dir)  # 获取文件在assets目录下的相对路径作为键
             key = os.path.splitext(key)[0].replace(os.sep, '_')  # 去除文件扩展名
             iad[key] = cv2.imdecode(np.fromfile(filepath, dtype=np.uint8), -1)
-            count += 1
-    self.logger.info("init_assets_data finished. assets_data:{0}".format(count))
+    self.logger.info("init_assets_data finished. assets_data:{0}".format(len(iad)))
