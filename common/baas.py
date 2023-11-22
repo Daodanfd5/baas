@@ -6,7 +6,7 @@ from uiautomator2 import Device
 from datetime import datetime, timedelta
 from cnocr import CnOcr
 
-from common import stage, process, config, log
+from common import stage, process, config, log, encrypt, ocr
 from modules.activity import tutor_dept
 from modules.baas import restart
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
@@ -72,9 +72,10 @@ class Baas:
     def check_resolution(self):
         # 1280 * 720
         self.logger.info("开始检查分辨率...")
+        ocr.screenshot(self)
         ss = self.d.screenshot()
         if ss.size[0] != 1280 or ss.size[1] != 720:
-            self.logger.critical("分辨率必须为 1280 * 720")
+            self.logger.critical("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))
             sys.exit(1)
 
     def log_title(self, msg):
@@ -139,7 +140,7 @@ class Baas:
             no_task = False
             # 从字典中获取函数并执行
             if fn in func_dict:
-                self.processes_task[self.con] = fn
+                self.processes_task[encrypt.md5(self.con)] = fn
                 self.tc = tc
                 self.tc['task'] = fn
                 self.finish_seconds = 0
@@ -147,7 +148,7 @@ class Baas:
                 func_dict[fn](self)
                 self.finish_task(fn)
                 self.log_title("执行完成【" + tc['base']['text'] + "】")
-                del self.processes_task[self.con]
+                del self.processes_task[encrypt.md5(self.con)]
             else:
                 self.logger.info(f"函数不存在:{fn}")
                 sys.exit(0)

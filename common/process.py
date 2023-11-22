@@ -1,5 +1,5 @@
 from multiprocessing import Process
-from common import position, log
+from common import position, log, encrypt
 from common.baas import Baas
 import traceback
 
@@ -33,31 +33,31 @@ class Main:
         @param con: 配置文件名称
         """
         # 如果对应的进程没有运行，则启动它
-        if con not in self.processes or not self.processes[con].is_alive():
-            self.processes[con] = Process(target=baas_dashboard, args=(con, processes_task))
-            self.processes[con].start()
+        if encrypt.md5(con) not in self.processes or not self.processes[encrypt.md5(con)].is_alive():
+            self.processes[encrypt.md5(con)] = Process(target=baas_dashboard, args=(con, processes_task))
+            self.processes[encrypt.md5(con)].start()
 
     def stop_process(self, con):
         """
         停止进程
         @param con: 配置文件名称
         """
-        if con in self.processes and self.processes[con].is_alive():
+        if encrypt.md5(con) in self.processes and self.processes[encrypt.md5(con)].is_alive():
             # 请求终止baas进程
-            self.processes[con].terminate()
+            self.processes[encrypt.md5(con)].terminate()
             # 等待进程实际结束
-            self.processes[con].join()
+            self.processes[encrypt.md5(con)].join()
             log.create_logger(con).info("停止运行")
-            if con in processes_task:
-                del processes_task[con]
+            if encrypt.md5(con) in processes_task:
+                del processes_task[encrypt.md5(con)]
 
     def state_process(self, con):
         """
         获取进程执行状态
         @param con: 配置文件名称
         """
-        if con in self.processes:
-            return self.processes[con].is_alive()
+        if encrypt.md5(con) in self.processes:
+            return self.processes[encrypt.md5(con)].is_alive()
         else:
             return False
 
@@ -66,8 +66,8 @@ class Main:
         获取进程执行中的任务
         @param con: 配置文件名称
         """
-        if con in processes_task:
-            return processes_task[con]
+        if encrypt.md5(con) in processes_task:
+            return processes_task[encrypt.md5(con)]
         return None
 
 

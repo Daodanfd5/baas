@@ -46,9 +46,5 @@ app = BUNDLE(
     coll,
     name='baas.app',
     icon='assets/ba.icns',
-    bundle_identifier='com.KilluaaaCHEN.baas',
-        info_plist={
-            'CFBundleVersion': '1.0.0',
-            'CFBundleShortVersionString': '1.0.0',
-        },
+    bundle_identifier=None,
 )
