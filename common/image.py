@@ -61,7 +61,7 @@ def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu
     # 计算MSE（Mean Squared Error）
     mse = np.mean(diff ** 2)
     compare = mse <= threshold
-    self.logger.info("compare_image %s MSE:%s Result:%s", name, mse, compare)
+    self.logger.info("compare_image %s MSE:%.2f Result:%s", name, mse, compare)
     if not compare and retry > 0:
         if mis_fu is not None:
             mis_fu(*mis_argv)
