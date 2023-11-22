@@ -55,7 +55,7 @@ def start(self):
     # 点击业务区
     self.double_click(1195, 576)
     # 等待业务区页面加载
-    image.compare_image(self, 'home_bus')
+    image.compare_image(self, 'home_bus', mis_fu=self.click, mis_argv=(1195, 576))
 
     # 点击任务
     self.click(816, 285)

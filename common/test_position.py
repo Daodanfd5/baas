@@ -73,6 +73,7 @@ class TestPosition(unittest.TestCase):
 
             # 'restart_menu',
             # 'restart_maintain',
+            'restart_update',
 
             # 'arena_id',
             # 'arena_cd',

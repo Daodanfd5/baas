@@ -5,7 +5,8 @@ from modules.baas import home
 
 x = {
     'menu': (38, 628, 75, 646),
-    'maintain': (604, 301, 654, 327)
+    'maintain': (604, 301, 654, 327),
+    'update': (581, 147, 700, 175)
 }
 render = {
     "base": {
@@ -29,6 +30,7 @@ def start(self):
     # 重新判断是否进入首页
     while True:
         if home.is_home(self):
+            home.recursion_click_house(self)
             break
         # 检查维护
         if image.compare_image(self, 'restart_maintain', 0):
@@ -40,6 +42,11 @@ def start(self):
         if ocr.screenshot_check_text(self, '通知', (599, 144, 675, 178), 0, 0, False):
             # 确认跳过
             self.click(770, 500, False)
+            continue
+        # 检测更新
+        if image.compare_image(self, 'restart_update', 0):
+            self.click(769, 501, False)
+            self.logger.info("开始更新......")
             continue
         # 关闭签到或公告
         self.double_click(1233, 11, False)

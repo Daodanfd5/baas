@@ -1,5 +1,3 @@
-import time
-
 from common import config
 from modules.baas import restart
 
