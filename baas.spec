@@ -31,7 +31,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['assets/ba.icns'],
+    icon=['assets/images/ba.icns'],
 )
 coll = COLLECT(
     exe,
@@ -45,6 +45,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='baas.app',
-    icon='assets/ba.icns',
+    icon='assets/images/ba.icns',
     bundle_identifier=None,
 )

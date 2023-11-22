@@ -74,9 +74,10 @@ class Baas:
         # 1280 * 720
         self.logger.info("开始检查分辨率...")
         ss = self.d.screenshot()
-        if ss.size[0] != 1280 or ss.size[1] != 720:
-            self.logger.critical("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))
-            sys.exit(1)
+        if (ss.size[0] == 1280 and ss.size[1] == 720) or (ss.size[1] == 1280 and ss.size[0] == 720):
+            return
+        self.logger.critical("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))
+        sys.exit(1)
 
     def log_title(self, msg):
         pre = '</br>'
