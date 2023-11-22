@@ -8,7 +8,7 @@ from cnocr import CnOcr
 
 from common import stage, process, config, log, encrypt, ocr
 from modules.activity import tutor_dept
-from modules.baas import restart
+from modules.baas import restart, fhx
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
 from modules.reward import momo_talk, work_task, mailbox
 from modules.scan import normal_task, hard_task, main_story
@@ -32,6 +32,7 @@ func_dict = {
     'tutor_dept': tutor_dept.start,
     'buy_ap': buy_ap.start,
     'main_story': main_story.start,
+    'fhx': fhx.start,
 }
 
 
@@ -72,7 +73,6 @@ class Baas:
     def check_resolution(self):
         # 1280 * 720
         self.logger.info("开始检查分辨率...")
-        ocr.screenshot(self)
         ss = self.d.screenshot()
         if ss.size[0] != 1280 or ss.size[1] != 720:
             self.logger.critical("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))

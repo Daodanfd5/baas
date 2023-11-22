@@ -39,7 +39,7 @@ ibd = {
 }
 
 
-def init_assets_data(self, filepath='assets'):
+def init_assets_data(self, filepath='assets/images'):
     """
     初始化资源文件数据
     """

@@ -2,7 +2,7 @@
     "baas": {
         "base": {
             "package": "com.RoamingStar.BlueArchive",
-            "serial": "127.0.0.1:5554",
+            "serial": "127.0.0.1:16384",
             "ss_rate": 0.1
         }
     },
@@ -312,6 +312,17 @@
             "next": "2023-11-17 00:00:00",
             "end": "",
             "interval": 3600,
+            "link_task": ""
+        }
+    },
+    "fhx": {
+        "base": {
+            "enable": true,
+            "end": "",
+            "index": -99999,
+            "interval": 0,
+            "next": "2023-11-17 00:00:00",
+            "text": "反和谐",
             "link_task": ""
         }
     }

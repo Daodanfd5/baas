@@ -26,7 +26,7 @@ def start():
     if getattr(sys, 'frozen', False):
         base_path = sys._MEIPASS
     # 创建一个QPixmap对象来加载图片
-    pixmap = QPixmap(os.path.join(base_path, 'assets/fm.jpeg'))
+    pixmap = QPixmap(os.path.join(base_path, 'assets/images/fm.jpeg'))
 
     # 创建一个QPalette对象来设置窗口背景
     palette = QPalette()

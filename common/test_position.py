@@ -24,7 +24,7 @@ class TestPosition(unittest.TestCase):
         self.ocr = CnOcr()
         self.ocrEN = CnOcr(det_model_name='en_PP-OCRv3_det', rec_model_name='en_PP-OCRv3')
         self.ocrNum = CnOcr(det_model_name='number-densenet_lite_136-fc', rec_model_name='number-densenet_lite_136-fc')
-        self.file_path = "../assets"
+        self.file_path = "../assets/images"
         position.init_assets_data(self, self.file_path)
 
     def click(self, x, y, wait=True, count=1, rate=0):
@@ -145,6 +145,6 @@ class TestPosition(unittest.TestCase):
         for asset in assets:
             base, file = asset.rsplit('_', 1)
             d = "{0}/{1}".format(self.file_path, base)
-            f = "../assets/{0}/{1}.png".format(base, file)
+            f = "../assets/images/{0}/{1}.png".format(base, file)
             image.screenshot_cut(self, image.get_box(asset), 0, False, d, f)
         assert True
