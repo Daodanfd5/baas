@@ -68,7 +68,7 @@ def skip_polt(self):
         # 点击>>
         self.click(1210, 120, False, 1, 1)
         # 等待跳过加载
-        if image.compare_image(self, 'cm_confirm', 10):
+        if image.compare_image(self, 'cm_confirm', 3):
             # 点击跳过
             self.click(770, 521, False)
             return
@@ -103,25 +103,7 @@ def start_admission(self):
         time.sleep(3)
         # 点击出击
         self.click(1158, 655, False)
-        # 等待战斗加载
-        image.compare_image(self, 'main_story_fight-parse', need_loading=True)
-        # 3倍减速检测
-        if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
-            self.click(1208, 623, False)
-            time.sleep(0.5)
-        # 3倍减速检测
-        if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
-            self.click(1208, 623, False)
-            time.sleep(0.5)
-        # 点击自动
-        if not color.check_rgb_similar(self, (1169, 664, 1170, 665), (39, 231, 255)):
-            self.click(1208, 673, False)
-        time.sleep(10)
-        # 等待战斗结束
-        image.compare_image(self, 'main_story_fight-confirm')
-        # 确认战斗结果
-        time.sleep(1)
-        self.double_click(1168, 659)
+        auto_fight(self)
         # 跳过剧情
         skip_polt(self)
 
@@ -130,6 +112,28 @@ def start_admission(self):
     time.sleep(2)
     # 再次递归
     return start_admission(self)
+
+
+def auto_fight(self):
+    # 等待战斗加载
+    image.compare_image(self, 'main_story_fight-parse', need_loading=True)
+    # 3倍减速检测
+    if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
+        self.click(1208, 623, False)
+        time.sleep(0.5)
+    # 3倍减速检测
+    if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
+        self.click(1208, 623, False)
+        time.sleep(0.5)
+    # 点击自动
+    if not color.check_rgb_similar(self, (1169, 664, 1170, 665), (39, 231, 255)):
+        self.click(1208, 673, False)
+    time.sleep(10)
+    # 等待战斗结束
+    image.compare_image(self, 'main_story_fight-confirm')
+    # 确认战斗结果
+    time.sleep(1)
+    self.double_click(1168, 659)
 
 
 def select_story(self):

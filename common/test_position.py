@@ -17,7 +17,7 @@ class TestPosition(unittest.TestCase):
         pass
 
     def setUp(self) -> None:
-        self.con = 'baas'
+        self.con = 'wz'
         self.load_config()
         self.logger = log.create_logger(self.con, False)
         self.d = u2.connect(self.bc['baas']['base']['serial'])
@@ -73,7 +73,7 @@ class TestPosition(unittest.TestCase):
 
             # 'restart_menu',
             # 'restart_maintain',
-            'restart_update',
+            # 'restart_update',
 
             # 'arena_id',
             # 'arena_cd',
@@ -100,10 +100,26 @@ class TestPosition(unittest.TestCase):
             # 'shop_buy3',
             # 'shop_buy2',
             # 'shop_buy1',
-            'shop_confirm',
+            # 'shop_confirm',
 
             # 'schedule_menu',
             # 'normal_task_menu',
+            # 'normal_task_task-info',
+            # 'normal_task_fight-task',
+            # 'normal_task_force-edit',
+            # 'normal_task_fight-skip',
+            # 'normal_task_auto-over',
+            # 'normal_task_force-4',
+            # 'normal_task_force-3',
+            # 'normal_task_force-2',
+            # 'normal_task_force-1',
+            # 'normal_task_task-scan',
+            # 'normal_task_14-1',
+            # 'normal_task_14-2',
+            # 'normal_task_14-3',
+            # 'normal_task_14-4',
+            # 'normal_task_14-5',
+            'normal_task_side-quest',
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',

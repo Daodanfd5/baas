@@ -38,7 +38,8 @@ def screenshot_cut(self, area, before_wait=0, need_loading=True, ss_path=None, f
         return img
 
 
-def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu=None, mis_argv=None, rate=0.1):
+def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu=None, mis_argv=None, rate=0.1,
+                  n=False):
     """
     对图片坐标内的图片和资源图片是否匹配
     @param self:
@@ -48,6 +49,8 @@ def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu
     @param need_loading: 等待加载
     @param mis_fu: 不匹配时执行函数
     @param mis_argv: 不匹配时执行函数参数
+    @param rate: 重试频率
+    @param n: not识别结果取反
     @return: 是否匹配
     """
     if need_loading:
@@ -61,12 +64,14 @@ def compare_image(self, name, retry=999, threshold=3, need_loading=False, mis_fu
     # 计算MSE（Mean Squared Error）
     mse = np.mean(diff ** 2)
     compare = mse <= threshold
+    if n:
+        compare = not compare
     self.logger.info("compare_image %s MSE:%.2f Result:%s", name, mse, compare)
     if not compare and retry > 0:
         if mis_fu is not None:
             mis_fu(*mis_argv)
             time.sleep(rate)
-        return compare_image(self, name, retry - 1, threshold, need_loading, mis_fu, mis_argv, rate)
+        return compare_image(self, name, retry - 1, threshold, need_loading, mis_fu, mis_argv, rate, n)
     return compare
 
 

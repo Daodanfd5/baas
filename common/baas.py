@@ -11,7 +11,7 @@ from modules.activity import tutor_dept
 from modules.baas import restart, fhx
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
 from modules.reward import momo_talk, work_task, mailbox
-from modules.scan import normal_task, hard_task, main_story
+from modules.scan import normal_task, hard_task, main_story, exp_normal_task
 
 func_dict = {
     'group': group.start,
@@ -25,6 +25,7 @@ func_dict = {
     'make': make.start,
     'work_task': work_task.start,
     'normal_task': normal_task.start,
+    'exp_normal_task': exp_normal_task.start,
     'hard_task': hard_task.start,
     'mailbox': mailbox.start,
     'restart': restart.start,
