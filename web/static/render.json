@@ -1234,7 +1234,7 @@
         "config.region": {
             "items": {
                 "max": 15,
-                "min": 14,
+                "min": 5,
                 "step": 1
             },
             "name": "区域",

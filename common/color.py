@@ -4,7 +4,7 @@ import time
 import cv2
 import numpy as np
 
-from common import ocr, config
+from common import ocr, config, image
 
 
 def color_distance(rgb1, rgb2):
@@ -38,7 +38,7 @@ def check_rgb_similar(self, area=(1090, 683, 1091, 684), rgb=(75, 238, 249), thr
     """
     判断颜色是否相近，用来判断按钮是否可以点击
     """
-    ocr.screenshot_check_text(self, '', area, 0)
+    image.screenshot_cut(self, area, need_loading=False)
     img = cv2.imread(config.get_ss_path(self))
     dist = color_distance(img[0][0], rgb)
     result = dist <= threshold

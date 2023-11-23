@@ -7,14 +7,18 @@ from modules.scan import hard_task, main_story
 
 x = {
 }
-
+# 普通关卡坐标
 normal_position = {
     1: (1120, 240), 2: (1120, 340), 3: (1120, 440), 4: (1120, 540), 5: (1120, 568),
 }
+# 部队1234坐标
 force_position = {
     1: (124, 195), 2: (124, 277), 3: (124, 354), 4: (124, 429),
 }
 stage_data = {
+    '14': {
+        'side': "burst1"  # 支线用爆发1
+    },
     '14-1': {
         'start': {
             '1': (460, 383),  # 1队开始坐标
@@ -91,66 +95,104 @@ def start(self):
 def start_fight(self, region):
     # 选择区域
     choose_region(self, region)
-    gk = region_scheck_scan(self, region)
+    gk = calc_need_fight_stage(self, region)
     if gk is None:
         self.logger.info("本区域没有需要开图的任务关卡...")
         return
+    if gk not in stage_data:
+        self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(gk))
+        return
     # 点击开始任务
-    self.click(947, 540)
+    if gk == 'side':
+        self.click(645, 511)
+    else:
+        self.click(947, 540)
     # 等待地图加载
 
     # 遍历start需要哪些队伍
-    start_choose_team(self, gk, '1')
-    start_choose_team(self, gk, '2')
-    image.compare_image(self, 'normal_task_fight-task')
-    # 点击开始任务
-    self.click(1172, 663)
-    # 检查跳过战斗
-    image.compare_image(self, 'normal_task_fight-skip', mis_fu=self.click, mis_argv=(1123, 545), rate=2)
-    # 检查回合自动结束
-    image.compare_image(self, 'normal_task_auto-over', mis_fu=self.click, mis_argv=(1082, 599), rate=2)
-    # 开始战斗
-    start_action(self, gk)
+    if gk == "side":
+        start_choose_side_team(self, stage_data[str(region)]['side'])
+    else:
+        for n, p in stage_data[gk]['start'].items():
+            start_choose_team(self, gk, n)
+        image.compare_image(self, 'normal_task_fight-task')
+        # 点击开始任务
+        self.click(1172, 663)
+        # 检查跳过战斗
+        image.compare_image(self, 'normal_task_fight-skip', mis_fu=self.click, mis_argv=(1123, 545), rate=2)
+        # 检查回合自动结束
+        image.compare_image(self, 'normal_task_auto-over', mis_fu=self.click, mis_argv=(1082, 599), rate=2)
+        # 开始战斗
+        start_action(self, gk)
     # 自动战斗
     main_story.auto_fight(self)
-    # 任务完成
-    self.click(1036, 660)
-    # 关闭获得奖励
-    self.click(771, 655)
+    # 等待获得奖励
+    image.compare_image(self, 'normal_task_prize-confirm')
+    # 点击确认
+    self.click(776, 655)
+    # 选择地点加载
+    image.compare_image(self, 'normal_task_menu')
+    # 重新开始本区域探索
+    return start_fight(self, region)
 
 
-def region_scheck_scan(self, region):
+def check_task_state(self):
+    """
+    检查任务当前类型
+    @param self:
+    @return:
+    """
+    # 等待任务信息弹窗加载
+    wait_task_info(self)
+    # 支线任务-未通关
+    if image.compare_image(self, 'normal_task_side-quest', 0):
+        return 'side'
+    # 主线-未通关
+    if image.compare_image(self, 'normal_task_no-pass', 0):
+        return 'no-pass'
+    # 主线-三星
+    if image.compare_image(self, 'normal_task_task-scan', 0):
+        return 'sss'
+    # 主线-已通关
+    return 'pass'
+
+
+def wait_task_info(self):
+    """
+    等待任务信息弹窗加载
+    @param self:
+    @return:
+    """
+    while True:
+        # 主线任务
+        if image.compare_image(self, 'normal_task_task-info', 0):
+            return 'main'
+        # 支线任务
+        if image.compare_image(self, 'normal_task_side-quest', 0):
+            return 'side'
+        time.sleep(0.1)
+
+
+def calc_need_fight_stage(self, region):
+    """
+    查找需要战斗的关卡
+    @param self:
+    @param region:
+    @return:
+    """
     # 选择第一关
     self.click(1118, 239)
     while True:
         # 等待任务信息加载
-        image.compare_image(self, 'normal_task_task-info')
-        if self.tc['config']['mode'] == 1:
-            # 点击下一关
-            self.click(1167, 357)
-            # 等待任务信息加载
-            image.compare_image(self, 'normal_task_task-info')
-            gk = get_stage(self, region)
-            if gk is None:
-                self.logger.info("本区域已全部解锁成功")
-                return
-            if gk == 'sq':
-                return gk
-            continue
-        # 判断是否可以扫荡
-        if image.compare_image(self, 'normal_task_task-scan', 3):
-            # 点击下一关
-            self.click(1167, 357)
-            continue
-        gk = get_stage(self, region)
-        if stage is None:
-            # todo 应该是支线战队
-            pass
-        if gk not in stage_data:
-            self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(gk))
-            sys.exit(1)
-        return gk
-    return None
+        task_state = check_task_state(self)
+        # 未通关支线
+        if task_state == 'side':
+            return task_state
+        # 未通关主线 or 要求三星但未三星
+        if task_state == 'no-pass' or (self.tc['config']['mode'] == 2 and task_state != 'sss'):
+            return get_stage(self, region)
+        # 点击下一关
+        self.click(1167, 357)
 
 
 def get_stage(self, region):
@@ -158,8 +200,6 @@ def get_stage(self, region):
         s = '{0}-{1}'.format(region, i)
         if image.compare_image(self, 'normal_task_' + s, 0):
             return s
-    if image.compare_image(self, 'normal_task_side-quest', 0):
-        return 'sq'
     return None
 
 
@@ -191,6 +231,28 @@ def start_action(self, gk):
         time.sleep(0.5)
 
 
+def start_choose_side_team(self, team):
+    # 选择对应属性的队伍
+    select_force_fight(self, self.tc['config'][team])
+
+
+def select_force_fight(self, index):
+    """
+    选择队伍并开始战斗
+    @param self:
+    @param index: 队伍索引
+    """
+    fp = force_position[index]
+    # 检查是否有选择,知道选中位置
+    while not color.check_rgb_similar(self, (fp[0], fp[1], fp[0] + 1, fp[1] + 1), (105, 74, 50)):
+        self.click(*fp)
+        time.sleep(1)
+    # 点击出击 直到没有出击
+    time.sleep(1)
+    image.compare_image(self, 'normal_task_attack', threshold=50, mis_fu=self.click, mis_argv=(1163, 658), rate=1,
+                        n=True)
+
+
 def start_choose_team(self, gk, force):
     image.compare_image(self, 'normal_task_fight-task')
     # 点击开始按钮
@@ -199,14 +261,7 @@ def start_choose_team(self, gk, force):
     # 等待编队加载
     image.compare_image(self, 'normal_task_force-edit')
     # 选择对应属性的队伍
-    fp = force_position[self.tc['config'][stage_data[gk]['attr'][force]]]
-    time.sleep(1)
-    self.double_click(*fp)
-    # todo 检查是否选中了
-    # 等待队伍加载
-    time.sleep(3)
-    # 点击出击
-    self.click(1163, 658)
+    select_force_fight(self, self.tc['config'][stage_data[gk]['attr'][force]])
 
 
 def choose_region(self, region):

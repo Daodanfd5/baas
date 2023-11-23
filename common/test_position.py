@@ -64,7 +64,7 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        assert color.check_rgb_similar(self, (700, 500, 701, 501), (75, 233, 246))
+        assert color.check_rgb_similar(self, (124, 429, 125, 430), (75, 233, 246))
 
     def test_ss(self):
         assets = [
@@ -114,12 +114,15 @@ class TestPosition(unittest.TestCase):
             # 'normal_task_force-2',
             # 'normal_task_force-1',
             # 'normal_task_task-scan',
-            # 'normal_task_14-1',
-            # 'normal_task_14-2',
-            # 'normal_task_14-3',
-            # 'normal_task_14-4',
-            # 'normal_task_14-5',
-            'normal_task_side-quest',
+            # 'normal_task_15-1',
+            # 'normal_task_15-2',
+            # 'normal_task_15-3',
+            # 'normal_task_15-4',
+            # 'normal_task_15-5',
+            # 'normal_task_side-quest',
+            # 'normal_task_attack',
+            # 'normal_task_prize-confirm',
+            'normal_task_no-pass',
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',

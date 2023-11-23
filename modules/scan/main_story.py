@@ -130,7 +130,7 @@ def auto_fight(self):
         self.click(1208, 673, False)
     time.sleep(10)
     # 等待战斗结束
-    image.compare_image(self, 'main_story_fight-confirm')
+    image.compare_image(self, 'main_story_fight-confirm', rate=1)
     # 确认战斗结果
     time.sleep(1)
     self.double_click(1168, 659)
