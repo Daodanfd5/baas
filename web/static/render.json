@@ -1234,7 +1234,7 @@
         "config.region": {
             "items": {
                 "max": 15,
-                "min": 4,
+                "min": 14,
                 "step": 1
             },
             "name": "区域",
@@ -1372,6 +1372,29 @@
             ],
             "name": "神秘主队编号",
             "desc": "神秘属性的主队队伍编号",
+            "type": "sel"
+        },
+        "config.mystic2": {
+            "items": [
+                {
+                    "name": "部队1",
+                    "value": 1
+                },
+                {
+                    "name": "部队2",
+                    "value": 2
+                },
+                {
+                    "name": "部队3",
+                    "value": 3
+                },
+                {
+                    "name": "部队4",
+                    "value": 4
+                }
+            ],
+            "name": "神秘副队编号",
+            "desc": "神秘属性的副队队伍编号(部分地图关卡需要同属性上两队)",
             "type": "sel"
         }
     },
