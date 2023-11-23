@@ -144,6 +144,7 @@ def check_task_state(self):
     """
     # 等待任务信息弹窗加载
     wait_task_info(self)
+    time.sleep(1)
     # 支线任务-未通关
     if image.compare_image(self, 'normal_task_side-quest', 0):
         return 'side'
@@ -185,13 +186,17 @@ def calc_need_fight_stage(self, region):
     while True:
         # 等待任务信息加载
         task_state = check_task_state(self)
+        self.logger.info("当前关卡状态为:{0}".format(task_state))
         # 未通关支线
         if task_state == 'side':
+            self.logger.info("开始支线战斗")
             return task_state
         # 未通关主线 or 要求三星但未三星
         if task_state == 'no-pass' or (self.tc['config']['mode'] == 2 and task_state != 'sss'):
+            self.logger.info("开始主线战斗")
             return get_stage(self, region)
         # 点击下一关
+        self.logger.info("不满足战斗条件,查找下一关")
         self.click(1167, 357)
 
 
@@ -242,8 +247,9 @@ def select_force_fight(self, index):
     @param self:
     @param index: 队伍索引
     """
+    self.logger.info("根据当前配置,选择部队{0}".format(index))
     fp = force_position[index]
-    # 检查是否有选择,知道选中位置
+    # 检查是否有选中,直到选中为止
     while not color.check_rgb_similar(self, (fp[0], fp[1], fp[0] + 1, fp[1] + 1), (105, 74, 50)):
         self.click(*fp)
         time.sleep(1)
