@@ -205,7 +205,7 @@ def get_stage(self, region):
             if image.compare_image(self, 'normal_task_' + s, 0):
                 return s
         except KeyError:
-            self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(s))
+            self.logger.critical("当前关卡{0}尚未支持开图，正在全力研发中...".format(s))
             return None
     return None
 
