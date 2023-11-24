@@ -114,6 +114,35 @@ stage_data = {
             {'t': 'click', 'p': (814, 245), 'ec': True},
         ]
     },
+    '15-3': {
+        'start': {
+            '1': (757, 144),  # 1队开始坐标
+            '2': (407, 188)  # 2队开始坐标
+        },
+        'attr': {
+            '1': 'mystic1',  # 1队主神秘
+            '2': 'mystic2'  # 2队副神秘
+        },
+        'action': [
+            # 第一回合
+            {'t': 'click', 'p': (728, 461), 'ec': True},  # 主↙️
+            {'t': 'click', 'p': (576, 399), 'ec': False},  # 副↘️
+            {'t': 'move', 'ec': True},  # 副队传送
+            # 第二回合
+            {'t': 'click', 'p': (680, 452), 'ec': False},  # 点击副队
+            {'t': 'click', 'p': (572, 448), 'ec': False},  # 点击交换
+            {'t': 'click', 'p': (623, 541), 'ec': True},  # 主队↙️️
+            {'t': 'click', 'p': (797, 421), 'ec': True, 'wait-over': True},  # 副队↘️
+            # 第三回合
+            {'t': 'exchange', 'ec': True},  # 切换部队
+            {'t': 'click', 'p': (835, 425), 'ec': False},  # 副队↘️
+            {'t': 'move', 'ec': True},  # 确认传送
+            # 第四回合
+            {'t': 'click', 'p': (610, 459), 'ec': False},  # 点击副队
+            {'t': 'click', 'p': (512, 452), 'ec': False},  # 点击交换
+            {'t': 'click', 'p': (674, 537), 'ec': True},  # 主队↘️Boss
+        ]
+    },
 }
 
 
@@ -211,15 +240,15 @@ def check_task_state(self):
     # 等待任务信息弹窗加载
     wait_task_info(self)
     time.sleep(1)
-    # 支线任务-未通关
-    if image.compare_image(self, 'normal_task_side-quest', 0):
-        return 'side'
-    # 主线-未通关
-    if image.compare_image(self, 'normal_task_no-pass', 0):
-        return 'no-pass'
     # 主线-三星
     if image.compare_image(self, 'normal_task_task-scan', 0):
         return 'sss'
+    # 主线-未通关
+    if image.compare_image(self, 'normal_task_no-pass', 0):
+        return 'no-pass'
+    # 支线任务-未通关
+    if image.compare_image(self, 'normal_task_side-quest', 0):
+        return 'side'
     # 主线-已通关
     return 'pass'
 
@@ -272,8 +301,12 @@ def calc_need_fight_stage(self, region):
 def get_stage(self, region):
     for i in range(1, 6):
         s = '{0}-{1}'.format(region, i)
-        if image.compare_image(self, 'normal_task_' + s, 0):
-            return s
+        try:
+            if image.compare_image(self, 'normal_task_' + s, 0):
+                return s
+        except KeyError:
+            self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(s))
+            return None
     return None
 
 

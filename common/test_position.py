@@ -116,7 +116,7 @@ class TestPosition(unittest.TestCase):
             # 'normal_task_task-scan',
             # 'normal_task_15-1',
             # 'normal_task_15-2',
-            # 'normal_task_15-3',
+            'normal_task_15-3',
             # 'normal_task_15-4',
             # 'normal_task_15-5',
             # 'normal_task_side-quest',
@@ -164,7 +164,7 @@ class TestPosition(unittest.TestCase):
             # 'main_story_fight-parse',
             # 'main_story_fight-confirm',
             # 'main_story_auto',
-            'main_story_three-times',
+            # 'main_story_three-times',
             # 'cm_confirm'
         ]
         for asset in assets:
