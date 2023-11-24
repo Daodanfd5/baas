@@ -12,15 +12,15 @@ stage_data = {
             '2': 'mystic1'  # 2对神秘
         },
         'action': [
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (756, 388), 'ec': True},
-            {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 10},
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (867, 316), 'ec': True},
-            {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5},
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (839, 298), 'ec': True},
-            {'t': 'click', 'p': (669, 491)},
+            # 第一回合
+            {'t': 'click', 'p': (756, 388), 'ec': True},  # 副队➡️
+            {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 5, 'wait-over': True},  # 主队↘️
+            # 第二回合
+            {'t': 'click', 'p': (867, 316), 'ec': True},  # 副队➡️
+            {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5, 'wait-over': True},  # 主队↘️
+            # 第三回合
+            {'t': 'click', 'p': (839, 298), 'ec': True},  # 副队➡️
+            {'t': 'click', 'p': (669, 491)},  # 主队↘️
         ]
     },
     '14-2': {
@@ -29,24 +29,23 @@ stage_data = {
             '2': (880, 559)  # 2对开始坐标
         },
         'attr': {
-            '1': 'burst1',  # 1队爆发
-            '2': 'mystic1'  # 2对神秘
+            '1': 'burst1',  # 1队主队
+            '2': 'mystic1'  # 2对副队
         },
         'action': [
-            # 神秘↖️  爆发↘️
-            {'t': 'click', 'p': (691, 385), 'ec': True},
-            {'t': 'click', 'p': (590, 393), 'ec': True},
-            # 切换到爆发
-            {'t': 'exchange', 'ec': True},
-            # 爆发↙️  神秘⬅️
-            {'t': 'click', 'p': (532, 479), 'ec': True},
-            {'t': 'click', 'p': (596, 386), 'after': 7},
-            # 神秘↗️   爆发⬅️
-            {'t': 'click', 'p': (597, 230), 'ec': True},
-            {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},
-            # 神秘➡️  爆发↖️Boss
-            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2},
-            {'t': 'click', 'p': (492, 398)},
+            # 第一回合
+            {'t': 'click', 'p': (691, 385), 'ec': True},  # 副队↖️
+            {'t': 'click', 'p': (590, 393), 'ec': True},  # 主队↘️
+            # 第二回合
+            {'t': 'exchange', 'ec': True},  # 切换到主队
+            {'t': 'click', 'p': (532, 479), 'ec': True},  # 主队↙️
+            {'t': 'click', 'p': (596, 386), 'after': 7},  # 副队⬅️
+            # 第三回合
+            {'t': 'click', 'p': (597, 230), 'ec': True},  # 副队↗️
+            {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},  # 主队⬅️
+            # 第四回合
+            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2},  # 副队➡️
+            {'t': 'click', 'p': (492, 398)},  # 主队↖️Boss
         ]
     },
 }

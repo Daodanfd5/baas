@@ -12,20 +12,19 @@ stage_data = {
             '2': 'mystic2'  # 2队副神秘
         },
         'action': [
-            # 主➡️ 副↗️+传送
-            {'t': 'click', 'p': (629, 329), 'ec': True},
-            {'t': 'click', 'p': (824, 365)},
-            {'t': 'move', 'ec': True},
-            # 切到副队
-            {'t': 'exchange', 'ec': True},
-            # 副队↘️ 主队换+➡️
-            {'t': 'click', 'p': (678, 357), 'ec': True},
-            {'t': 'click', 'p': (679, 347)},
-            {'t': 'click', 'p': (576, 347)},
-            {'t': 'click', 'p': (794, 352), 'after': 10, 'wait-over': True},
-            # 主队↘️  副队↙️️
-            {'t': 'click', 'p': (823, 413), 'ec': True},
-            {'t': 'click', 'p': (444, 446)},
+            # 第一回合
+            {'t': 'click', 'p': (629, 329), 'ec': True},  # 主➡️
+            {'t': 'click', 'p': (824, 365)},  # 副↗️
+            {'t': 'move', 'ec': True},  # 传送
+            # 第二回合
+            {'t': 'exchange', 'ec': True},  # 切到副队
+            {'t': 'click', 'p': (678, 357), 'ec': True},  # 副队↘️
+            {'t': 'click', 'p': (679, 347)},  # 点击副队
+            {'t': 'click', 'p': (576, 347)},  # 确认交换
+            {'t': 'click', 'p': (794, 352), 'after': 10, 'wait-over': True},  # 主队➡️
+            # 第三回合
+            {'t': 'click', 'p': (823, 413), 'ec': True},  # 主队↘️
+            {'t': 'click', 'p': (444, 446)},  # 副队↙️️
         ]
     },
     '15-2': {
@@ -38,20 +37,20 @@ stage_data = {
             '2': 'mystic2'  # 2队副神秘
         },
         'action': [
-            # 主➡️ 副↖️
-            {'t': 'click', 'p': (636, 317), 'ec': True}, {'t': 'click', 'p': (673, 385), 'ec': True},
-            # 切到副队
-            {'t': 'exchange', 'ec': True, 'before': 2},
-            # 副队先 ↗️ 主队换+➡️
-            {'t': 'click', 'p': (727, 349), 'ec': True},
-            {'t': 'click', 'p': (727, 342)},
-            {'t': 'click', 'p': (620, 344)},
-            {'t': 'click', 'p': (838, 344), 'after': 5, 'wait-over': True},  # 等待战斗结束
-            # 切到副队 副队先 ↙️+传 主队↗️
-            {'t': 'exchange', 'ec': True, 'before': 2},
-            {'t': 'click', 'p': (432, 451)},
-            {'t': 'move', 'ec': True},
-            {'t': 'click', 'p': (814, 245)},
+            # 第一回合
+            {'t': 'click', 'p': (636, 317), 'ec': True},  # 主➡️
+            {'t': 'click', 'p': (673, 385), 'ec': True},  # 副↖️
+            {'t': 'exchange', 'ec': True, 'before': 2},  # 切到副队
+            # 第二回合
+            {'t': 'click', 'p': (727, 349), 'ec': True},  # 副队先↗️
+            {'t': 'click', 'p': (727, 342)},  # 点击副队
+            {'t': 'click', 'p': (620, 344)},  # 确认交换
+            {'t': 'click', 'p': (838, 344), 'after': 5, 'wait-over': True},  # 主队➡️
+            # 第三回合
+            {'t': 'exchange', 'ec': True, 'before': 2},  # 切到副队
+            {'t': 'click', 'p': (432, 451)},  # 副队先↙️
+            {'t': 'move', 'ec': True},  # 传送
+            {'t': 'click', 'p': (814, 245)},  # 主队↗️
         ]
     },
     '15-3': {
