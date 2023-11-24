@@ -79,6 +79,13 @@ def menus_list():
                 {'name': 'main_story', 'text': '主线剧情'},
             ]
         },
+        {
+            'name': 'fhx',
+            'text': '反和谐',
+            'child': [
+                {'name': 'fhx', 'text': '反和谐'},
+            ]
+        },
     ]
     return {'data': {'list': menus}, 'code': 200}, 200
 
