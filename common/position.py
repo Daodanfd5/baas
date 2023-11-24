@@ -1,7 +1,6 @@
 import os
 import sys
 
-import aircv as ac
 import cv2
 import numpy as np
 
