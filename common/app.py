@@ -69,7 +69,7 @@ def start():
     btn.setFixedSize(88, 28)
     layout.addWidget(btn, 0, Qt.AlignCenter)
 
-    v = QLabel('<span style="color:white;font-weight:bold;font-style: italic;">Version: 1.0.0 </span>')
+    v = QLabel('<span style="color:white;font-weight:bold;font-style: italic;">Version: 1.1.0 </span>')
     layout.addWidget(v, 0, Qt.AlignRight)
 
     layout.setContentsMargins(0, 5, 0, 5)
