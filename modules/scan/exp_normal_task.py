@@ -197,7 +197,7 @@ def check_task_state(self):
     return 'pass'
 
 
-def wait_task_info(self):
+def wait_task_info(self, open_task=False):
     """
     等待任务信息弹窗加载
     @param self:
@@ -211,6 +211,10 @@ def wait_task_info(self):
         if image.compare_image(self, 'normal_task_side-quest', 0):
             return 'side'
         time.sleep(0.1)
+        # 是否要打开入场
+        if open_task:
+            self.click(1118, 239)
+            time.sleep(1)
 
 
 def calc_need_fight_stage(self, region):
@@ -220,8 +224,7 @@ def calc_need_fight_stage(self, region):
     @param region:
     @return:
     """
-    # 选择第一关
-    self.click(1118, 239)
+    wait_task_info(self, True)
     while True:
         # 等待任务信息加载
         task_state = check_task_state(self)
