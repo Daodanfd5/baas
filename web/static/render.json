@@ -2115,7 +2115,7 @@
         "config.stage": {
             "desc": "从左往右，从上往下的顺序数",
             "items": {
-                "max": 8,
+                "max": 9,
                 "min": 1,
                 "step": 1
             },

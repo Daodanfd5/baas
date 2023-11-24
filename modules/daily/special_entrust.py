@@ -52,8 +52,8 @@ entrust_position = {
 }
 
 level_position = {
-    1: (1116, 185), 2: (1116, 285), 3: (1116, 385), 4: (1116, 485),
-    5: (1116, 330), 6: (1116, 430), 7: (1116, 530), 8: (1116, 630),
+    1: (1116, 185), 2: (1116, 285), 3: (1116, 385), 4: (1116, 485), 5: (1116, 585),
+    6: (1116, 330), 7: (1116, 430), 8: (1116, 530), 9: (1116, 630),
 }
 
 
@@ -85,11 +85,11 @@ def choose_entrust(self, position):
         part1_swipe = False
         part2_swipe = False
 
-        if tk['stage'] <= 4 and not part1_swipe:
+        if tk['stage'] <= 5 and not part1_swipe:
             part1_swipe = True
             self.swipe(933, 230, 933, 586)
             time.sleep(0.5)
-        if tk['stage'] >= 5 and not part2_swipe:
+        if tk['stage'] >= 6 and not part2_swipe:
             part2_swipe = True
             self.swipe(933, 586, 933, 230)
             time.sleep(0.5)
