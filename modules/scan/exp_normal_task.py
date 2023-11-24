@@ -176,6 +176,7 @@ def start_fight(self, region):
         image.compare_image(self, 'normal_task_fight-task')
         # 点击开始任务
         self.click(1172, 663)
+        time.sleep(3)
         # 检查跳过战斗
         image.compare_image(self, 'normal_task_fight-skip', threshold=10, mis_fu=self.click, mis_argv=(1123, 545),
                             rate=2)

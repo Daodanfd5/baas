@@ -163,6 +163,8 @@ class TestPosition(unittest.TestCase):
             # 'main_story_plot-attack',
             # 'main_story_fight-parse',
             # 'main_story_fight-confirm',
+            # 'main_story_auto',
+            'main_story_three-times',
             # 'cm_confirm'
         ]
         for asset in assets:

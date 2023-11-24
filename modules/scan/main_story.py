@@ -14,7 +14,9 @@ x = {
     'plot-fight': (901, 211, 925, 236),
     'plot-attack': (107, 9, 162, 36),  # 部队出击
     'fight-parse': (1223, 32, 1243, 59),  # 战斗中暂停按钮
-    'fight-confirm': (1144, 649, 1194, 674)  # 战斗结果
+    'fight-confirm': (1144, 649, 1194, 674),  # 战斗结果
+    'auto': (1181, 664, 1236, 689),  # 自动战斗
+    'three-times': (1190, 616, 1240, 633)  # 三倍加速
 
 }
 render = {
@@ -115,23 +117,20 @@ def start_admission(self):
 
 
 def auto_fight(self):
-    # 等待战斗加载
-    image.compare_image(self, 'main_story_fight-parse', retry=100)
-    # 3倍减速检测
-    if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
-        self.click(1208, 623, False)
-        time.sleep(0.5)
-    # 3倍减速检测
-    if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
-        self.click(1208, 623, False)
-        time.sleep(0.5)
+    time.sleep(3)
+    stage.wait_loading(self)
+    time.sleep(7)
+
     # 点击自动
-    if not color.check_rgb_similar(self, (1169, 664, 1170, 665), (39, 231, 255)):
-        self.click(1208, 673, False)
+    image.compare_image(self, 'main_story_auto', threshold=80, mis_fu=self.click, mis_argv=(1210, 676, False), rate=2)
+
+    # 点击3倍加速
+    image.compare_image(self, 'main_story_three-times', threshold=80, mis_fu=self.click, mis_argv=(1213, 624, False),
+                        rate=2)
+    self.logger.info("等待战斗结束...")
     time.sleep(10)
-    # 等待战斗结束
     image.compare_image(self, 'main_story_fight-confirm', rate=1)
-    # 确认战斗结果
+    self.logger.info("确认战斗结果...")
     time.sleep(1)
     self.double_click(1168, 659)
 
