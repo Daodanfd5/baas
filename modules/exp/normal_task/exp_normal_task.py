@@ -1,5 +1,4 @@
 import importlib
-import sys
 import time
 
 from common import ocr, color, stage, image
