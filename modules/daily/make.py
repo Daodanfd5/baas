@@ -6,29 +6,6 @@ from common import ocr, stage, color
 from modules.baas import home
 
 x = {}
-render = {
-    "base": {
-        "name": "功能设置"
-    },
-    'config': {
-        'name': '制造设置'
-    },
-    'config.count': {
-        "type": "num",
-        "name": "制造次数",
-        "desc": "优先使用拱心石，其次使用碎片",
-        "opts": {
-            "min": 1,
-            "max": 100,
-            "step": 10
-        }
-    },
-    'config.priority': {
-        "type": "arr",
-        "name": "制造优先级",
-        "desc": "会根据优先级，依次寻找优先级最高的物品进行制造",
-    },
-}
 make_position = {
     1: (975, 279), 2: (975, 410), 3: (975, 551)
 }

@@ -8,11 +8,6 @@ x = {
     'maintain': (604, 301, 654, 327),
     'update': (581, 147, 700, 175)
 }
-render = {
-    "base": {
-        "name": "功能设置"
-    },
-}
 
 
 def start(self):

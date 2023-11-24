@@ -4,11 +4,7 @@ from common import stage, ocr, color, image
 x = {
     'menu': (107, 9, 162, 36)
 }
-render = {
-    "base": {
-        "name": "功能设置"
-    },
-}
+
 
 def start(self):
     # 回到首页

@@ -291,8 +291,7 @@ def select_force_fight(self, index):
     """
     self.logger.info("根据当前配置,选择部队{0}".format(index))
     if index == -1:
-        self.logger.critical("你没有未配置部队,请根据开图区域设置对应属性的部队编号")
-        self.exit()
+        self.exit("你没有未配置部队,请根据开图区域设置对应属性的部队编号")
     fp = force_position[index]
     # 检查是否有选中,直到选中为止
     while not color.check_rgb_similar(self, (fp[0], fp[1], fp[0] + 1, fp[1] + 1), (105, 74, 50)):
