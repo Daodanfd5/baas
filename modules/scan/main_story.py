@@ -116,7 +116,7 @@ def start_admission(self):
 
 def auto_fight(self):
     # 等待战斗加载
-    image.compare_image(self, 'main_story_fight-parse', need_loading=True)
+    image.compare_image(self, 'main_story_fight-parse', retry=100)
     # 3倍减速检测
     if not color.check_rgb_similar(self, (1177, 614, 1178, 615), (39, 231, 255)):
         self.click(1208, 623, False)

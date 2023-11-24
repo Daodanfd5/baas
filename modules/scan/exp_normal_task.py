@@ -30,9 +30,9 @@ stage_data = {
         },
         'action': [
             # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (756, 388), 'ec': True}, {'t': 'click', 'p': (636, 555), 'ec': True, 'wait': 10},
+            {'t': 'click', 'p': (756, 388), 'ec': True}, {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 10},
             # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (867, 316), 'ec': True}, {'t': 'click', 'p': (619, 461), 'ec': True, 'wait': 5},
+            {'t': 'click', 'p': (867, 316), 'ec': True}, {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5},
             # 神秘➡️ 爆发↘️
             {'t': 'click', 'p': (839, 298), 'ec': True}, {'t': 'click', 'p': (669, 491), 'ec': False},
         ]
@@ -52,13 +52,42 @@ stage_data = {
             # 切换到爆发
             {'t': 'exchange', 'ec': True},
             # 爆发↙️  神秘⬅️
-            {'t': 'click', 'p': (532, 479), 'ec': True}, {'t': 'click', 'p': (596, 386), 'ec': False, 'wait': 7},
+            {'t': 'click', 'p': (532, 479), 'ec': True}, {'t': 'click', 'p': (596, 386), 'ec': False, 'after': 7},
             # 神秘↗️   爆发⬅️
-            {'t': 'click', 'p': (597, 230), 'ec': True}, {'t': 'click', 'p': (545, 429), 'ec': True, 'wait': 3},
+            {'t': 'click', 'p': (597, 230), 'ec': True}, {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},
             # 神秘➡️  爆发↖️Boss
-            {'t': 'click', 'p': (801, 280), 'ec': True, 'wait': 2}, {'t': 'click', 'p': (492, 398), 'ec': False},
+            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2}, {'t': 'click', 'p': (492, 398), 'ec': False},
         ]
-    }
+    },
+    '15': {
+        'side': "mystic1"  # 支线用神秘1
+    },
+    '15-1': {
+        'start': {
+            '1': (376, 344),  # 1队开始坐标
+            '2': (1044, 609)  # 2队开始坐标
+        },
+        'attr': {
+            '1': 'mystic1',  # 1队主神秘
+            '2': 'mystic2'  # 2队副神秘
+        },
+        'action': [
+            # 主➡️ 副↗️+传送
+            {'t': 'click', 'p': (629, 329), 'ec': True},
+            {'t': 'click', 'p': (824, 365), 'ec': False},
+            {'t': 'move', 'ec': True},
+            # 切到副队
+            {'t': 'exchange', 'ec': True, 'before': 2},
+            # 副队↘️ 主队换+➡️
+            {'t': 'click', 'p': (678, 357), 'ec': True},
+            {'t': 'click', 'p': (679, 347), 'ec': False, 'after': 2},
+            {'t': 'click', 'p': (576, 347), 'ec': False, 'after': 2},
+            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 10},
+            # 主队↘️  副队↙️️
+            {'t': 'click', 'p': (823, 413), 'ec': True, 'before': 2},
+            {'t': 'click', 'p': (444, 446), 'ec': True},
+        ]
+    },
 }
 
 
@@ -99,19 +128,22 @@ def start_fight(self, region):
     if gk is None:
         self.logger.info("本区域没有需要开图的任务关卡...")
         return
-    if gk not in stage_data:
-        self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(gk))
-        return
     # 点击开始任务
     if gk == 'side':
         self.click(645, 511)
     else:
+        if gk not in stage_data:
+            self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(gk))
+            return
         self.click(947, 540)
     # 等待地图加载
 
     # 遍历start需要哪些队伍
     if gk == "side":
+        # 选择支线部队开始战斗
         start_choose_side_team(self, stage_data[str(region)]['side'])
+        # 自动战斗
+        main_story.auto_fight(self)
     else:
         for n, p in stage_data[gk]['start'].items():
             start_choose_team(self, gk, n)
@@ -119,17 +151,24 @@ def start_fight(self, region):
         # 点击开始任务
         self.click(1172, 663)
         # 检查跳过战斗
-        image.compare_image(self, 'normal_task_fight-skip', mis_fu=self.click, mis_argv=(1123, 545), rate=2)
+        image.compare_image(self, 'normal_task_fight-skip', threshold=10, mis_fu=self.click, mis_argv=(1123, 545),
+                            rate=2)
         # 检查回合自动结束
-        image.compare_image(self, 'normal_task_auto-over', mis_fu=self.click, mis_argv=(1082, 599), rate=2)
+        image.compare_image(self, 'normal_task_auto-over', threshold=10, mis_fu=self.click, mis_argv=(1082, 599),
+                            rate=2)
         # 开始战斗
         start_action(self, gk)
-    # 自动战斗
-    main_story.auto_fight(self)
+        # 自动战斗
+        main_story.auto_fight(self)
+        # 等待任务完成
+        image.compare_image(self, 'normal_task_task-finish')
+        # 确认(任务完成)
+        time.sleep(1)
+        self.double_click(1038, 662, )
     # 等待获得奖励
     image.compare_image(self, 'normal_task_prize-confirm')
     # 点击确认
-    self.click(776, 655)
+    self.double_click(776, 655)
     # 选择地点加载
     image.compare_image(self, 'normal_task_menu')
     # 重新开始本区域探索
@@ -209,30 +248,44 @@ def get_stage(self, region):
 
 
 def get_force(self):
-    for i in range(1, 5):
-        if image.compare_image(self, 'normal_task_force-{0}'.format(i), 0):
-            return i
+    while True:
+        for i in range(1, 5):
+            if image.compare_image(self, 'normal_task_force-{0}'.format(i), 0):
+                return i
 
 
 def start_action(self, gk):
+    force_index = 0
     for i, act in enumerate(stage_data[gk]['action']):
-        # 获取当前部队编号队伍
-        force_index = get_force(self)
+        # 行动前置等待时间
+        if 'before' in act:
+            self.logger.info("前置等待{0}秒".format(act['before']))
+            time.sleep(act['before'])
+        # 每次行动强制等1s
+        time.sleep(1)
+        # 获取当前部队编号队伍(移动部队这种弹框不能重新计算,因为他有个遮罩)
+        if act['t'] != 'move':
+            force_index = get_force(self)
         self.logger.info("开始 {0} 次行动".format(i + 1))
         if act['t'] == 'click':
-            # 行动
             self.click(*act['p'])
         elif act['t'] == 'exchange':
             self.logger.info("更换部队")
             self.click(83, 557)
+        elif act['t'] == 'move':
+            self.logger.info("确认移动部队")
+            image.compare_image(self, 'normal_task_move-force-confirm')
+            # 确认移动
+            self.click(771, 495)
+            time.sleep(2)
         # 判断是否存在exchange事件
         if act['ec']:
             # 等待换队
             image.compare_image(self, 'normal_task_force-{0}'.format(force_index), n=True)
         # 行动后置等待时间
-        if 'wait' in act:
-            self.logger.info("后置等待{0}秒".format(act['wait']))
-            time.sleep(act['wait'])
+        if 'after' in act:
+            self.logger.info("后置等待{0}秒".format(act['after']))
+            time.sleep(act['after'])
         time.sleep(0.5)
 
 
