@@ -30,11 +30,14 @@ stage_data = {
         },
         'action': [
             # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (756, 388), 'ec': True}, {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 10},
+            {'t': 'click', 'p': (756, 388), 'ec': True},
+            {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 10},
             # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (867, 316), 'ec': True}, {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5},
+            {'t': 'click', 'p': (867, 316), 'ec': True},
+            {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5},
             # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (839, 298), 'ec': True}, {'t': 'click', 'p': (669, 491), 'ec': False},
+            {'t': 'click', 'p': (839, 298), 'ec': True},
+            {'t': 'click', 'p': (669, 491)},
         ]
     },
     '14-2': {
@@ -48,15 +51,19 @@ stage_data = {
         },
         'action': [
             # 神秘↖️  爆发↘️
-            {'t': 'click', 'p': (691, 385), 'ec': True}, {'t': 'click', 'p': (590, 393), 'ec': True},
+            {'t': 'click', 'p': (691, 385), 'ec': True},
+            {'t': 'click', 'p': (590, 393), 'ec': True},
             # 切换到爆发
             {'t': 'exchange', 'ec': True},
             # 爆发↙️  神秘⬅️
-            {'t': 'click', 'p': (532, 479), 'ec': True}, {'t': 'click', 'p': (596, 386), 'ec': False, 'after': 7},
+            {'t': 'click', 'p': (532, 479), 'ec': True},
+            {'t': 'click', 'p': (596, 386), 'after': 7},
             # 神秘↗️   爆发⬅️
-            {'t': 'click', 'p': (597, 230), 'ec': True}, {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},
+            {'t': 'click', 'p': (597, 230), 'ec': True},
+            {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},
             # 神秘➡️  爆发↖️Boss
-            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2}, {'t': 'click', 'p': (492, 398), 'ec': False},
+            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2},
+            {'t': 'click', 'p': (492, 398)},
         ]
     },
     '15': {
@@ -74,18 +81,18 @@ stage_data = {
         'action': [
             # 主➡️ 副↗️+传送
             {'t': 'click', 'p': (629, 329), 'ec': True},
-            {'t': 'click', 'p': (824, 365), 'ec': False},
+            {'t': 'click', 'p': (824, 365)},
             {'t': 'move', 'ec': True},
             # 切到副队
             {'t': 'exchange', 'ec': True},
             # 副队↘️ 主队换+➡️
             {'t': 'click', 'p': (678, 357), 'ec': True},
-            {'t': 'click', 'p': (679, 347), 'ec': False},
-            {'t': 'click', 'p': (576, 347), 'ec': False},
-            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 10, 'wait-over': True},
+            {'t': 'click', 'p': (679, 347)},
+            {'t': 'click', 'p': (576, 347)},
+            {'t': 'click', 'p': (794, 352), 'after': 10, 'wait-over': True},
             # 主队↘️  副队↙️️
             {'t': 'click', 'p': (823, 413), 'ec': True},
-            {'t': 'click', 'p': (444, 446), 'ec': True},
+            {'t': 'click', 'p': (444, 446)},
         ]
     },
     '15-2': {
@@ -104,14 +111,14 @@ stage_data = {
             {'t': 'exchange', 'ec': True, 'before': 2},
             # 副队先 ↗️ 主队换+➡️
             {'t': 'click', 'p': (727, 349), 'ec': True},
-            {'t': 'click', 'p': (727, 342), 'ec': False},
-            {'t': 'click', 'p': (620, 344), 'ec': False},
-            {'t': 'click', 'p': (838, 344), 'ec': False, 'after': 5, 'wait-over': True},  # 等待战斗结束
+            {'t': 'click', 'p': (727, 342)},
+            {'t': 'click', 'p': (620, 344)},
+            {'t': 'click', 'p': (838, 344), 'after': 5, 'wait-over': True},  # 等待战斗结束
             # 切到副队 副队先 ↙️+传 主队↗️
             {'t': 'exchange', 'ec': True, 'before': 2},
-            {'t': 'click', 'p': (432, 451), 'ec': False},
+            {'t': 'click', 'p': (432, 451)},
             {'t': 'move', 'ec': True},
-            {'t': 'click', 'p': (814, 245), 'ec': True},
+            {'t': 'click', 'p': (814, 245)},
         ]
     },
     '15-3': {
@@ -126,21 +133,50 @@ stage_data = {
         'action': [
             # 第一回合
             {'t': 'click', 'p': (728, 461), 'ec': True},  # 主↙️
-            {'t': 'click', 'p': (576, 399), 'ec': False},  # 副↘️
+            {'t': 'click', 'p': (576, 399)},  # 副↘️
             {'t': 'move', 'ec': True},  # 副队传送
             # 第二回合
-            {'t': 'click', 'p': (680, 452), 'ec': False},  # 点击副队
-            {'t': 'click', 'p': (572, 448), 'ec': False},  # 点击交换
+            {'t': 'click', 'p': (680, 452)},  # 点击副队
+            {'t': 'click', 'p': (572, 448)},  # 点击交换
             {'t': 'click', 'p': (623, 541), 'ec': True},  # 主队↙️️
             {'t': 'click', 'p': (797, 421), 'ec': True, 'wait-over': True},  # 副队↘️
             # 第三回合
             {'t': 'exchange', 'ec': True},  # 切换部队
-            {'t': 'click', 'p': (835, 425), 'ec': False},  # 副队↘️
+            {'t': 'click', 'p': (835, 425)},  # 副队↘️
             {'t': 'move', 'ec': True},  # 确认传送
             # 第四回合
-            {'t': 'click', 'p': (610, 459), 'ec': False},  # 点击副队
-            {'t': 'click', 'p': (512, 452), 'ec': False},  # 点击交换
-            {'t': 'click', 'p': (674, 537), 'ec': True},  # 主队↘️Boss
+            {'t': 'click', 'p': (610, 459)},  # 点击副队
+            {'t': 'click', 'p': (512, 452)},  # 点击交换
+            {'t': 'click', 'p': (674, 537)},  # 主队↘️Boss
+        ]
+    },
+    '15-4': {
+        'start': {
+            '1': (824, 554),  # 1队开始坐标
+            '2': (665, 66)  # 2队开始坐标
+        },
+        'attr': {
+            '1': 'mystic1',  # 1队主神秘
+            '2': 'mystic2'  # 2队副神秘
+        },
+        'action': [
+            # 第一回合
+            {'t': 'click', 'p': (546, 498), 'ec': True},  # 主⬅️
+            {'t': 'click', 'p': (687, 343), 'ec': True, 'wait-over': True},  # 副↘️
+            # 第二回合
+            {'t': 'click', 'p': (547, 419), 'ec': True},  # 主队↖️
+            {'t': 'click', 'p': (801, 275)},  # 副队➡️传送
+            {'t': 'move', 'ec': True, 'wait-over': True},  # 确认传送
+            # 第三回合
+            {'t': 'exchange', 'ec': True},  # 切换部队
+            {'t': 'click', 'p': (460, 498), 'ec': True},  # 副队↙️
+            {'t': 'click', 'p': (528, 457)},  # 点击副队
+            {'t': 'click', 'p': (423, 455)},  # 点击交换
+            {'t': 'click', 'p': (408, 468), 'wait-over': True},  # 主队⬅️
+            # 第四回合
+            {'t': 'exchange', 'ec': True},  # 切换部队
+            {'t': 'click', 'p': (897, 416), 'wait-over': True},  # 副队➡️
+            {'t': 'click', 'p': (435, 446)},  # 主队↙️Boss
         ]
     },
 }
@@ -344,7 +380,7 @@ def start_action(self, gk):
             time.sleep(2)
 
         # 判断是否存在exchange事件
-        if act['ec']:
+        if 'ec' in act:
             # 等待换队
             self.logger.info("等待队伍更换事件...")
             image.compare_image(self, 'normal_task_force-{0}'.format(force_index), n=True)

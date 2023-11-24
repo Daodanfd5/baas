@@ -203,7 +203,7 @@
         },
         "config": [
             {
-                "count": 3,
+                "count": 1,
                 "region": 13,
                 "stage": 3
             }
@@ -221,7 +221,7 @@
         },
         "config": [
             {
-                "count": 99,
+                "count": 1,
                 "region": 13,
                 "stage": 3
             }
@@ -329,7 +329,7 @@
     "exp_normal_task": {
         "base": {
             "enable": true,
-            "index": -999999,
+            "index": -99,
             "next": "",
             "end": "",
             "interval": 9999999,
@@ -346,7 +346,7 @@
             "pierce1": 1,
             "pierce2": 1,
             "mystic1": 1,
-            "mystic2": 2
+            "mystic2": 1
         }
     }
 }
