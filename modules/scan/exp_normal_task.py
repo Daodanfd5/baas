@@ -55,7 +55,7 @@ def start_fight(self, region):
     choose_region(self, region)
     gk = calc_need_fight_stage(self, region)
     if gk is None:
-        self.logger.info("本区域没有需要开图的任务关卡...")
+        self.logger.critical("本区域没有需要开图的任务关卡...")
         return
     # 点击开始任务
     if gk == 'side':
@@ -174,6 +174,7 @@ def calc_need_fight_stage(self, region):
     @return:
     """
     wait_task_info(self, True)
+    fail = 0
     while True:
         # 等待任务信息加载
         task_state = check_task_state(self)
@@ -187,12 +188,14 @@ def calc_need_fight_stage(self, region):
             self.logger.info("开始主线战斗")
             return get_stage(self, region)
         # 点击下一关
-        self.logger.info("不满足战斗条件,查找下一关")
+        self.logger.warn("不满足战斗条件,查找下一关")
         self.click(1172, 358)
-        time.sleep(1)
-        # 检测任务信息是否 还存在
-        if wait_task_info(self, max_retry=5) is None:
-            return None
+        # 检测是否还在本区域
+        fail += 1
+        if fail >= 5:
+            time.sleep(1)
+            if region != ocr.screenshot_get_text(self, (189, 197, 228, 225), self.ocrNum):
+                return None
 
 
 def get_stage(self, region):
@@ -216,13 +219,14 @@ def get_force(self):
         if fail > 0:
             self.logger.info("图片识别部队失败，开始OCR识别...")
             i = ocr.screenshot_get_text(self, (118, 548, 130, 564), self.ocrNum, 2)
-            if i != "":
-                try:
-                    i = int(i)
-                    if 0 < i < 5:
-                        return i
-                except Exception:
-                    pass
+            if i == "":
+                continue
+            try:
+                i = int(i)
+                if 0 < i < 5:
+                    return i
+            except Exception:
+                pass
         fail += 1
 
 

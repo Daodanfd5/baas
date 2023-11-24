@@ -64,7 +64,8 @@ class TestPosition(unittest.TestCase):
             self.d.double_click(x, y)
 
     def test_task(self):
-        assert color.check_rgb_similar(self, (124, 429, 125, 430), (75, 233, 246))
+        print(ocr.screenshot_get_text(self, (189, 197, 228, 225), self.ocrNum))
+        # assert color.check_rgb_similar(self, (124, 429, 125, 430), (75, 233, 246))
 
     def test_ss(self):
         assets = [
