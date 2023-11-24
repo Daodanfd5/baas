@@ -322,13 +322,13 @@ def check_task_state(self):
     return 'pass'
 
 
-def wait_task_info(self, open_task=False):
+def wait_task_info(self, open_task=False, max_retry=99999):
     """
     等待任务信息弹窗加载
     @param self:
     @return:
     """
-    while True:
+    while max_retry > 0:
         # 主线任务
         if image.compare_image(self, 'normal_task_task-info', 0):
             return 'main'
@@ -340,6 +340,8 @@ def wait_task_info(self, open_task=False):
         if open_task:
             self.click(1118, 239)
             time.sleep(1)
+        max_retry -= 1
+    return None
 
 
 def calc_need_fight_stage(self, region):
@@ -364,7 +366,10 @@ def calc_need_fight_stage(self, region):
             return get_stage(self, region)
         # 点击下一关
         self.logger.info("不满足战斗条件,查找下一关")
-        self.click(1167, 357)
+        self.click(1172, 358)
+        # 检测任务信息是否 还存在
+        if wait_task_info(self, max_retry=5) is None:
+            return None
 
 
 def get_stage(self, region):
