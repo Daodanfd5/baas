@@ -1239,7 +1239,7 @@
             },
             "name": "区域",
             "type": "sel",
-            "desc": "<span style='margin-right: 50px;'>10图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>11图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>12图 主队:爆发 副队:神秘</span></br><span style='margin-right: 50px;'>13图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>14图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>15图 主队:爆发 副队:神秘</span></br>",
+            "desc": "每个地图邀请的阵容不同，根据情况选择多个区域开图或补⭐️</br><span style='margin-right: 50px;'>10图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>11图 主队:神秘 副队:贯穿</span><span style='margin-right: 50px;'>12图 主队:神秘 副队:爆发</span></br><span style='margin-right: 50px;'>13图 主队:贯穿 副队:贯穿</span><span style='margin-right: 50px;'>14图 主队:爆发 副队:神秘</span><span style='margin-right: 50px;'>15图 主队:神秘 副队:神秘</span></br>",
             "opts": {
                 "multiple": "true"
             }
@@ -1261,6 +1261,10 @@
         },
         "config.burst1": {
             "items": [
+                {
+                    "name": "未选择",
+                    "value": -1
+                },
                 {
                     "name": "部队1",
                     "value": 1
@@ -1285,6 +1289,10 @@
         "config.burst2": {
             "items": [
                 {
+                    "name": "未选择",
+                    "value": -1
+                },
+                {
                     "name": "部队1",
                     "value": 1
                 },
@@ -1307,6 +1315,10 @@
         },
         "config.pierce1": {
             "items": [
+                {
+                    "name": "未选择",
+                    "value": -1
+                },
                 {
                     "name": "部队1",
                     "value": 1
@@ -1331,6 +1343,10 @@
         "config.pierce2": {
             "items": [
                 {
+                    "name": "未选择",
+                    "value": -1
+                },
+                {
                     "name": "部队1",
                     "value": 1
                 },
@@ -1354,6 +1370,10 @@
         "config.mystic1": {
             "items": [
                 {
+                    "name": "未选择",
+                    "value": -1
+                },
+                {
                     "name": "部队1",
                     "value": 1
                 },
@@ -1376,6 +1396,10 @@
         },
         "config.mystic2": {
             "items": [
+                {
+                    "name": "未选择",
+                    "value": -1
+                },
                 {
                     "name": "部队1",
                     "value": 1

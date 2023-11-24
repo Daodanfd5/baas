@@ -263,6 +263,8 @@ def start_fight(self, region):
     self.double_click(776, 655)
     # 选择地点加载
     image.compare_image(self, 'normal_task_menu')
+    # 往左一个区域
+    choose_region(self, region - 1)
     # 重新开始本区域探索
     return start_fight(self, region)
 

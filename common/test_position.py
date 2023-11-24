@@ -117,7 +117,7 @@ class TestPosition(unittest.TestCase):
             # 'normal_task_15-1',
             # 'normal_task_15-2',
             # 'normal_task_15-3',
-            'normal_task_15-4',
+            # 'normal_task_15-4',
             # 'normal_task_15-5',
             # 'normal_task_side-quest',
             # 'normal_task_attack',
