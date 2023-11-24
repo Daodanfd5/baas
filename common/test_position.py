@@ -121,10 +121,11 @@ class TestPosition(unittest.TestCase):
             # 'normal_task_15-5',
             # 'normal_task_side-quest',
             # 'normal_task_attack',
-            'normal_task_prize-confirm',
+            # 'normal_task_prize-confirm',
             # 'normal_task_no-pass',
             # 'normal_task_move-force-confirm',
             # 'normal_task_task-finish',
+            # 'normal_task_fight-task-info',
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',
@@ -162,6 +163,8 @@ class TestPosition(unittest.TestCase):
             # 'main_story_plot-attack',
             # 'main_story_fight-parse',
             # 'main_story_fight-confirm',
+            # 'main_story_auto',
+            'main_story_three-times',
             # 'cm_confirm'
         ]
         for asset in assets:
