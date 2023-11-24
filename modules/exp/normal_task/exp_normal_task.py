@@ -1,4 +1,5 @@
 import importlib
+import sys
 import time
 
 from common import ocr, color, stage, image
@@ -109,7 +110,7 @@ def start_fight(self, region):
 
 def get_stage_data(self, region):
     # 动态生成完整的模块路径
-    module_path = f'modules.scan.exp.nt_{region}'
+    module_path = f'modules.exp.normal_task.stage_data.nt_{region}'
     # 导入指定的模块
     try:
         stage_module = importlib.import_module(module_path)
@@ -178,6 +179,7 @@ def calc_need_fight_stage(self, region):
     while True:
         # 等待任务信息加载
         task_state = check_task_state(self)
+        task_state = 'no-pass'
         self.logger.info("当前关卡状态为:{0}".format(task_state))
         # 未通关支线
         if task_state == 'side':
@@ -288,6 +290,9 @@ def select_force_fight(self, index):
     @param index: 队伍索引
     """
     self.logger.info("根据当前配置,选择部队{0}".format(index))
+    if index == -1:
+        self.logger.critical("你没有未配置部队,请根据开图区域设置对应属性的部队编号")
+        self.exit()
     fp = force_position[index]
     # 检查是否有选中,直到选中为止
     while not color.check_rgb_similar(self, (fp[0], fp[1], fp[0] + 1, fp[1] + 1), (105, 74, 50)):

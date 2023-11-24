@@ -24,6 +24,7 @@ def menus_list():
             'child': [
                 {'name': 'baas', 'text': 'Baas设置'},
                 {'name': 'restart', 'text': '重启设置'},
+                {'name': 'fhx', 'text': '反和谐'},
             ]
         },
         {
@@ -52,8 +53,22 @@ def menus_list():
                 {'name': 'wanted', 'text': '通缉悬赏'},
                 {'name': 'arena', 'text': '战术对抗赛'},
                 {'name': 'normal_task', 'text': '普通关卡-扫荡'},
-                {'name': 'exp_normal_task', 'text': '普通关卡-开图'},
                 {'name': 'hard_task', 'text': '困难关卡-扫荡'},
+            ]
+        },
+        {
+            'name': 'exp',
+            'text': '开图',
+            'child': [
+                {'name': 'exp_normal_task', 'text': '普通关卡-开图'},
+                # {'name': 'exp_hard_task', 'text': '困难关卡-开图'},
+            ]
+        },
+        {
+            'name': 'story',
+            'text': '剧情',
+            'child': [
+                {'name': 'main_story', 'text': '主线剧情'},
             ]
         },
         {
@@ -71,21 +86,7 @@ def menus_list():
             'child': [
                 {'name': 'tutor_dept', 'text': '补习部签到'},
             ]
-        },
-        {
-            'name': 'story',
-            'text': '剧情',
-            'child': [
-                {'name': 'main_story', 'text': '主线剧情'},
-            ]
-        },
-        {
-            'name': 'fhx',
-            'text': '反和谐',
-            'child': [
-                {'name': 'fhx', 'text': '反和谐'},
-            ]
-        },
+        }
     ]
     return {'data': {'list': menus}, 'code': 200}, 200
 

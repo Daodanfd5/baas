@@ -93,5 +93,7 @@ def create_logger(con, html_logger=True):
 
         sys.stdout = stdout_logger_handler
         sys.stderr = stderr_logger_handler
+        for i in range(5):
+            logger.info("")
         logger.info("日志组件初始化成功...")
     return logger

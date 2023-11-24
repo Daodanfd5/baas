@@ -10,8 +10,9 @@ from common import stage, process, config, log, encrypt, ocr
 from modules.activity import tutor_dept
 from modules.baas import restart, fhx
 from modules.daily import group, shop, cafe, schedule, special_entrust, wanted, arena, make, buy_ap
+from modules.exp.normal_task import exp_normal_task
 from modules.reward import momo_talk, work_task, mailbox
-from modules.scan import normal_task, hard_task, main_story, exp_normal_task
+from modules.scan import normal_task, hard_task, main_story
 
 func_dict = {
     'group': group.start,
@@ -29,7 +30,6 @@ func_dict = {
     'hard_task': hard_task.start,
     'mailbox': mailbox.start,
     'restart': restart.start,
-
     'tutor_dept': tutor_dept.start,
     'buy_ap': buy_ap.start,
     'main_story': main_story.start,
@@ -69,8 +69,7 @@ class Baas:
             ta = self.d.info
             self.logger.info("模拟器连接成功:{0}".format(self.d.device_info['udid']))
         except Exception as e:
-            self.logger.critical("模拟器连接失败:{0}".format(e))
-            sys.exit(1)
+            self.exit("模拟器连接失败:{0}".format(e))
 
     def check_resolution(self):
         # 1280 * 720
@@ -78,8 +77,7 @@ class Baas:
         ss = self.d.screenshot()
         if (ss.size[0] == 1280 and ss.size[1] == 720) or (ss.size[1] == 1280 and ss.size[0] == 720):
             return
-        self.logger.critical("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))
-        sys.exit(1)
+        self.exit("分辨率必须为 1280 * 720,当前分辨率为:{0} * {1}".format(ss.size[0], ss.size[1]))
 
     def log_title(self, msg):
         pre = '</br>'
@@ -126,6 +124,16 @@ class Baas:
         self.logger.info("swipe %s %s %s %s", fx, fy, tx, ty)
         self.d.swipe(fx, fy, tx, ty)
 
+    def exit(self, msg):
+        """
+        退出程序
+        @param msg: 失败消息
+        """
+        self.logger.critical(msg)
+        if encrypt.md5(self.con) in self.processes_task:
+            del self.processes_task[encrypt.md5(self.con)]
+        sys.exit(1)
+
     def dashboard(self):
         # 使用字典将字符串映射到对应的函数
         suffix = "</br>【Baas】是一款完全免费开源的自动化脚本，如遇收费请立即退款！</br>项目开源地址: " \
@@ -153,8 +161,7 @@ class Baas:
                 self.log_title("执行完成【" + tc['base']['text'] + "】")
                 del self.processes_task[encrypt.md5(self.con)]
             else:
-                self.logger.info(f"函数不存在:{fn}")
-                sys.exit(0)
+                self.exit(f"函数不存在:{fn}")
 
     def config_path(self):
         return config.config_filepath(self.con)
