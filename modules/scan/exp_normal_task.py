@@ -179,6 +179,37 @@ stage_data = {
             {'t': 'click', 'p': (435, 446)},  # 主队↙️Boss
         ]
     },
+    '15-5': {
+        'start': {
+            '1': (314, 300),  # 1队开始坐标
+            '2': (490, 526)  # 2队开始坐标
+        },
+        'attr': {
+            '1': 'mystic1',  # 1队主神秘
+            '2': 'mystic2'  # 2队副神秘
+        },
+        'action': [
+            # 第一回合
+            {'t': 'exchange', 'ec': True},  # 切换部队
+            {'t': 'click', 'p': (608, 384), 'ec': True},  # 副队↗️
+            # 第二回合
+            {'t': 'click', 'p': (610, 388)},  # 点击副队
+            {'t': 'click', 'p': (505, 382)},  # 点击交换
+            {'t': 'click', 'p': (730, 388), 'ec': True, 'wait-over': True},  # 主队➡️
+            # 第三回合
+            {'t': 'click', 'p': (784, 218), 'ec': True},  # 主队↗️
+            {'t': 'click', 'p': (579, 234)},  # 副队↗️
+            {'t': 'move', 'ec': True, 'wait-over': True},  # 副队传送
+            # 第四回合
+            {'t': 'click', 'p': (788, 216)},  # 主队↗️
+            {'t': 'move', 'ec': True, 'wait-over': True},  # 主队传送
+            {'t': 'click', 'p': (651, 373), 'ec': True, 'wait-over': True},  # 副队↙️
+            # 第五回合
+            {'t': 'click', 'p': (803, 491), 'ec': True},  # 主队➡️
+            {'t': 'click', 'p': (734, 354), 'ec': True, 'wait-over': True},  # 副队↘️
+            {'t': 'click', 'p': (779, 511)},  # 主队➡️ Boss
+        ]
+    },
 }
 
 
@@ -349,10 +380,22 @@ def get_stage(self, region):
 
 
 def get_force(self):
+    fail = 0
     while True:
         for i in range(1, 5):
             if image.compare_image(self, 'normal_task_force-{0}'.format(i), 0):
                 return i
+        if fail > 0:
+            self.logger.info("图片识别部队失败，开始OCR识别...")
+            i = ocr.screenshot_get_text(self, (118, 548, 130, 564), self.ocrNum, 2)
+            if i != "":
+                try:
+                    i = int(i)
+                    if 0 < i < 5:
+                        return i
+                except Exception:
+                    pass
+        fail += 1
 
 
 def start_action(self, gk):
@@ -397,8 +440,7 @@ def start_action(self, gk):
             # 一直点击任务信息，直到任务信息出现
             image.compare_image(self, 'normal_task_fight-task-info', mis_fu=self.click, mis_argv=(1003, 666), rate=1)
             # 任务信息出现后一直点击最上方，直到消失
-            image.compare_image(self, 'normal_task_fight-task-info', mis_fu=self.click, mis_argv=(529, 25), rate=1,
-                                n=True)
+            image.compare_image(self, 'normal_task_fight-task-info', mis_fu=self.click, mis_argv=(529, 25), n=True)
         stage.wait_loading(self)
 
 
