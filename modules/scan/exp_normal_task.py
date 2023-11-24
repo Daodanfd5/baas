@@ -77,15 +77,41 @@ stage_data = {
             {'t': 'click', 'p': (824, 365), 'ec': False},
             {'t': 'move', 'ec': True},
             # 切到副队
-            {'t': 'exchange', 'ec': True, 'before': 2},
+            {'t': 'exchange', 'ec': True},
             # 副队↘️ 主队换+➡️
             {'t': 'click', 'p': (678, 357), 'ec': True},
-            {'t': 'click', 'p': (679, 347), 'ec': False, 'after': 2},
-            {'t': 'click', 'p': (576, 347), 'ec': False, 'after': 2},
-            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 15},
+            {'t': 'click', 'p': (679, 347), 'ec': False},
+            {'t': 'click', 'p': (576, 347), 'ec': False},
+            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 10, 'wait-over': True},
             # 主队↘️  副队↙️️
-            {'t': 'click', 'p': (823, 413), 'ec': True, 'before': 2},
+            {'t': 'click', 'p': (823, 413), 'ec': True},
             {'t': 'click', 'p': (444, 446), 'ec': True},
+        ]
+    },
+    '15-2': {
+        'start': {
+            '1': (407, 259),  # 1队开始坐标
+            '2': (751, 487)  # 2队开始坐标
+        },
+        'attr': {
+            '1': 'mystic1',  # 1队主神秘
+            '2': 'mystic2'  # 2队副神秘
+        },
+        'action': [
+            # 主➡️ 副↖️
+            {'t': 'click', 'p': (636, 317), 'ec': True}, {'t': 'click', 'p': (673, 385), 'ec': True},
+            # 切到副队
+            {'t': 'exchange', 'ec': True, 'before': 2},
+            # 副队先 ↗️ 主队换+➡️
+            {'t': 'click', 'p': (727, 349), 'ec': True},
+            {'t': 'click', 'p': (727, 342), 'ec': False},
+            {'t': 'click', 'p': (620, 344), 'ec': False},
+            {'t': 'click', 'p': (838, 344), 'ec': False, 'after': 5, 'wait-over': True},  # 等待战斗结束
+            # 切到副队 副队先 ↙️+传 主队↗️
+            {'t': 'exchange', 'ec': True, 'before': 2},
+            {'t': 'click', 'p': (432, 451), 'ec': False},
+            {'t': 'move', 'ec': True},
+            {'t': 'click', 'p': (814, 245), 'ec': True},
         ]
     },
 }
@@ -266,10 +292,11 @@ def start_action(self, gk):
             time.sleep(act['before'])
         # 每次行动强制等1s
         time.sleep(1)
+        self.logger.info("开始 {0} 次行动".format(i + 1))
         # 获取当前部队编号队伍(移动部队这种弹框不能重新计算,因为他有个遮罩)
         if act['t'] != 'move':
             force_index = get_force(self)
-        self.logger.info("开始 {0} 次行动".format(i + 1))
+
         if act['t'] == 'click':
             self.click(*act['p'])
         elif act['t'] == 'exchange':
@@ -281,15 +308,25 @@ def start_action(self, gk):
             # 确认移动
             self.click(771, 495)
             time.sleep(2)
+
         # 判断是否存在exchange事件
         if act['ec']:
             # 等待换队
+            self.logger.info("等待队伍更换事件...")
             image.compare_image(self, 'normal_task_force-{0}'.format(force_index), n=True)
+
         # 行动后置等待时间
         if 'after' in act:
             self.logger.info("后置等待{0}秒".format(act['after']))
             time.sleep(act['after'])
-        time.sleep(0.5)
+
+        if 'wait-over' in act:
+            self.logger.info("等待战斗结束...")
+            # 一直点击任务信息，直到任务信息出现
+            image.compare_image(self, 'normal_task_fight-task-info', mis_fu=self.click, mis_argv=(1003, 666), rate=1)
+            # 任务信息出现后一直点击最上方，直到消失
+            image.compare_image(self, 'normal_task_fight-task-info', mis_fu=self.click, mis_argv=(529, 25), rate=1,
+                                n=True)
         stage.wait_loading(self)
 
 

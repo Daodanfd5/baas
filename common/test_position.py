@@ -121,10 +121,11 @@ class TestPosition(unittest.TestCase):
             # 'normal_task_15-5',
             # 'normal_task_side-quest',
             # 'normal_task_attack',
-            'normal_task_prize-confirm',
+            # 'normal_task_prize-confirm',
             # 'normal_task_no-pass',
             # 'normal_task_move-force-confirm',
             # 'normal_task_task-finish',
+            # 'normal_task_fight-task-info',
 
             # 'buy_ap_notice',
             # 'buy_ap_notice2',
