@@ -82,7 +82,7 @@ stage_data = {
             {'t': 'click', 'p': (678, 357), 'ec': True},
             {'t': 'click', 'p': (679, 347), 'ec': False, 'after': 2},
             {'t': 'click', 'p': (576, 347), 'ec': False, 'after': 2},
-            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 10},
+            {'t': 'click', 'p': (794, 352), 'ec': False, 'after': 15},
             # 主队↘️  副队↙️️
             {'t': 'click', 'p': (823, 413), 'ec': True, 'before': 2},
             {'t': 'click', 'p': (444, 446), 'ec': True},
@@ -290,6 +290,7 @@ def start_action(self, gk):
             self.logger.info("后置等待{0}秒".format(act['after']))
             time.sleep(act['after'])
         time.sleep(0.5)
+        stage.wait_loading(self)
 
 
 def start_choose_side_team(self, team):
