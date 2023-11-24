@@ -59,6 +59,7 @@ class Baas:
         self.processes_task = processes_task
         self.check_resolution()
         self.next_task = ''
+        self.stage_data = {}
 
     def connect_serial(self):
         serial = self.bc['baas']['base']['serial']

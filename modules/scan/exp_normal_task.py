@@ -1,9 +1,9 @@
-import sys
+import importlib
 import time
 
 from common import ocr, color, stage, image
-from modules.baas import home, cm
-from modules.scan import hard_task, main_story
+from modules.baas import home
+from modules.scan import main_story
 
 x = {
 }
@@ -14,202 +14,6 @@ normal_position = {
 # 部队1234坐标
 force_position = {
     1: (124, 195), 2: (124, 277), 3: (124, 354), 4: (124, 429),
-}
-stage_data = {
-    '14': {
-        'side': "burst1"  # 支线用爆发1
-    },
-    '14-1': {
-        'start': {
-            '1': (460, 383),  # 1队开始坐标
-            '2': (572, 303)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'burst1',  # 1队爆发
-            '2': 'mystic1'  # 2对神秘
-        },
-        'action': [
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (756, 388), 'ec': True},
-            {'t': 'click', 'p': (636, 555), 'ec': True, 'after': 10},
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (867, 316), 'ec': True},
-            {'t': 'click', 'p': (619, 461), 'ec': True, 'after': 5},
-            # 神秘➡️ 爆发↘️
-            {'t': 'click', 'p': (839, 298), 'ec': True},
-            {'t': 'click', 'p': (669, 491)},
-        ]
-    },
-    '14-2': {
-        'start': {
-            '1': (611, 299),  # 1队开始做坐标
-            '2': (880, 559)  # 2对开始坐标
-        },
-        'attr': {
-            '1': 'burst1',  # 1队爆发
-            '2': 'mystic1'  # 2对神秘
-        },
-        'action': [
-            # 神秘↖️  爆发↘️
-            {'t': 'click', 'p': (691, 385), 'ec': True},
-            {'t': 'click', 'p': (590, 393), 'ec': True},
-            # 切换到爆发
-            {'t': 'exchange', 'ec': True},
-            # 爆发↙️  神秘⬅️
-            {'t': 'click', 'p': (532, 479), 'ec': True},
-            {'t': 'click', 'p': (596, 386), 'after': 7},
-            # 神秘↗️   爆发⬅️
-            {'t': 'click', 'p': (597, 230), 'ec': True},
-            {'t': 'click', 'p': (545, 429), 'ec': True, 'after': 3},
-            # 神秘➡️  爆发↖️Boss
-            {'t': 'click', 'p': (801, 280), 'ec': True, 'after': 2},
-            {'t': 'click', 'p': (492, 398)},
-        ]
-    },
-    '15': {
-        'side': "mystic1"  # 支线用神秘1
-    },
-    '15-1': {
-        'start': {
-            '1': (376, 344),  # 1队开始坐标
-            '2': (1044, 609)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'mystic1',  # 1队主神秘
-            '2': 'mystic2'  # 2队副神秘
-        },
-        'action': [
-            # 主➡️ 副↗️+传送
-            {'t': 'click', 'p': (629, 329), 'ec': True},
-            {'t': 'click', 'p': (824, 365)},
-            {'t': 'move', 'ec': True},
-            # 切到副队
-            {'t': 'exchange', 'ec': True},
-            # 副队↘️ 主队换+➡️
-            {'t': 'click', 'p': (678, 357), 'ec': True},
-            {'t': 'click', 'p': (679, 347)},
-            {'t': 'click', 'p': (576, 347)},
-            {'t': 'click', 'p': (794, 352), 'after': 10, 'wait-over': True},
-            # 主队↘️  副队↙️️
-            {'t': 'click', 'p': (823, 413), 'ec': True},
-            {'t': 'click', 'p': (444, 446)},
-        ]
-    },
-    '15-2': {
-        'start': {
-            '1': (407, 259),  # 1队开始坐标
-            '2': (751, 487)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'mystic1',  # 1队主神秘
-            '2': 'mystic2'  # 2队副神秘
-        },
-        'action': [
-            # 主➡️ 副↖️
-            {'t': 'click', 'p': (636, 317), 'ec': True}, {'t': 'click', 'p': (673, 385), 'ec': True},
-            # 切到副队
-            {'t': 'exchange', 'ec': True, 'before': 2},
-            # 副队先 ↗️ 主队换+➡️
-            {'t': 'click', 'p': (727, 349), 'ec': True},
-            {'t': 'click', 'p': (727, 342)},
-            {'t': 'click', 'p': (620, 344)},
-            {'t': 'click', 'p': (838, 344), 'after': 5, 'wait-over': True},  # 等待战斗结束
-            # 切到副队 副队先 ↙️+传 主队↗️
-            {'t': 'exchange', 'ec': True, 'before': 2},
-            {'t': 'click', 'p': (432, 451)},
-            {'t': 'move', 'ec': True},
-            {'t': 'click', 'p': (814, 245)},
-        ]
-    },
-    '15-3': {
-        'start': {
-            '1': (757, 144),  # 1队开始坐标
-            '2': (407, 188)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'mystic1',  # 1队主神秘
-            '2': 'mystic2'  # 2队副神秘
-        },
-        'action': [
-            # 第一回合
-            {'t': 'click', 'p': (728, 461), 'ec': True},  # 主↙️
-            {'t': 'click', 'p': (576, 399)},  # 副↘️
-            {'t': 'move', 'ec': True},  # 副队传送
-            # 第二回合
-            {'t': 'click', 'p': (680, 452)},  # 点击副队
-            {'t': 'click', 'p': (572, 448)},  # 点击交换
-            {'t': 'click', 'p': (623, 541), 'ec': True},  # 主队↙️️
-            {'t': 'click', 'p': (797, 421), 'ec': True, 'wait-over': True},  # 副队↘️
-            # 第三回合
-            {'t': 'exchange', 'ec': True},  # 切换部队
-            {'t': 'click', 'p': (835, 425)},  # 副队↘️
-            {'t': 'move', 'ec': True},  # 确认传送
-            # 第四回合
-            {'t': 'click', 'p': (610, 459)},  # 点击副队
-            {'t': 'click', 'p': (512, 452)},  # 点击交换
-            {'t': 'click', 'p': (674, 537)},  # 主队↘️Boss
-        ]
-    },
-    '15-4': {
-        'start': {
-            '1': (824, 554),  # 1队开始坐标
-            '2': (665, 66)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'mystic1',  # 1队主神秘
-            '2': 'mystic2'  # 2队副神秘
-        },
-        'action': [
-            # 第一回合
-            {'t': 'click', 'p': (546, 498), 'ec': True},  # 主⬅️
-            {'t': 'click', 'p': (687, 343), 'ec': True, 'wait-over': True},  # 副↘️
-            # 第二回合
-            {'t': 'click', 'p': (547, 419), 'ec': True},  # 主队↖️
-            {'t': 'click', 'p': (801, 275)},  # 副队➡️传送
-            {'t': 'move', 'ec': True, 'wait-over': True},  # 确认传送
-            # 第三回合
-            {'t': 'exchange', 'ec': True},  # 切换部队
-            {'t': 'click', 'p': (460, 498), 'ec': True},  # 副队↙️
-            {'t': 'click', 'p': (528, 457)},  # 点击副队
-            {'t': 'click', 'p': (423, 455)},  # 点击交换
-            {'t': 'click', 'p': (408, 468), 'wait-over': True},  # 主队⬅️
-            # 第四回合
-            {'t': 'exchange', 'ec': True},  # 切换部队
-            {'t': 'click', 'p': (897, 416), 'wait-over': True},  # 副队➡️
-            {'t': 'click', 'p': (435, 446)},  # 主队↙️Boss
-        ]
-    },
-    '15-5': {
-        'start': {
-            '1': (314, 300),  # 1队开始坐标
-            '2': (490, 526)  # 2队开始坐标
-        },
-        'attr': {
-            '1': 'mystic1',  # 1队主神秘
-            '2': 'mystic2'  # 2队副神秘
-        },
-        'action': [
-            # 第一回合
-            {'t': 'exchange', 'ec': True},  # 切换部队
-            {'t': 'click', 'p': (608, 384), 'ec': True},  # 副队↗️
-            # 第二回合
-            {'t': 'click', 'p': (610, 388)},  # 点击副队
-            {'t': 'click', 'p': (505, 382)},  # 点击交换
-            {'t': 'click', 'p': (730, 388), 'ec': True, 'wait-over': True},  # 主队➡️
-            # 第三回合
-            {'t': 'click', 'p': (784, 218), 'ec': True},  # 主队↗️
-            {'t': 'click', 'p': (579, 234)},  # 副队↗️
-            {'t': 'move', 'ec': True, 'wait-over': True},  # 副队传送
-            # 第四回合
-            {'t': 'click', 'p': (788, 216)},  # 主队↗️
-            {'t': 'move', 'ec': True, 'wait-over': True},  # 主队传送
-            {'t': 'click', 'p': (651, 373), 'ec': True, 'wait-over': True},  # 副队↙️
-            # 第五回合
-            {'t': 'click', 'p': (803, 491), 'ec': True},  # 主队➡️
-            {'t': 'click', 'p': (734, 354), 'ec': True, 'wait-over': True},  # 副队↘️
-            {'t': 'click', 'p': (779, 511)},  # 主队➡️ Boss
-        ]
-    },
 }
 
 
@@ -237,6 +41,9 @@ def start(self):
             self.click(803, 156)
     # 开始战斗
     for region in self.tc['config']['region']:
+        self.stage_data = get_stage_data(self, region)
+        if self.stage_data is None:
+            continue
         start_fight(self, region)
 
     # 回到首页
@@ -254,7 +61,7 @@ def start_fight(self, region):
     if gk == 'side':
         self.click(645, 511)
     else:
-        if gk not in stage_data:
+        if gk not in self.stage_data:
             self.logger.critical("本关卡{0}尚未支持开图，正在全力研发中...".format(gk))
             return
         self.click(947, 540)
@@ -263,11 +70,11 @@ def start_fight(self, region):
     # 遍历start需要哪些队伍
     if gk == "side":
         # 选择支线部队开始战斗
-        start_choose_side_team(self, stage_data[str(region)]['side'])
+        start_choose_side_team(self, self.stage_data[str(region)]['side'])
         # 自动战斗
         main_story.auto_fight(self)
     else:
-        for n, p in stage_data[gk]['start'].items():
+        for n, p in self.stage_data[gk]['start'].items():
             start_choose_team(self, gk, n)
         image.compare_image(self, 'normal_task_fight-task')
         # 点击开始任务
@@ -280,7 +87,7 @@ def start_fight(self, region):
         image.compare_image(self, 'normal_task_auto-over', threshold=10, mis_fu=self.click, mis_argv=(1082, 599),
                             rate=2)
         # 开始战斗
-        start_action(self, gk)
+        start_action(self, gk, self.stage_data)
         # 自动战斗
         main_story.auto_fight(self)
         # 等待任务完成
@@ -298,6 +105,20 @@ def start_fight(self, region):
     choose_region(self, region - 1)
     # 重新开始本区域探索
     return start_fight(self, region)
+
+
+def get_stage_data(self, region):
+    # 动态生成完整的模块路径
+    module_path = f'modules.scan.exp.nt_{region}'
+    # 导入指定的模块
+    try:
+        stage_module = importlib.import_module(module_path)
+        stage_data = getattr(stage_module, 'stage_data', None)
+        # 从该模块中获取stage_data数据
+        return stage_data
+    except ModuleNotFoundError:
+        self.logger.critical("当前区域 {0} 尚未支持开图，正在全力研发中...".format(region))
+        return None
 
 
 def check_task_state(self):
@@ -341,6 +162,7 @@ def wait_task_info(self, open_task=False, max_retry=99999):
             self.click(1118, 239)
             time.sleep(1)
         max_retry -= 1
+        self.logger.error("max_retry {0}".format(max_retry))
     return None
 
 
@@ -367,6 +189,7 @@ def calc_need_fight_stage(self, region):
         # 点击下一关
         self.logger.info("不满足战斗条件,查找下一关")
         self.click(1172, 358)
+        time.sleep(1)
         # 检测任务信息是否 还存在
         if wait_task_info(self, max_retry=5) is None:
             return None
@@ -403,7 +226,7 @@ def get_force(self):
         fail += 1
 
 
-def start_action(self, gk):
+def start_action(self, gk, stage_data):
     force_index = 0
     for i, act in enumerate(stage_data[gk]['action']):
         # 行动前置等待时间
@@ -476,11 +299,11 @@ def start_choose_team(self, gk, force):
     image.compare_image(self, 'normal_task_fight-task')
     # 点击开始按钮
     time.sleep(1)
-    self.double_click(*stage_data[gk]['start'][force])
+    self.double_click(*self.stage_data[gk]['start'][force])
     # 等待编队加载
     image.compare_image(self, 'normal_task_force-edit')
     # 选择对应属性的队伍
-    select_force_fight(self, self.tc['config'][stage_data[gk]['attr'][force]])
+    select_force_fight(self, self.tc['config'][self.stage_data[gk]['attr'][force]])
 
 
 def choose_region(self, region):
