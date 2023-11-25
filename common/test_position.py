@@ -67,6 +67,25 @@ class TestPosition(unittest.TestCase):
         print(ocr.screenshot_get_text(self, (189, 197, 228, 225), self.ocrNum))
         # assert color.check_rgb_similar(self, (124, 429, 125, 430), (75, 233, 246))
 
+    def ss_task_lv(self, base, lv, region):
+        d = "{0}/{1}".format(self.file_path, base)
+        f = "../assets/images/{0}/{1}-{2}.png".format(base, region, lv)
+        image.screenshot_cut(self, (191, 199, 265, 224), 0, False, d, f)
+        self.click(1167, 355)
+        time.sleep(3)
+
+    def test_gen_normal_task(self):
+        base = 'normal_task'
+        for region in range(6, 16):
+            for lv in range(1, 6):
+                self.ss_task_lv(base, lv, region)
+
+    def test_gen_hard_task(self):
+        base = 'hard_task'
+        for region in range(6, 16):
+            for lv in range(1, 4):
+                self.ss_task_lv(base, lv, region)
+
     def test_ss(self):
         assets = [
             # 'home_cafe',
