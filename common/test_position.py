@@ -99,6 +99,7 @@ class TestPosition(unittest.TestCase):
             # 'arena_cd',
             # 'arena_0-5',
             # 'arena_skip',
+            'arena_attack',
 
             # 'cafe_0.0',
             # 'cafe_menu',

@@ -78,8 +78,10 @@ def create_logger(con, html_logger=True):
             os.makedirs(log_dir_path)
             print(f"The directory {log_dir_path} was created.")
         current_date = datetime.now().strftime('%Y-%m-%d')
-        file_handler = logging.FileHandler(config.resource_path(f'runtime/logs/{current_date}_{con}.log'),
-                                           encoding='utf-8')
+        log_path = config.resource_path(f'runtime/logs/{current_date}_{con}.log')
+        if os.path.exists(log_path):
+            os.remove(log_path)
+        file_handler = logging.FileHandler(log_path, encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)
 
         formatter = ColoredHTMLFormatter(
@@ -93,7 +95,5 @@ def create_logger(con, html_logger=True):
 
         sys.stdout = stdout_logger_handler
         sys.stderr = stderr_logger_handler
-        for i in range(5):
-            logger.info("")
         logger.info("日志组件初始化成功...")
     return logger

@@ -7,7 +7,8 @@ x = {
     'id': (476, 424, 496, 442),
     'cd': (153, 516, 212, 535),
     '0-5': (194, 479, 227, 497),
-    'skip': (1109, 591, 1135, 614)
+    'skip': (1109, 591, 1135, 614),
+    'attack': (1140, 654, 1197, 681)
 }
 finish_seconds = 55
 
@@ -62,12 +63,11 @@ def start_fight(self, wait=False):
     ocr.screenshot_check_text(self, '出击', (1134, 650, 1207, 683))
 
     # 检查跳过是否勾选
+    time.sleep(0.5)
     image.compare_image(self, 'arena_skip', 999, 20, False, self.click, (1125, 599, False), 0.5)
 
-    # 角色加载太慢了... 暂时没有好办法 todo 吧
-    time.sleep(3)
     # 出击
-    self.double_click(1175, 665, True, 1, 1)
+    image.compare_image(self, 'arena_attack', threshold=10, mis_fu=self.click, mis_argv=(1163, 658), rate=1, n=True)
     while True:
         # 检查有没有出现ID
         if image.compare_image(self, 'arena_id', 0):
